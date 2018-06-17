@@ -37,38 +37,46 @@
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Email Id</th>
-                                                <th>Name</th>
-                                                <th>Image</th>
-                                                <th>Mobile No</th>
-                                                <th>Type</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
+                                                <th>ISBN No</th>
+                                                <th>Book Availability</th>
+                                                <th>Book Title</th>
+                                                <th>Book Publisher</th>
+                                                <th>Category Name</th>
+                                                <th>Book Author</th>
+                                                <th>Book Edition</th>
+                                                <th>Book Edition Year</th>
+                                                <th>Book Add Date</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                            <th>Email Id</th>
-                                                <th>Name</th>
-                                                <th>Image</th>
-                                                <th>Mobile No</th>
-                                                <th>Type</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
+                                            <th>ISBN No</th>
+                                                <th>Book Availability</th>
+                                                <th>Book Title</th>
+                                                <th>Book Publisher</th>
+                                                <th>Category Name</th>
+                                                <th>Book Author</th>
+                                                <th>Book Edition</th>
+                                                <th>Book Edition Year</th>
+                                                <th>Book Add Date</th>
+                                                <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                         <?php foreach ($book_item as $tbl): ?>
 
                                         <tr>
-                                            <td><?php echo $tbl['req_book_title']; ?></td>
-                                            <td><?php echo $tbl['req_book_author']; ?></td>
-                                            
-                                            <td><?php echo $tbl['req_book_edition']; ?></td>
-                                            <td><?php echo $tbl['req_book_edition_year']; ?></td>
-                                            <td><?php echo $tbl['req_date']; ?></td>
-                                            <td><?php echo $tbl['req_book_status']; ?></td>
+                                            <td><?php echo $tbl['isbn_no']; ?></td>
+                                            <td><?php echo $tbl['book_availability']; ?></td>
+                                            <td><?php echo $tbl['book_title']; ?></td>
+                                            <td><?php echo $tbl['book_publisher']; ?></td>
+                                            <td><?php echo $tbl['book_author']; ?></td>
+                                            <td><?php echo $tbl['book_edition']; ?></td>
+                                            <td><?php echo $tbl['book_edition_year']; ?></td>
+                                            <td><?php echo $tbl['book_add_date']; ?></td>
                                             <td>
+                                            <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i> </button>
                                             <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i> </button>
                                             </td>
                                          </tr>

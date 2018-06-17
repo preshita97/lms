@@ -37,38 +37,42 @@
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>Email Id</th>
-                                                <th>Name</th>
-                                                <th>Image</th>
-                                                <th>Mobile No</th>
-                                                <th>Type</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
+                                                <th>Book Title</th>
+                                                <th>User Name</th>
+                                                <th>Issue Date</th>
+                                                <th>Expiry Date</th>
+                                                <th>Return Date</th>
+                                                <th>Fine</th>
+                                                <th>Book Return Status</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                            <th>Email Id</th>
-                                                <th>Name</th>
-                                                <th>Image</th>
-                                                <th>Mobile No</th>
-                                                <th>Type</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
+                                                <th>Book Title</th>
+                                                <th>User Name</th>
+                                                <th>Issue Date</th>
+                                                <th>Expiry Date</th>
+                                                <th>Return Date</th>
+                                                <th>Fine</th>
+                                                <th>Book Return Status</th>
+                                                <th>Action</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                         <?php foreach ($book_circulation_item as $tbl): ?>
 
                                         <tr>
-                                            <td><?php echo $tbl['req_book_title']; ?></td>
-                                            <td><?php echo $tbl['req_book_author']; ?></td>
+                                            <td><?php echo $tbl['book_title']; ?></td>
+                                            <td><?php echo $tbl['u_name']; ?></td>
                                             
-                                            <td><?php echo $tbl['req_book_edition']; ?></td>
-                                            <td><?php echo $tbl['req_book_edition_year']; ?></td>
-                                            <td><?php echo $tbl['req_date']; ?></td>
-                                            <td><?php echo $tbl['req_book_status']; ?></td>
+                                            <td><?php echo $tbl['issue_date']; ?></td>
+                                            <td><?php echo $tbl['expiry_date']; ?></td>
+                                            <td><?php echo $tbl['return_date']; ?></td>
+                                            <td><?php echo $tbl['fine_amt']; ?></td>
+                                            <td><?php echo $tbl['return_status']; ?></td>
                                             <td>
+                                            <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i> </button>
                                             <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i> </button>
                                             </td>
                                          </tr>

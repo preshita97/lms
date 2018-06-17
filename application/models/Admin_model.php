@@ -33,13 +33,22 @@ class Admin_model extends CI_model{
     }
     public function book_display()
     {
-        $query = $this->db->get('book_tbl');
+        $this->db->select('book_tbl.*,book_cat_tbl.*');
+        $this->db->from('book_tbl');
+        $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+
+        $query = $this->db->get();
         return $query->result_array();
     }
 
     public function book_circulation_display()
     {
-        $query = $this->db->get('book_circulation_tbl');
+        $this->db->select('user_tbl.*,book_tbl.*,book_circulation_tbl.*');
+        $this->db->from('book_circulation_tbl');
+        $this->db->join('user_tbl', 'book_circulation_tbl.fk_u_email_id = user_tbl.u_email_id');
+        $this->db->join('book_tbl','book_tbl.book_id = book_circulation_tbl.fk_book_id');
+        
+        $query = $this->db->get();
         return $query->result_array();
     }
     public function book_cat_display()
