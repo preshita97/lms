@@ -56,5 +56,40 @@ class Admin_model extends CI_model{
         $query = $this->db->get('book_cat_tbl');
         return $query->result_array();
     }
+    public function category_delete($id)
+    {
+        $this->db->where('cat_id', $id);
+        return $this->db->delete('book_cat_tbl');
+    }
+
+    public function set_book_category()
+    {
+        $data = array(
+            
+            'cat_name' => $this->input->post('txt_cat_add')
+        );
+
+        return $this->db->insert('book_cat_tbl', $data);
+    }
+
+    public function get_cat_by_id($id)
+    {
+        $query = $this->db->get_where('book_cat_tbl', array('cat_id' => $id));
+        return $query->row_array();
+    }
+
+    public function edit_book_category($id)
+    {
+        $this->load->helper('url');
+       
+        $data = array(
+            
+            'cat_name' => $this->input->post('txt_cat_edit')
+        );
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('cat_id', $id);
+        return $this->db->update('book_cat_tbl', $data);
+
+    }
 }
 ?>

@@ -37,17 +37,17 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <?php
-            //   $success_msg= $this->session->flashdata('success_msg');
-            //   $error_msg= $this->session->flashdata('error_msg');
+              $success_msg= $this->session->flashdata('success_msg');
+              $error_msg= $this->session->flashdata('error_msg');
 
-            //       if($success_msg)
-            //       {
-            //                echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
-            //       }
-            //       if($error_msg)
-            //       {
-            //            echo " <script type='text/javascript'>  alert('Login unsuccessfull'); </script>";
-            //      }
+                  if($success_msg)
+                  {
+                           echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
+                  }
+                  if($error_msg)
+                  {
+                       echo " <script type='text/javascript'>  alert('Login unsuccessfull'); </script>";
+                 }
      ?>
 
     <section id="wrapper">

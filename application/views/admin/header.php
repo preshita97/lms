@@ -374,9 +374,9 @@
                                 <li><a href="table-editable-table.html">Editable Table</a></li>
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Widgets</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Forms</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="widget-apps.html">Data Widgets</a></li>
+                                <li><a href="<?php echo base_url('Admin/book_cat_add');?>">Add New Category</a></li>
                                 <li><a href="widget-data.html">Statestic Widgets</a></li>
                             </ul>
                         </li>

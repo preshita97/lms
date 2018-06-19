@@ -9,6 +9,15 @@ class Admin extends CI_Controller {
                 $this->load->model('Admin_model');
                 $this->load->library('session');
         }
+        public function book_cat_add()
+        {
+          $this->load->helper('form');
+          $this->load->library('form_validation');
+
+          $this->load->view('admin/header');
+          $this->load->view('admin/book_cat_add');
+ 
+        }
 
         public function index()
         {
@@ -37,29 +46,16 @@ class Admin extends CI_Controller {
         public function users_table()
         {
           
-          // $data=$this->Admin_model->user_display();
-          // $this->load->view('admin/header.php');
-
-          // if($data)
-          // {
-          //   $this->load->view('admin/user_tbl');
-          // }
-          // else{
-
-          // }
-
-          $data['user_item'] = $this->Admin_model->user_display();
+         $data['user_item'] = $this->Admin_model->user_display();
         
         if (empty($data['user_item']))
         {
             show_404();
         }
  
-        //$data[''] = $data['news_item']['title'];
- 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/user_tbl', $data);
-        //$this->load->view('templates/footer');
+       
         }
 
         public function request_table()
@@ -157,10 +153,8 @@ class Admin extends CI_Controller {
         //$this->load->view('templates/footer');
         }
 
-        public function home(){
-
-    
-
+        public function home()
+        {
                 $user_login=array(
               
                 'u_email_id'=>$this->input->post('u_email_id'),
@@ -196,5 +190,70 @@ class Admin extends CI_Controller {
                       $this->load->view("admin/login.php");
               
                     }
+              }
+
+              public function book_cat_edit()
+              {
+                $id = $this->uri->segment(3);
+        
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $data['book_cat_item'] = $this->Admin_model->get_cat_by_id($id);
+
+                $this->form_validation->set_rules('txt_cat_edit', 'Book Category Name', 'required');
+
+                if($this->form_validation->run() == FALSE)
+                {
+                 //echo " <script> alert ('if ma gyu'); </script>";
+                     $this->load->view('admin/header'); 
+                     $this->load->view('admin/book_cat_edit',$data);
+                     
+                 }
+                 else
+                 {
+                  //echo " <script> alert ('".$id."'); </script>"; 
+                     $this->Admin_model->edit_book_category($id);
+                     // $this->load->view('admin/header'); 
+                     redirect(base_url().'admin/book_cat_table','refresh');   
+                 }
+              }
+              public function book_cat_delete()
+              {
+                $id = $this->uri->segment(3);
+              
+              if (empty($id))
+              {
+                  show_404();
+              }
+              $this->Admin_model->category_delete($id);
+              //$this->session->set_flashdata('success_message', 'Successfully Deleted.');
+              //echo " <script> alert ('Successfully Deleted'); </script>";        
+              redirect(base_url().'admin/book_cat_table','refresh');
+              }
+
+              public function add_book_Category()
+              {
+               
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('txt_cat_add', 'Book Category Name', 'required');
+                //echo " <script> alert ('Successfully Deleted'); </script>";
+
+                if ($this->form_validation->run() == FALSE)
+                 {
+                  echo " <script> alert ('if ma gyu'); </script>";
+                      $this->load->view('admin/header'); 
+                      $this->load->view('admin/book_cat_add');
+                  }
+                  else
+                  {
+                      $this->Admin_model->set_book_category();
+
+                      // $this->load->view('admin/header'); 
+                      redirect(base_url().'admin/book_cat_table','refresh');
+                      
+                  }
+                
               }
 }
