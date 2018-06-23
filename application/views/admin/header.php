@@ -375,6 +375,8 @@
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Forms</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url('Admin/book_cat_add');?>">Add New Category</a></li>
+                                <li><a href="<?php echo base_url('Admin/Request_add');?>">Add New Request</a></li>
+                                <li><a href="<?php echo base_url('Admin/book_add');?>">Add New Book</a></li>
                                 <li><a href="widget-data.html">Statestic Widgets</a></li>
                             </ul>
                         </li>

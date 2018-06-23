@@ -19,6 +19,27 @@ class Admin extends CI_Controller {
  
         }
 
+        public function book_add()
+        {
+          $this->load->helper('form');
+          $this->load->library('form_validation');
+          $data['book_cat_item'] = $this->Admin_model->book_cat_display();
+          $this->load->view('admin/header',$data);
+          $this->load->view('admin/book_add',$data);
+ 
+        }
+        
+
+        public function request_add()
+        {
+          $this->load->helper('form');
+          $this->load->library('form_validation');
+          $data['book_cat_item'] = $this->Admin_model->book_cat_display();
+          $this->load->view('admin/header',$data);
+          $this->load->view('admin/request_add',$data);
+ 
+        }
+
         public function index()
         {
         $data['title'] = '';
@@ -58,6 +79,24 @@ class Admin extends CI_Controller {
        
         }
 
+        public function user_delete()
+              {
+                $id = $this->uri->segment(3);
+              
+              if (empty($id))
+              {
+                  show_404();
+              }
+            //  $image_path=$this->Admin_model->get_user_by_id($id);
+             // $u_img=$image_path['u_img'];
+              //unlink(base_url().'uploads/'.$u_img);
+              //echo "<script> alert ('".$u_img."'); </script>";
+              $this->Admin_model->user_delete($id);
+              $this->session->set_flashdata('success_message', 'Successfully Deleted.');
+              //echo " <script> alert ('Successfully Deleted'); </script>";        
+              redirect(base_url().'admin/users_table','refresh');
+              }
+
         public function request_table()
         {
          
@@ -76,6 +115,25 @@ class Admin extends CI_Controller {
         //$this->load->view('admin/request_tbl', $data);
         //$this->load->view('templates/footer');
         }
+
+        public function request_delete()
+              {
+                $id = $this->uri->segment(3);
+              
+              if (empty($id))
+              {
+                  show_404();
+              }
+            //  $image_path=$this->Admin_model->get_user_by_id($id);
+             // $u_img=$image_path['u_img'];
+              //unlink(base_url().'uploads/'.$u_img);
+              //echo "<script> alert ('".$u_img."'); </script>";
+              $this->Admin_model->request_delete($id);
+              $this->session->set_flashdata('success_message', 'Successfully Deleted.');
+              //echo " <script> alert ('Successfully Deleted'); </script>";        
+              redirect(base_url().'admin/request_table','refresh');
+              }
+
 
         public function notification_table()
         {
@@ -115,6 +173,25 @@ class Admin extends CI_Controller {
         //$this->load->view('templates/footer');
         }
 
+        public function book_delete()
+        {
+          $id = $this->uri->segment(3);
+        
+        if (empty($id))
+        {
+            show_404();
+        }
+      //  $image_path=$this->Admin_model->get_user_by_id($id);
+       // $u_img=$image_path['u_img'];
+        //unlink(base_url().'uploads/'.$u_img);
+        //echo "<script> alert ('".$u_img."'); </script>";
+        $this->Admin_model->book_delete($id);
+        $this->session->set_flashdata('success_message', 'Successfully Deleted.');
+        //echo " <script> alert ('Successfully Deleted'); </script>";        
+        redirect(base_url().'admin/book_table','refresh');
+        }
+
+
         public function book_circulation_table()
         {
          
@@ -132,6 +209,24 @@ class Admin extends CI_Controller {
         $this->load->view('admin/book_circulation_tbl', $data);
         //$this->load->view('admin/request_tbl', $data);
         //$this->load->view('templates/footer');
+        }
+
+        public function book_cir_delete()
+        {
+          $id = $this->uri->segment(3);
+        
+        if (empty($id))
+        {
+            show_404();
+        }
+      //  $image_path=$this->Admin_model->get_user_by_id($id);
+       // $u_img=$image_path['u_img'];
+        //unlink(base_url().'uploads/'.$u_img);
+        //echo "<script> alert ('".$u_img."'); </script>";
+        $this->Admin_model->book_cir_delete($id);
+        $this->session->set_flashdata('success_message', 'Successfully Deleted.');
+        //echo " <script> alert ('Successfully Deleted'); </script>";        
+        redirect(base_url().'admin/book_circulation_table','refresh');
         }
 
         public function book_cat_table()
@@ -242,7 +337,7 @@ class Admin extends CI_Controller {
 
                 if ($this->form_validation->run() == FALSE)
                  {
-                  echo " <script> alert ('if ma gyu'); </script>";
+                  //echo " <script> alert ('if ma gyu'); </script>";
                       $this->load->view('admin/header'); 
                       $this->load->view('admin/book_cat_add');
                   }
@@ -253,6 +348,50 @@ class Admin extends CI_Controller {
                       // $this->load->view('admin/header'); 
                       redirect(base_url().'admin/book_cat_table','refresh');
                       
+                  }
+                
+              }
+
+              public function add_book()
+              {
+                
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+              }
+
+              public function add_request()
+              {
+               
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+
+
+                $this->form_validation->set_rules('txt_reqbook_title', 'Requested Book Title', 'required');
+                $this->form_validation->set_rules('txt_reqbook_author', 'Requested Author name', 'required');
+                $this->form_validation->set_rules('txt_reqbook_edition', 'Requested Book Edition', 'required');
+                $this->form_validation->set_rules('txt_reqbook_editionyr', 'Requested Book Edition year', 'required');
+                $this->form_validation->set_rules('reqbook_catg', 'Requested Book Category', 'required');
+                $this->form_validation->set_rules('txt_reqbook_date', 'Requested Book date', 'required');
+
+                //echo " <script> alert ('Successfully Deleted'); </script>";
+
+                if ($this->form_validation->run() == FALSE)
+                 {               
+
+                  
+                  echo " <script> alert ('if ma gyu'); </script>";
+                      $this->load->view('admin/header'); 
+                      $this->load->view('admin/request_add');
+                  }
+                  else
+                  {
+                      $this->Admin_model->set_request();
+
+                      // $this->load->view('admin/header'); 
+                      redirect(base_url().'admin/request_table','refresh');
+    
                   }
                 
               }

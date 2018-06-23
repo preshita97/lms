@@ -4,10 +4,10 @@
       {
         return confirm("Are you sure you want to Delete this Category ?");
       }
-    //   function edit()
-    //   {
-    //     return confirm("Are you sure you want to Edit this Category ?");
-    //   }
+      function edit()
+      {
+        return confirm("Are you sure you want to Edit this Category ?");
+      }
   </script>
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -27,6 +27,14 @@
                 </div>
                 
             </div>
+<?php 
+$success_message=$this->session->flashdata('success_message');
+if($success_message)
+{
+
+}
+?>
+
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -38,61 +46,194 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Request Add Form </h4>
+                            </div>
                             <div class="card-body">
-                                <h4 class="card-title">Request</h4>
-                                <h6 class="card-subtitle"></h6>
-                                <div class="table-responsive m-t-40">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>User Name</th>
-                                                <th>Book Title</th>
-                                                <th>Book Author</th>
-                                                <th>Book Edition</th>
-                                                <th>Book Edition year</th>
-                                                <th>Book Category Name </th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                            <th>User Name</th>
-                                                <th>Book Title</th>
-                                                <th>Book Author</th>
-                                                <th>Book Edition</th>
-                                                <th>Book Edition year</th>
-                                                <th>Book Category Name</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <?php foreach ($request_item as $tbl): ?>
+                                <form method="POST" action="<?php echo base_url('Admin/add_request'); ?>">
+                                    <div class="form-body">
+                                        <!-- <h3 class="card-title">Person Info</h3>
+                                        <hr> -->
+                                        <div class="row p-t-20">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Requested Book Title</label>
+                                                    <input type="text" id="Requested Book Name" name="txt_reqbook_title" class="form-control" placeholder="Requested Book Title">
+                                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                                </div>
+                                            </div>
 
-                                        <tr>
-                                            <td><?php echo $tbl['u_name']; ?></td>
-                                            <td><?php echo $tbl['req_book_title']; ?></td>
-                                            <td><?php echo $tbl['req_book_author']; ?></td>
-                                            <td><?php echo $tbl['req_book_edition']; ?></td>
-                                            <td><?php echo $tbl['req_book_edition_year']; ?></td>
-                                            <td><?php echo $tbl['cat_name']; ?></td>
-                                            <td><?php echo $tbl['req_date']; ?></td>
-                                            <td><?php echo $tbl['req_book_status']; ?></td>
-                                            <td>
-                                            <a href="<?php echo base_url('Admin/request_delete/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return del()"  class="btn btn-danger btn-circle"><i class="mdi mdi-delete-forever">  </i> </button></a></td>
-                                         </tr>
-                                        <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            
+                                            <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Requested Book Author</label>
+                                                    <input type="text" id="Requested Book Author" name="txt_reqbook_author" class="form-control" placeholder="Requested Book Author">
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Requested Book Edition</label>
+                                                    <input type="text" id="Requested Book Edition" name="txt_reqbook_edition" class="form-control" placeholder="Requested Book Edition">
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Requested Book Edition Year</label>
+                                                    <input type="number" min="1900" max="2020" step="1" value="2016"  id="Requested Book Edition Year" name="txt_reqbook_editionyr" class="form-control" placeholder="Requested Book Edition Year">
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                
+                                                    <label class="control-label">Book Category</label>
+
+                                                    <select class="form-control custom-select" data-placeholder="Choose a Category" name="reqbook_catg" tabindex="1">
+                                                    <?php foreach ($book_cat_item as $tbl): ?>
+                                                        <option value="<?php echo $tbl['cat_id']; ?>"><?php echo $tbl['cat_name']; ?></option>
+                                                        <!-- <option value="Category 2">Category 2</option>
+                                                        <option value="Category 3">Category 5</option>
+                                                        <option value="Category 4">Category 4</option> -->
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-date-input" class="col-md-2 col-form-label">Date</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="date" name="txt_reqbook_date" value="2011-08-19" id="example-date-input">
+                                                 </div>
+                                            </div>
+                                            </div>
+                                            
+                                            <!--/span-->
+                                        <!-- </div> -->
+                                        <!--/row-->
+                                        <!-- <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group has-success">
+                                                    <label class="control-label">Gender</label>
+                                                    <select class="form-control custom-select">
+                                                        <option value="">Male</option>
+                                                        <option value="">Female</option>
+                                                    </select>
+                                                    <small class="form-control-feedback"> Select your gender </small> </div>
+                                            </div> -->
+                                            <!--/span-->
+                                            <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Date of Birth</label>
+                                                    <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                                </div>
+                                            </div> -->
+                                            <!--/span-->
+                                        <!-- </div> -->
+                                        <!--/row-->
+                                        <!-- <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Category</label>
+                                                    <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
+                                                        <option value="Category 1">Category 1</option>
+                                                        <option value="Category 2">Category 2</option>
+                                                        <option value="Category 3">Category 5</option>
+                                                        <option value="Category 4">Category 4</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
+                                            <!--/span-->
+                                            <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Membership</label>
+                                                    <div class="form-check">
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="radio1" name="radio" type="radio" checked class="custom-control-input">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Free</span>
+                                                        </label>
+                                                        <label class="custom-control custom-radio">
+                                                            <input id="radio2" name="radio" type="radio" class="custom-control-input">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Paid</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <!--/span-->
+                                        <!-- </div> -->
+                                        <!--/row-->
+                                        <!-- <h3 class="box-title m-t-40">Address</h3>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <div class="form-group">
+                                                    <label>Street</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>City</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div> -->
+                                            <!--/span-->
+                                            <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>State</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div> -->
+                                            <!--/span-->
+                                        <!-- </div> -->
+                                        <!--/row-->
+                                        <!-- <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Post Code</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div> -->
+                                            <!--/span-->
+                                            <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Country</label>
+                                                    <select class="form-control custom-select">
+                                                        <option>--Select your Country--</option>
+                                                        <option>India</option>
+                                                        <option>Sri Lanka</option>
+                                                        <option>USA</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
+                                            <!--/span-->
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                       <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                                        <!-- <button type="button" class="btn btn-inverse">Cancel</button> -->
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
+
+                        </div>
                         
+
+
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

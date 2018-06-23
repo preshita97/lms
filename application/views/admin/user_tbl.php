@@ -1,4 +1,14 @@
-
+<script type="text/javascript">
+  
+     function del()
+      {
+        return confirm("Are you sure you want to Delete this Category ?");
+      }
+    //   function edit()
+    //   {
+    //     return confirm("Are you sure you want to Edit this Category ?");
+    //   }
+  </script>
         <!-- ============================================================== -->
         <div class="page-wrapper">
             <!-- ============================================================== -->
@@ -68,7 +78,7 @@
                                             <td><?php echo $tbl['u_type']; ?></td>
                                             <td><?php echo $tbl['u_status']; ?></td>
                                             <td>
-                                            <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i> </button>
+                                            <a href="<?php echo base_url('Admin/user_delete/'.$tbl['u_id']); ?>"><button alt="default"  type="button" onClick="return del()"  class="btn btn-danger btn-circle"><i class="mdi mdi-delete-forever">  </i> </button></a>
                                             </td>
                                          </tr>
                                         <?php endforeach; ?>

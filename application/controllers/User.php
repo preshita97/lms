@@ -41,7 +41,8 @@ global $user;
       //$this->upload_images->register_user($data);
       
       $user=array(
-      
+        
+        'u_id'=>$this->input->post('u_id'),
         'u_email_id'=>$this->input->post('u_email_id'),
         'u_password'=>$this->input->post('u_password'),
         'u_name'=>$this->input->post('u_name'),
