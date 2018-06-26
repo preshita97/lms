@@ -123,6 +123,26 @@ class Admin_model extends CI_model{
         return $this->db->insert('request_tbl', $data);
     }
 
+    public function set_book()
+    {
+        $data = array(
+            'isbn_no' => $this->input->post('txt_isbnno'),
+            'book_availability'=> $this->input->post('radio_book_availability'),
+            'book_title' => $this->input->post('txt_book_title'),
+            'book_publisher' => $this->input->post('txt_book_publisher'),
+            'fk_cat_id' => $this->input->post('reqbook_catg'),
+            'book_photo' => $this->input->post('book_photo_upload'),
+            'book_author' => $this->input->post('txt_book_author'),
+            'book_edition' => $this->input->post('txt_book_edition'),
+            'book_edition_year' => $this->input->post('txt_book_editionyr'),
+            'book_add_date' => $this->input->post('txt_book_date'),
+           
+        );
+
+        return $this->db->insert('book_tbl', $data);
+    }
+
+
     public function get_cat_by_id($id)
     {
         $query = $this->db->get_where('book_cat_tbl', array('cat_id' => $id));

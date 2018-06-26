@@ -358,6 +358,35 @@ class Admin extends CI_Controller {
                 $this->load->helper('form');
                 $this->load->library('form_validation');
 
+                $this->form_validation->set_rules('txt_isbnno', 'ISBN No', 'required');
+                $this->form_validation->set_rules('radio_book_availability', 'Book Availability', 'required');
+                $this->form_validation->set_rules('txt_book_title', 'Book Title', 'required');
+                $this->form_validation->set_rules('txt_book_publisher', 'Book Publisher', 'required');
+                $this->form_validation->set_rules('reqbook_catg', 'Book Category', 'required');
+                $this->form_validation->set_rules('txt_book_author', 'Book Author', 'required');
+                $this->form_validation->set_rules('book_photo_upload', 'Upload Book Photo', 'required');
+                $this->form_validation->set_rules('txt_book_edition', 'Book Edition', 'required');
+                $this->form_validation->set_rules('txt_book_editionyr', 'Book Edition Year', 'required');
+                $this->form_validation->set_rules('txt_book_date', 'Date', 'required');
+
+                if ($this->form_validation->run() == FALSE)
+                 {               
+
+                  
+                  echo " <script> alert ('if ma gyu'); </script>";
+                      $this->load->view('admin/header'); 
+                      $this->load->view('admin/book_add');
+                  }
+                  else
+                  {
+                      $this->Admin_model->set_book();
+
+                      // $this->load->view('admin/header'); 
+                      redirect(base_url().'admin/book_table','refresh');
+    
+                  }
+
+
               }
 
               public function add_request()
