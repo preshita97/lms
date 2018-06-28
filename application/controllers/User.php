@@ -130,7 +130,8 @@ public function home(){
         }
       else
         {
-          $this->load->view('student/success.php');
+          $this->load->view('student/header.php');
+          $this->load->view('student/footer.php');
         }
 
         }
