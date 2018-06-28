@@ -168,5 +168,27 @@ class Admin_model extends CI_model{
         return $this->db->update('book_cat_tbl', $data);
 
     }
+
+    public function notification_delete($id)
+    {
+        $this->db->where('notification_id', $id);
+        return $this->db->delete('notification_tbl');
+    }
+
+    public function set_notification()
+    {
+        date_default_timezone_set("Asia/Kolkata");
+        $dt=date("h:i:sa"); 
+        $data = array(
+            'fk_u_email_id'=> $this->session->userdata('u_email_id'),
+            'notification_type' => $this->input->post('txt_notification_type'),
+            'notification_time' => $dt,
+            'message_title' => $this->input->post('txt_msg_title'),
+            'message_subject' => $this->input->post('txtarea_message_subject')
+            
+        );
+
+        return $this->db->insert('notification_tbl', $data);
+    }
 }
 ?>

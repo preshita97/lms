@@ -19,6 +19,9 @@
     <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="<?php echo base_url(); ?>css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/html5-editor/bootstrap-wysihtml5.css" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -377,6 +380,7 @@
                                 <li><a href="<?php echo base_url('Admin/book_cat_add');?>">Add New Category</a></li>
                                 <li><a href="<?php echo base_url('Admin/Request_add');?>">Add New Request</a></li>
                                 <li><a href="<?php echo base_url('Admin/book_add');?>">Add New Book</a></li>
+                                <li><a href="<?php echo base_url('Admin/notification_add');?>">Add New Notification</a></li>
                                 <li><a href="widget-data.html">Statestic Widgets</a></li>
                             </ul>
                         </li>

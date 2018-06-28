@@ -373,7 +373,7 @@ class Admin extends CI_Controller {
                  {               
 
                   
-                  echo " <script> alert ('if ma gyu'); </script>";
+               //   echo " <script> alert ('if ma gyu'); </script>";
                       $this->load->view('admin/header'); 
                       $this->load->view('admin/book_add');
                   }
@@ -423,5 +423,53 @@ class Admin extends CI_Controller {
     
                   }
                 
+              }
+
+              public function notification_delete()
+              {
+                $id = $this->uri->segment(3);
+                if (empty($id))
+                {
+                  show_404();
+                }
+                $this->Admin_model->notification_delete($id);
+                redirect(base_url().'admin/notification_table','refresh');
+              }
+
+              public function notification_add()
+              {
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $this->load->view('admin/header');
+                $this->load->view('admin/notification_add');
+ 
+              }
+
+              public function add_notification()
+              {
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('txt_notification_type', 'Notification Type', 'required');
+                $this->form_validation->set_rules('txt_msg_title', 'Message Title', 'required');
+                $this->form_validation->set_rules('txtarea_message_subject', 'Message Subject', 'required');
+
+                if ($this->form_validation->run() == FALSE)
+                 {               
+
+                  
+               //   echo " <script> alert ('if ma gyu'); </script>";
+                      $this->load->view('admin/header'); 
+                      $this->load->view('admin/notification_add');
+                  }
+                  else
+                  {
+                      $this->Admin_model->set_notification();
+
+                      // $this->load->view('admin/header'); 
+                      redirect(base_url().'admin/notification_table','refresh');
+    
+                  }
+
               }
 }
