@@ -42,11 +42,15 @@
 
                   if($success_msg)
                   {
-                           echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
+                          echo $success_msg;
                   }
-                  if($error_msg)
+                  elseif($error_msg)
                   {
-                       echo " <script type='text/javascript'>  alert('Login unsuccessfull'); </script>";
+                    echo $error_msg;
+                  }
+                  else
+                  {
+                    
                  }
      ?>
 
@@ -56,7 +60,7 @@
 
 
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" method="post" action="<?php echo base_url('User/home'); ?>">
+                    <form class="form-horizontal form-material" id="loginform" method="post" action="<?php echo base_url('User/login_check'); ?>">
                         <h3 class="box-title m-b-20">Log In</h3>
                         <div class="form-group ">
                             <div class="col-xs-12">

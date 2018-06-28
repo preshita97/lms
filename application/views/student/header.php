@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="topbar-links">
-                                                <a href="signin.html"><i class="fa fa-lock"></i>Login / Register</a>
+                                            <a href="<?php echo base_url('User/home'); ?>"><i class="fa fa-lock"></i>Login</a>
                                                 <span>|</span>
                                                 <div class="header-cart dropdown">
                                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -167,7 +167,7 @@
                                         </li>
                                         <!-- <li><a href="services.html">Services</a></li> -->
                                         <li><a href="contact.html">Contact</a></li>
-                                    </ul>
+                                    </ul>   
                                 </div>
                             </div>
                         </div>

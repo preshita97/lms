@@ -100,59 +100,80 @@ $this->load->view("login.php");
 
 }
 
-public function home(){
-
-    
+public function login_check()
+{
 
   $user_login=array(
 
-  'u_email_id'=>$this->input->post('u_email_id'),
-  'u_password'=>$this->input->post('u_password')
-
-    );
-
-    $data=$this->User_model->home($user_login['u_email_id'],$user_login['u_password']);
-      if($data)
-      {
-        
-        $this->session->set_userdata('u_email_id',$data['u_email_id']);
-        $this->session->set_userdata('u_password',$data['u_password']);
-        $this->session->set_userdata('u_name',$data['u_name']);
-        $this->session->set_userdata('u_img',$data['u_img']);
-        $this->session->set_userdata('u_type',$data['u_type']);
-        $this->session->set_userdata('u_mno',$data['u_mno']);
-        $this->session->set_userdata('u_status',$data['u_status']);
-        
-        if($data['u_type']=="admin")
+    'u_email_id'=>$this->input->post('u_email_id'),
+    'u_password'=>$this->input->post('u_password')
+  
+      );
+  
+      $data=$this->User_model->home($user_login['u_email_id'],$user_login['u_password']);
+        if($data)
         {
-            $this->load->view('admin/header.php');
-            $this->session->set_flashdata('success_msg','Success');
+          
+          $this->session->set_userdata('u_email_id',$data['u_email_id']);
+          $this->session->set_userdata('u_password',$data['u_password']);
+          $this->session->set_userdata('u_name',$data['u_name']);
+          $this->session->set_userdata('u_img',$data['u_img']);
+          $this->session->set_userdata('u_type',$data['u_type']);
+          $this->session->set_userdata('u_mno',$data['u_mno']);
+          $this->session->set_userdata('u_status',$data['u_status']);
+          // echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
+          if($data['u_type']=="admin")
+          {
+              $this->load->view('admin/header.php');
+             
+          }
+        else
+          {
+             $this->load->view('student/header.php');
+             $this->load->view('student/footer.php');
+          }
+  
+          }
+        else{
+          $this->session->set_flashdata('error_msg','Error occured,Try again.');
+          $this->load->view("admin/login.php");
+         
+  
         }
-      else
-        {
-          $this->load->view('student/header.php');
-          $this->load->view('student/footer.php');
-        }
+  
+}
 
-        }
-      else{
-        $this->session->set_flashdata('error_msg','Error occured,Try again.');
-        $this->load->view("admin/login.php");
+public function home(){
 
-      }
-
+  $this->load->view('Admin/login');
 
 }
 
-function user_profile(){
 
-$this->load->view('user_profile.php');
+public function userdisplay(){
 
+  $this->load->view('student/header.php');
+  $this->load->view('student/footer.php');
 }
+
+
 public function user_logout(){
 
-  $this->session->sess_destroy();
-  redirect('user/login_view', 'refresh');
+  $this->session->unset_userdata('u_email_id');
+  $this->session->unset_userdata('u_password');
+  $this->session->unset_userdata('u_name');
+  $this->session->unset_userdata('u_img');
+  $this->session->unset_userdata('u_type');
+  $this->session->unset_userdata('u_mno');
+  $this->session->unset_userdata('u_status');
+
+
+  $this->session->unset_userdata('success_msg');
+  $this->session->unset_userdata('error_msg');
+
+
+  //$this->session->sess_destroy();
+  redirect(base_url().'User/userdisplay', 'refresh');
 }
 
 }

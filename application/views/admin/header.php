@@ -308,7 +308,7 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="<?php echo base_url(); ?>User/user_logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -343,7 +343,7 @@
                             <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
                             <div class="dropdown-divider"></div>
                             <!-- text-->
-                            <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                            <a href="<?php echo base_url(); ?>User/user_logout" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
                             <!-- text-->
                         </div>
                     </div>
