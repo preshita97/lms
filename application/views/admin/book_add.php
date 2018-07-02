@@ -52,7 +52,7 @@ if($success_message)
                                 <h4 class="m-b-0 text-white">Book Add Form </h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="<?php echo base_url('Admin/add_book'); ?>">
+                                <form enctype="multipart/form-data" method="POST" action="<?php echo base_url('Admin/add_book'); ?>">
                                     <div class="form-body">
                                         <!-- <h3 class="card-title">Person Info</h3>
                                         <hr> -->
@@ -72,10 +72,10 @@ if($success_message)
                                                     <label class="control-label" style="margin-top: 14px;" >Book Availability</label>
                                                     <!-- <input type="radio" id="bookavailability" name="txt_book_availability" class="form-control" value="Male" placeholder=""> -->
                                                     </br>
-                                                    <input name="radio_book_availability" type="radio" id="radio_49" class="with-gap radio-col-black" />
+                                                    <input name="radio_book_availability" type="radio" id="radio_49" class="with-gap radio-col-black" value="yes"/>
                                                     <label for="radio_49">Yes</label>
                                                     
-                                                    <input name="radio_book_availability" type="radio" id="radio_48" class="with-gap radio-col-black" />
+                                                    <input name="radio_book_availability" type="radio" id="radio_48" class="with-gap radio-col-black" value="no"/>
                                                     <label for="radio_48">No</label>
                                                     <!-- <small class="form-control-feedback"> This field has error. </small>  -->
                                                     </div> 

@@ -49,27 +49,127 @@ if($success_message)
                     <div class="col-lg-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white">Book Category Edit Form </h4>
+                                <h4 class="m-b-0 text-white">Book Edit Form </h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST">
+                                <form enctype="multipart/form-data" method="POST" action="<?php echo base_url('Admin/edit_book'); ?>">
                                     <div class="form-body">
                                         <!-- <h3 class="card-title">Person Info</h3>
                                         <hr> -->
                                         <div class="row p-t-20">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Book Category Name</label>
-                                                    <input type="text" id="firstName" name="txt_cat_edit" class="form-control" value="<?php echo $book_cat_item['cat_name']; ?>">
-                                                    <!-- <small class="form-control-feedback"> This is inline help </small> </div> -->
+                                                    <label class="control-label">ISBN NO</label>
+                                                    <input type="text" id="isbnno" name="txt_isbnno" class="form-control" value="<?php echo $book_item['isbn_no']; ?>">
+                                                    <!-- <small class="form-control-feedback"> This is inline help </small> -->
+                                                </div>
                                             </div>
+
+                                            
                                             <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label" style="margin-top: 14px;" >Book Availability</label>
+                                                    <!-- <input type="radio" id="bookavailability" name="txt_book_availability" class="form-control" value="Male" placeholder=""> -->
+                                                    </br>
+                                                    <input name="radio_book_availability" type="radio" id="radio_49" class="with-gap radio-col-black" <?php if($book_item['book_availability']=="yes") echo "checked='checked'"  ?> value="yes"/>
+                                                    <label for="radio_49">Yes</label>
+                                                    
+                                                    <input name="radio_book_availability" type="radio" id="radio_48" class="with-gap radio-col-black" <?php if($book_item['book_availability']=="no") echo "checked='checked'"  ?> value="no"/>
+                                                    <label for="radio_48">No</label>
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                            <div class="col-md-6"> 
+                                                <div class="form-group">
+                                                    <label class="control-label">Book Title</label>
+                                                    <input type="text" id="booktitle" name="txt_book_title" class="form-control" value="<?php echo $book_item['book_title']; ?>" >
+                                                    <input type="hidden"  name="id" class="form-control" value="<?php echo $id = $this->uri->segment(3); ?>" >
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Book Publisher</label>
+                                                    <input type="text" id="bookpublisher" name="txt_book_publisher" class="form-control" value="<?php echo $book_item['book_publisher']; ?>" >
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                
+                                                    <label class="control-label">Book Category</label>
+
+                                                    <select class="form-control custom-select" data-placeholder="Choose a Category" name="reqbook_catg" tabindex="1">
+                                                    <?php foreach ($book_cat_item as $tbl): ?>
+                                                        <option value="<?php echo $tbl['cat_id']; ?>" <?php if($tbl['cat_id']==$book_item['fk_cat_id']) echo "selected='selected'"; ?> ><?php echo $tbl['cat_name']; ?></option>
+                                                        
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    
+                                                </div>
+                                            </div>
+
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Book Author</label>
+                                                    <input type="text" id="bookauthor" name="txt_book_author" class="form-control" value="<?php echo $book_item['book_author']; ?>">
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                            <div class="col-md-6">
+
+                                            <div class="col-md-6">
+                                                    <div class="u-img">
+                                                    <img style="height: 50px;width: 50px;" src="<?php echo base_url(); ?>uploads/<?php echo $book_item['book_photo']; ?>" alt="user image">
+                                                    </div>
+                                            </div>
+                                           
+                                                <div class="form-group">
+                                                    <label>Upload New Book Photo</label>
+                                                    <input type="file" value="<?php echo $book_item['book_photo']; ?>" class="form-control" name="book_photo_upload" id="exampleInputFile" aria-describedby="fileHelp">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Book Edition</label>
+                                                    <input type="text" id=" Book Edition" name="txt_book_edition" class="form-control" value="<?php echo $book_item['book_edition']; ?>">
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="control-label">Book Edition Year</label>
+                                                    <input type="number" min="1900" max="2020" step="1" value="2016"  id="Requested Book Edition Year" name="txt_book_editionyr" class="form-control" value="<?php echo $book_item['book_edition_year']; ?>">
+                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
+                                                    </div> 
+                                            </div>
+
+                                            <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="example-date-input" class="col-md-2 col-form-label">Date</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="date" name="txt_book_date" value="<?php echo $book_item['book_add_date']; ?>" id="example-date-input">
+                                                 </div>
+                                            </div>
+                                            </div>
+
+
                                             <!-- <div class="col-md-6">
-                                                <div class="form-group has-danger">
-                                                    <label class="control-label">Last Name</label>
-                                                    <input type="text" id="lastName" class="form-control form-control-danger" placeholder="12n">
-                                                    <small class="form-control-feedback"> This field has error. </small> </div>
+                                            <div class="form-group">
+                                                <label for="example-date-input" class="col-md-2 col-form-label">Date</label>
+                                                <div class="col-md-10">
+                                                    <input class="form-control" type="date" name="txt_reqbook_date" value="2011-08-19" id="example-date-input">
+                                                 </div>
+                                            </div>
                                             </div> -->
+                                            
                                             <!--/span-->
                                         <!-- </div> -->
                                         <!--/row-->

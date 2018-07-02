@@ -123,21 +123,8 @@ class Admin_model extends CI_model{
         return $this->db->insert('request_tbl', $data);
     }
 
-    public function set_book()
+    public function set_book($data)
     {
-        $data = array(
-            'isbn_no' => $this->input->post('txt_isbnno'),
-            'book_availability'=> $this->input->post('radio_book_availability'),
-            'book_title' => $this->input->post('txt_book_title'),
-            'book_publisher' => $this->input->post('txt_book_publisher'),
-            'fk_cat_id' => $this->input->post('reqbook_catg'),
-            'book_photo' => $this->input->post('book_photo_upload'),
-            'book_author' => $this->input->post('txt_book_author'),
-            'book_edition' => $this->input->post('txt_book_edition'),
-            'book_edition_year' => $this->input->post('txt_book_editionyr'),
-            'book_add_date' => $this->input->post('txt_book_date'),
-           
-        );
 
         return $this->db->insert('book_tbl', $data);
     }
@@ -169,6 +156,20 @@ class Admin_model extends CI_model{
 
     }
 
+    public function edit_book_rec($user,$id)
+    {
+        $this->load->helper('url');
+       
+        // $data = array(
+            
+        //             'isbn_no' => $user['isbn_no']
+        // );     
+        echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('book_id', $id);
+        return $this->db->update('book_tbl', $user);
+
+    }
+
     public function notification_delete($id)
     {
         $this->db->where('notification_id', $id);
@@ -189,6 +190,12 @@ class Admin_model extends CI_model{
         );
 
         return $this->db->insert('notification_tbl', $data);
+    }
+
+    public function get_book_by_id($id)
+    {
+        $query = $this->db->get_where('book_tbl', array('book_id' => $id));
+        return $query->row_array();
     }
 }
 ?>

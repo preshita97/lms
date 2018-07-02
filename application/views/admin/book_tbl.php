@@ -4,10 +4,10 @@
       {
         return confirm("Are you sure you want to Delete this Category ?");
       }
-    //   function edit()
-    //   {
-    //     return confirm("Are you sure you want to Edit this Category ?");
-    //   }
+      function edit()
+      {
+        return confirm("Are you sure you want to Edit this Category ?");
+      }
   </script>
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -83,7 +83,7 @@
                                             <td><?php echo $tbl['book_availability']; ?></td>
                                             <td><?php echo $tbl['book_title']; ?></td>
                                             <td><?php echo $tbl['book_publisher']; ?></td>
-                                            <td><?php echo $tbl['fk_cat_id']; ?></td>
+                                            <td><?php echo $tbl['cat_name']; ?></td>
                                             <td><div class="u-img"><img style="height: 100px;width: 100px;" src="<?php echo base_url(); ?>uploads/<?php echo $tbl['book_photo']; ?>" alt="user image"></div></td>
                                             <td><?php echo $tbl['book_author']; ?></td>
                                             <td><?php echo $tbl['book_edition']; ?></td>
@@ -91,7 +91,7 @@
                                             <td><?php echo $tbl['book_add_date']; ?></td>
                                             <td>
                                             <a href="<?php echo base_url('Admin/book_delete/'.$tbl['book_id']); ?>"><button alt="default"  type="button" onClick="return del()"  class="btn btn-danger btn-circle"><i class="mdi mdi-delete-forever">  </i> </button></a>
-                                            <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i> </button>
+                                            <a href="<?php echo base_url('Admin/book_update/'.$tbl['book_id']); ?>"><button alt="default"  type="button" onClick="return edit()"  class="btn btn-success btn-circle"><i class="mdi mdi-grease-pencil">  </i> </button></a>
                                             </td>
                                          </tr>
                                         <?php endforeach; ?>

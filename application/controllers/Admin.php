@@ -356,40 +356,54 @@ class Admin extends CI_Controller {
 
               public function add_book()
               {
-                
                 $this->load->helper('form');
                 $this->load->library('form_validation');
+ 
+                // echo " <script> alert ('Successfully Deleted'); </script>";
 
-                $this->form_validation->set_rules('txt_isbnno', 'ISBN No', 'required');
-                $this->form_validation->set_rules('radio_book_availability', 'Book Availability', 'required');
-                $this->form_validation->set_rules('txt_book_title', 'Book Title', 'required');
-                $this->form_validation->set_rules('txt_book_publisher', 'Book Publisher', 'required');
-                $this->form_validation->set_rules('reqbook_catg', 'Book Category', 'required');
-                $this->form_validation->set_rules('txt_book_author', 'Book Author', 'required');
-                $this->form_validation->set_rules('book_photo_upload', 'Upload Book Photo', 'required');
-                $this->form_validation->set_rules('txt_book_edition', 'Book Edition', 'required');
-                $this->form_validation->set_rules('txt_book_editionyr', 'Book Edition Year', 'required');
-                $this->form_validation->set_rules('txt_book_date', 'Date', 'required');
+                $filename = md5(uniqid(rand(), true));
+		            $config = array(
+                'upload_path' => 'uploads',
+                'allowed_types' => "gif|jpg|png|jpeg",
+                'file_name' => $filename
+                );
 
-                if ($this->form_validation->run() == FALSE)
-                 {               
-
+                $this->load->library('upload', $config);
+                global $user;
+                if($this->upload->do_upload('book_photo_upload'))
+                {
                   
-               //   echo " <script> alert ('if ma gyu'); </script>";
-                      $this->load->view('admin/header'); 
-                      $this->load->view('admin/book_add');
-                  }
-                  else
-                  {
-                      $this->Admin_model->set_book();
 
-                      // $this->load->view('admin/header'); 
-                      redirect(base_url().'admin/book_table','refresh');
+                    $file_data = $this->upload->data();
+                
     
-                  }
+                    $data['file_dir'] = $file_data['file_name'];
+                    $data['date_uploaded'] = date('Y-m-d H:i:s');
+                    $this->load->model('Admin_model');
 
-
-              }
+                    $user = array(
+                      'isbn_no' => $this->input->post('txt_isbnno'),
+                      'book_availability'=> $this->input->post('radio_book_availability'),
+                      'book_title' => $this->input->post('txt_book_title'),
+                      'book_publisher' => $this->input->post('txt_book_publisher'),
+                      'fk_cat_id' => $this->input->post('reqbook_catg'),
+                      'book_photo' => $data['file_dir'],
+                      'book_author' => $this->input->post('txt_book_author'),
+                      'book_edition' => $this->input->post('txt_book_edition'),
+                      'book_edition_year' => $this->input->post('txt_book_editionyr'),
+                      'book_add_date' => $this->input->post('txt_book_date'),
+                    
+                        );
+                        print_r($user);
+                        
+                        $this->Admin_model->set_book($user);
+                        redirect(base_url().'admin/book_table','refresh');
+                    }
+                      else
+                          {
+                            echo " <script> alert ('Successfully Deleted'); </script>";
+                          }
+         }
 
               public function add_request()
               {
@@ -412,7 +426,7 @@ class Admin extends CI_Controller {
                  {               
 
                   
-                  echo " <script> alert ('if ma gyu'); </script>";
+                 // echo " <script> alert ('if ma gyu'); </script>";
                       $this->load->view('admin/header'); 
                       $this->load->view('admin/request_add');
                   }
@@ -473,5 +487,74 @@ class Admin extends CI_Controller {
     
                   }
 
+              }
+              public function book_update()
+              {
+                $id = $this->uri->segment(3);
+        
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $data['book_cat_item'] = $this->Admin_model->book_cat_display();
+
+                $data['book_item'] = $this->Admin_model->get_book_by_id($id);
+
+                 //echo " <script> alert ('if ma gyu'); </script>";
+                     $this->load->view('admin/header'); 
+                     $this->load->view('admin/book_update',$data);
+                   
+              }
+
+              public function edit_book()
+              {
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+               
+                // echo " <script> alert ('Successfully Deleted'); </script>";
+                     
+                $filename = md5(uniqid(rand(), true));
+		            $config = array(
+                'upload_path' => 'uploads',
+                'allowed_types' => "gif|jpg|png|jpeg",
+                'file_name' => $filename
+                );
+
+                $this->load->library('upload', $config);
+                global $user;
+                if($this->upload->do_upload('book_photo_upload'))
+                {
+                  
+
+                    $file_data = $this->upload->data();
+                
+    
+                    $data['file_dir'] = $file_data['file_name'];
+                    $data['date_uploaded'] = date('Y-m-d H:i:s');
+                    $this->load->model('Admin_model');
+
+                    $user = array(
+                      'isbn_no' => $this->input->post('txt_isbnno'),
+                      'book_availability'=> $this->input->post('radio_book_availability'),
+                      'book_title' => $this->input->post('txt_book_title'),
+                      'book_publisher' => $this->input->post('txt_book_publisher'),
+                      'fk_cat_id' => $this->input->post('reqbook_catg'),
+                      'book_photo' => $data['file_dir'],
+                      'book_author' => $this->input->post('txt_book_author'),
+                      'book_edition' => $this->input->post('txt_book_edition'),
+                      'book_edition_year' => $this->input->post('txt_book_editionyr'),
+                      'book_add_date' => $this->input->post('txt_book_date'),
+                    
+                        );
+                        print_r($user);
+                        $id=$this->input->post('id');
+                        $this->Admin_model->edit_book_rec($user,$id);
+                       redirect(base_url().'admin/book_table','refresh');
+                    }
+                      else
+                          {
+                            echo " <script> alert ('Successfully Deleted'); </script>";
+                          }
+               
               }
 }
