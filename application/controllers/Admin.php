@@ -46,6 +46,7 @@ class Admin extends CI_Controller {
 		
         // $this->load->view('User/home', $data);
         $this->load->view('student/header.php');
+        
           $this->load->view('student/footer.php');
        
         }

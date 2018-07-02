@@ -54,6 +54,21 @@
                  }
      ?>
 
+     <?php
+              $success_msg= $this->session->flashdata('forgot_Password');
+             
+
+                  if($success_msg)
+                  {
+                          echo $success_msg;
+                  }
+                  
+                  else
+                  {
+                  echo "";  
+                 }
+     ?>
+
     <section id="wrapper">
         <div class="login-register" style="background-image:url(<?php echo base_url(); ?>assets/images/background/login-register.jpg);">
             <div class="login-box card">
@@ -95,7 +110,7 @@
                             </div>
                         </div>
                     </form>
-                    <form class="form-horizontal" id="recoverform" action="index.html">
+                    <form class="form-horizontal" method="post" id="recoverform" action="<?php echo base_url('User/forgotpass'); ?>">
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <h3>Recover Password</h3>
@@ -104,12 +119,12 @@
                         </div>
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Email"> </div>
+                                <input class="form-control" type="email" required="" name="forgotmail" placeholder="Email"> </div>
                         </div>
                         <div class="form-group text-center m-t-20">
                             <div class="col-xs-12">
                                 <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
-                            </div>
+                            </div>  
                         </div>
                     </form>
                 </div>

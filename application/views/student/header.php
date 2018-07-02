@@ -58,20 +58,22 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="topbar-info">
-                                                <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
+                                                <!-- <a href="tel:+61-3-8376-6284"><i class="fa fa-phone"></i>+61-3-8376-6284</a>
                                                 <span>/</span>
-                                                <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a>
+                                                <a href="mailto:support@libraria.com"><i class="fa fa-envelope"></i>support@libraria.com</a> -->
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="topbar-links">
                                             <a href="<?php echo base_url('User/home'); ?>"><i class="fa fa-lock"></i>Login</a>
                                                 <span>|</span>
+
+                                            <a href="<?php echo base_url('User/signup'); ?>"> Signup</a>
                                                 <div class="header-cart dropdown">
-                                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                    <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                                         <i class="fa fa-shopping-cart"></i>
                                                         <small>0</small>
-                                                    </a>
+                                                    </a> -->
                                                     <div class="dropdown-menu cart-dropdown">
                                                         <ul>
                                                             <li class="clearfix">
@@ -133,7 +135,7 @@
                                             </ul>
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="books-media-list-view.html">Books &amp; Media</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="books-media-list-view.html">Books</a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="books-media-list-view.html">Books &amp; Media List View</a></li>
                                                 <li><a href="books-media-gird-view-v1.html">Books &amp; Media Grid View V1</a></li>
@@ -143,13 +145,13 @@
                                             </ul>
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="news-events-list-view.html">News &amp; Events</a>
-                                            <ul class="dropdown-menu">
+                                            <a href="<?php echo base_url('User/about_us'); ?>">About Us</a>
+                                            <!-- <ul class="dropdown-menu">
                                                 <li><a href="news-events-list-view.html">News &amp; Events List View</a></li>
                                                 <li><a href="news-events-detail.html">News &amp; Events Detail</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li class="dropdown">
+                                        <!-- <li class="dropdown">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="#">Pages</a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="cart.html">Cart</a></li>
@@ -164,9 +166,9 @@
                                                 <li><a href="blog.html">Blog Grid View</a></li>
                                                 <li><a href="blog-detail.html">Blog Detail</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <!-- <li><a href="services.html">Services</a></li> -->
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="<?php echo base_url('User/contact_us'); ?>">Contact Us</a></li>
                                     </ul>   
                                 </div>
                             </div>
