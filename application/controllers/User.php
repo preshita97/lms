@@ -14,6 +14,7 @@ public function __construct(){
 public function index()
 {
 $this->load->view("register.php");
+
 }
 
 public function register_user()
@@ -74,29 +75,137 @@ global $user;
 			// $this->load->view('home', $data);
       }
       
+      $email_check=$this->User_model->email_check($user['u_email_id']);
 
-      
-        
+      if($email_check){
+        $this->User_model->register_user($user);
+        $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
+        //redirect(base_url().'Admin/index');
+        redirect(base_url().'User/userdisplay');
+      }
+      else{
 
-$email_check=$this->User_model->email_check($user['u_email_id']);
+        $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+        redirect(base_url().'Admin/signup');
+      }
 
-if($email_check){
-  $this->User_model->register_user($user);
-  $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-  redirect('Admin/index');
+      }
 
-}
-else{
-
-  $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-  redirect('Admin/signup');
-}
-
-}
-
-public function login_view(){
+public function login_view()
+{
 
 $this->load->view("login.php");
+
+}
+
+public function about_us()
+{
+
+  $this->load->view('student/header.php');
+  $this->load->view("student/about_us.php");
+  $this->load->view('student/footer.php');
+
+
+}
+
+public function forgotpass()
+{
+  //$this->load->library("PHPMailer");
+  $user_login=array('u_email_id'=>$this->input->post('forgotmail'));
+  print_r($user_login);
+
+   include "PHPMailer/class.phpmailer.php";
+
+				$password="ahsdgah";
+    //$message = $captcha_code;
+
+// creating the phpmailer object
+$mail = new PHPMailer(true);
+
+// telling the class to use SMTP
+$mail->IsSMTP();
+
+// enables SMTP debug information (for testing) set 0 turn off debugging mode, 1 to show debug result
+$mail->SMTPDebug = 0;
+
+// enable SMTP authentication
+$mail->SMTPAuth = true;
+
+// sets the prefix to the server
+$mail->SMTPSecure = 'ssl';
+
+// sets GMAIL as the SMTP server
+$mail->Host = 'smtp.gmail.com';
+
+// set the SMTP port for the GMAIL server
+$mail->Port = 465;
+
+// your gmail address
+$mail->Username = 'librarymanagementsip@gmail.com';
+
+// your password must be enclosed in single quotes
+$mail->Password = 'lms@1234';
+
+// add a subject line
+$mail->Subject = 'New Password for the User ';
+
+// Sender email address and name
+$mail->SetFrom('librarymanagementsip@gmail.com', 'lms');
+
+$email1=$user_login['u_email_id'];
+// reciever address, person you want to send
+$mail->AddAddress($email1);
+
+// if your send to multiple person add this line again
+//$mail->AddAddress('tosend@domain.com');
+
+// if you want to send a carbon copy
+//$mail->AddCC('tosend@domain.com');
+
+
+// if you want to send a blind carbon copy
+//$mail->AddBCC('tosend@domain.com');
+
+// add message body
+$mail->MsgHTML("Your New Password is ".$password);
+
+
+// add attachment if any
+//$mail->AddAttachment('time.png');
+
+try {
+    // send mail
+    
+    
+    $mail->Send();
+    $msg = "Mail send successfully";
+} catch (phpmailerException $e) {
+    $msg = $e->getMessage();
+} catch (Exception $e) {
+    $msg = $e->getMessage();
+}
+//echo '<script>';
+	//	echo "alert('Password sent Succesfully');";
+		//echo "</script>";	
+    // $this->session->set_flashdata('forgot_Password','Check the mail');
+    // redirect(base_url().'User/home', 'refresh');
+		
+//echo $id+":==adasd";
+
+  // $this->load->view('student/header.php');
+  // $this->load->view("student/about_us.php");
+  // $this->load->view('student/footer.php');
+
+
+}
+
+public function contact_us()
+{
+
+  $this->load->view('student/header.php');
+  $this->load->view("student/contact_us.php");
+  $this->load->view('student/footer.php');
+
 
 }
 
@@ -130,6 +239,7 @@ public function login_check()
         else
           {
              $this->load->view('student/header.php');
+             
              $this->load->view('student/footer.php');
           }
   
@@ -149,10 +259,18 @@ public function home(){
 
 }
 
+public function signup()
+{
+
+  $this->load->view('Admin/signup');
+
+}
+
 
 public function userdisplay(){
 
   $this->load->view('student/header.php');
+  $this->load->view('student/content.php');
   $this->load->view('student/footer.php');
 }
 
