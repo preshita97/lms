@@ -112,6 +112,7 @@ public function forgotpass()
 {
   //$this->load->library("PHPMailer");
   $user_login=array('u_email_id'=>$this->input->post('forgotmail'));
+  
   print_r($user_login);
 
    include "PHPMailer/class.phpmailer.php";

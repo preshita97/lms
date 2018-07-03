@@ -164,7 +164,7 @@ class Admin_model extends CI_model{
             
         //             'isbn_no' => $user['isbn_no']
         // );     
-        echo " <script> alert ('".$id."'); </script>";        
+        //echo " <script> alert ('".$id."'); </script>";        
         $this->db->where('book_id', $id);
         return $this->db->update('book_tbl', $user);
 
