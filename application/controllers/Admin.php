@@ -547,14 +547,14 @@ class Admin extends CI_Controller {
                       'book_add_date' => $this->input->post('txt_book_date'),
                     
                         );
-                        print_r($user);
+                        //print_r($user);
                         $id=$this->input->post('id');
                         $this->Admin_model->edit_book_rec($user,$id);
                        redirect(base_url().'admin/book_table','refresh');
                     }
                       else
                           {
-                            echo " <script> alert ('Successfully Deleted'); </script>";
+                            echo " <script> alert ('Error Try Again'); </script>";
                           }
                
               }
