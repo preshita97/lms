@@ -40,12 +40,27 @@ public function email_check($email){
   $query=$this->db->get();
 
   if($query->num_rows()>0){
-    return false;
-  }else{
     return true;
+  }else{
+    return false;
   }
 
 }
+
+public function update_forgot_pass_from_user($email,$newpass)
+  {
+    $this->load->helper('url');
+       
+    // $data = array(
+        
+    //     'cat_name' => $this->input->post('txt_cat_edit')
+    // );
+    // //echo " <script> alert ('".$id."'); </script>";        
+    $this->db->set('u_password',$newpass);
+    $this->db->where('u_email_id', $email);
+    $this->db->update('user_tbl');
+  }
+
 function get_images(){
   $this->db->from('User_model');
   $this->db->order_by('date_uploaded', 'asc');

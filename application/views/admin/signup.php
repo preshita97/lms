@@ -56,10 +56,22 @@
             <div class="login-box card">
                 <div class="card-body">
                 <?php
-                  $error_msg=$this->session->flashdata('error_msg');
-                  if($error_msg){
+                  
+              $success_msg= $this->session->flashdata('success_msg');
+              $error_msg= $this->session->flashdata('error_msg');
+
+                  if($success_msg)
+                  {
+                          echo $success_msg;
+                  }
+                  elseif($error_msg)
+                  {
                     echo $error_msg;
                   }
+                  else
+                  {
+                    
+                 }
                    ?>
                     <form enctype="multipart/form-data" class="form-horizontal form-material" id="loginform" method="post" action="<?php echo base_url('User/register_user'); ?>">
                         <h3 class="box-title m-b-20">Sign Up</h3>
@@ -116,7 +128,7 @@
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
-                                <div>Already have an account? <a href="<?php echo base_url ('Admin/index'); ?>" class="text-info m-l-5"><b>Sign In</b></a></div>
+                                <div>Already have an account? <a href="<?php echo base_url ('User/home'); ?>" class="text-info m-l-5"><b>Sign In</b></a></div>
                             </div>
                         </div>
                     </form>

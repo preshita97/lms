@@ -115,10 +115,17 @@ public function forgotpass()
   
   print_r($user_login);
 
-   include "PHPMailer/class.phpmailer.php";
 
-				$password="ahsdgah";
-    //$message = $captcha_code;
+  $email_check=$this->User_model->email_check($user_login['u_email_id']);
+echo $email_check;
+
+  if($email_check){
+
+//echo"<script>alert('if');</script>";
+    include "PHPMailer/class.phpmailer.php";
+
+    $password=rand(0,999999);
+//$message = $captcha_code;
 
 // creating the phpmailer object
 $mail = new PHPMailer(true);
@@ -168,23 +175,40 @@ $mail->AddAddress($email1);
 //$mail->AddBCC('tosend@domain.com');
 
 // add message body
-$mail->MsgHTML("Your New Password is ".$password);
+$mail->MsgHTML("Your New Password is :=  ".$password);
 
 
 // add attachment if any
 //$mail->AddAttachment('time.png');
 
 try {
-    // send mail
-    
-    
-    $mail->Send();
-    $msg = "Mail send successfully";
+// send mail
+
+
+$mail->Send();
+$msg = "Mail send successfully";
+
+$this->User_model->update_forgot_pass_from_user($user_login['u_email_id'],$password);
+
+redirect(base_url().'Admin/home');
+
 } catch (phpmailerException $e) {
-    $msg = $e->getMessage();
+$msg = $e->getMessage();
 } catch (Exception $e) {
-    $msg = $e->getMessage();
+$msg = $e->getMessage();
 }
+
+   
+  }
+  else{
+
+   // echo"<script>alert('else');</script>";
+    //$this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+    redirect(base_url().'Admin/signup');
+  }
+
+
+   
 //echo '<script>';
 	//	echo "alert('Password sent Succesfully');";
 		//echo "</script>";	
