@@ -197,5 +197,25 @@ class Admin_model extends CI_model{
         $query = $this->db->get_where('book_tbl', array('book_id' => $id));
         return $query->row_array();
     }
+
+    public function request_availability_by_id($id)
+    {
+        $query = $this->db->get_where('request_tbl', array('request_id' => $id));
+        return $query->row_array();
+    }
+
+    public function edit_request_avail($id)
+    {
+        $this->load->helper('url');
+       
+        $data = array(
+            
+            'req_book_status' => $this->input->post('reqbook_avail')
+        );
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('request_id', $id);
+        return $this->db->update('request_tbl', $data);
+
+    }
 }
 ?>

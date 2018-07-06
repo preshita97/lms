@@ -4,10 +4,10 @@
       {
         return confirm("Are you sure you want to Delete this Category ?");
       }
-    //   function edit()
-    //   {
-    //     return confirm("Are you sure you want to Edit this Category ?");
-    //   }
+      function edit()
+      {
+        return confirm("Are you sure you want to Edit this Category ?");
+      }
   </script>
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -27,6 +27,14 @@
                 </div>
                 
             </div>
+<?php 
+$success_message=$this->session->flashdata('success_message');
+if($success_message)
+{
+
+}
+?>
+
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -38,62 +46,48 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
+                    <div class="col-lg-12">
+                        <div class="card card-outline-info">
+                            <div class="card-header">
+                                <h4 class="m-b-0 text-white">Request Add Form </h4>
+                            </div>
                             <div class="card-body">
-                                <h4 class="card-title">Request</h4>
-                                <h6 class="card-subtitle"></h6>
-                                <div class="table-responsive m-t-40">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>User Name</th>
-                                                <th>Book Title</th>
-                                                <th>Book Author</th>
-                                                <th>Book Edition</th>
-                                                <th>Book Edition year</th>
-                                                <th>Book Category Name </th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                            <th>User Name</th>
-                                                <th>Book Title</th>
-                                                <th>Book Author</th>
-                                                <th>Book Edition</th>
-                                                <th>Book Edition year</th>
-                                                <th>Book Category Name</th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                        <?php foreach ($request_item as $tbl): ?>
+                                <form method="POST">
+                                    <div class="form-body">
+                                        <!-- <h3 class="card-title">Person Info</h3>
+                                        <hr> -->
+                                        
 
-                                        <tr>
-                                            <td><?php echo $tbl['u_name']; ?></td>
-                                            <td><?php echo $tbl['req_book_title']; ?></td>
-                                            <td><?php echo $tbl['req_book_author']; ?></td>
-                                            <td><?php echo $tbl['req_book_edition']; ?></td>
-                                            <td><?php echo $tbl['req_book_edition_year']; ?></td>
-                                            <td><?php echo $tbl['cat_name']; ?></td>
-                                            <td><?php echo $tbl['req_date']; ?></td>
-                                            <td><?php echo $tbl['req_book_status']; ?></td>
-                                            <td>
-                                            <a href="<?php echo base_url('Admin/request_edit/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return edit()"  class="btn btn-success btn-circle"><i class="mdi mdi-grease-pencil">  </i> </button></a>
-                                            <a href="<?php echo base_url('Admin/request_delete/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return del()"  class="btn btn-danger btn-circle"><i class="mdi mdi-delete-forever">  </i> </button></a></td>
-                                         </tr>
-                                        <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                
+                                                    <label class="control-label">Request Availability</label>
+
+                                                    <select class="form-control custom-select" data-placeholder="Choose a Category" name="reqbook_avail" tabindex="1">
+                                                    
+                                                        <option value="available" <?php if($req_avail_item['req_book_status']=="available") echo "selected='selected'"; ?>>Available</option>
+                                                        <option value="not available" <?php if($req_avail_item['req_book_status']=="not available") echo "selected='selected'"; ?>>Not Available</option>
+                                                        
+                                                    </select>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                        
+                                    </div>
+                                    <div class="form-actions">
+                                       <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                                        <!-- <button type="button" class="btn btn-inverse">Cancel</button> -->
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
+
+                        </div>
                         
+
+
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->

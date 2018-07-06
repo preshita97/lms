@@ -290,6 +290,34 @@ class Admin extends CI_Controller {
                     }
               }
 
+              public function request_edit()
+              {
+                $id = $this->uri->segment(3);
+        
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                
+                $data['req_avail_item'] = $this->Admin_model->request_availability_by_id($id);
+
+                $this->form_validation->set_rules('reqbook_avail', 'Book Category Name', 'required');
+
+                if($this->form_validation->run() == FALSE)
+                {
+                 //echo " <script> alert ('if ma gyu'); </script>";
+                     $this->load->view('admin/header'); 
+                     $this->load->view('admin/request_edit',$data);
+                     
+                 }
+                 else
+                 {
+                  //echo " <script> alert ('".$id."'); </script>"; 
+                     $this->Admin_model->edit_request_avail($id);
+                     // $this->load->view('admin/header'); 
+                     redirect(base_url().'admin/request_table','refresh');   
+                 
+                
+              }
+            }
               public function book_cat_edit()
               {
                 $id = $this->uri->segment(3);
