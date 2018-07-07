@@ -135,7 +135,7 @@
                                             </ul>
                                         </li>
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="books-media-list-view.html">Books</a>
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="<?php echo base_url('User/bookdisplay'); ?>">Books</a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="books-media-list-view.html">Books &amp; Media List View</a></li>
                                                 <li><a href="books-media-gird-view-v1.html">Books &amp; Media Grid View V1</a></li>

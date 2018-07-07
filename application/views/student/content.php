@@ -19,7 +19,7 @@
                         <ul class="category-list">
                             <li class="category-item adults">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-01.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-01.jpg" alt="New Releaase" />
                                     <figcaption class="bg-yellow">
                                         <div class="diamond">
                                             <i class="book"></i>
@@ -70,7 +70,7 @@
                             </li>
                             <li class="category-item kids-teens">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-02.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-02.jpg" alt="New Releaase" />
                                     <figcaption class="bg-yellow">
                                         <div class="diamond">
                                             <i class="book"></i>
@@ -121,7 +121,7 @@
                             </li>
                             <li class="category-item video">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-03.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-03.jpg" alt="New Releaase" />
                                     <figcaption class="bg-blue">
                                         <div class="diamond">
                                             <i class="dvd"></i>
@@ -172,7 +172,7 @@
                             </li>
                             <li class="category-item audio">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-04.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-04.jpg" alt="New Releaase" />
                                     <figcaption class="bg-blue">
                                         <div class="diamond">
                                             <i class="dvd"></i>
@@ -223,7 +223,7 @@
                             </li>
                             <li class="category-item books">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-05.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-05.jpg" alt="New Releaase" />
                                     <figcaption class="bg-green">
                                         <div class="diamond">
                                             <i class="eaudio"></i>
@@ -274,7 +274,7 @@
                             </li>
                             <li class="category-item magazines">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-06.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-06.jpg" alt="New Releaase" />
                                     <figcaption class="bg-red">
                                         <div class="diamond">
                                             <i class="magazine"></i>
@@ -325,7 +325,7 @@
                             </li>
                             <li class="category-item adults">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-07.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-07.jpg" alt="New Releaase" />
                                     <figcaption class="bg-red">
                                         <div class="diamond">
                                             <i class="magazine"></i>
@@ -376,7 +376,7 @@
                             </li>
                             <li class="category-item kids-teens">
                                 <figure>
-                                    <img src="assets/images/category-filter/home-v2/category-filter-img-08.jpg" alt="New Releaase" />
+                                    <img src="<?php echo base_url();?>assets/images/category-filter/home-v2/category-filter-img-08.jpg" alt="New Releaase" />
                                     <figcaption class="bg-light-green">
                                         <div class="diamond">
                                             <i class="ebook"></i>

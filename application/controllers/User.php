@@ -108,6 +108,48 @@ public function about_us()
 
 }
 
+public function bookdisplay()
+{
+        //echo " <script> alert ('alsjdklasjdklasj'); </script>";
+        $data['book_item'] = $this->User_model->book_display();
+        $data['cat_item'] = $this->User_model->cat_display(); 
+        //   if (empty($data['request_item']))
+        // {
+        //     show_404();
+        // }
+ 
+        // //$data[''] = $data['news_item']['title'];
+ 
+        $this->load->view('student/header.php',$data);
+        //$this->load->view('student/sidebar.php');
+        $this->load->view("student/bookdisplay.php",$data);
+        $this->load->view('student/footer.php',$data);
+      
+}
+
+public function book_table()
+        {
+         
+          echo " <script> alert ('alsjdklasjdklasj'); </script>";
+        $data['book_item'] = $this->User_model->book_display();
+        
+        //   if (empty($data['request_item']))
+        // {
+        //     show_404();
+        // }
+ 
+        // //$data[''] = $data['news_item']['title'];
+ 
+        $this->load->view('student/header.php',$data);
+        //$this->load->view('student/sidebar.php');
+        $this->load->view("student/bookdisplay.php",$data);
+        $this->load->view('student/footer.php',$data);
+      
+        //$this->load->view('admin/request_tbl', $data);
+        //$this->load->view('templates/footer');
+        }
+
+
 public function forgotpass()
 {
   //$this->load->library("PHPMailer");

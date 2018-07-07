@@ -70,7 +70,25 @@ function get_images(){
 
 }
 
+public function book_display()
+    {
+        $this->db->select('book_tbl.*,book_cat_tbl.*');
+        $this->db->from('book_tbl');
+        $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function cat_display()
+    {
+        $query = $this->db->get('book_cat_tbl');
+        return $query->result_array();
+    }
+   
 }
+
+
 
 
 ?>
