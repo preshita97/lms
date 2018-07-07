@@ -354,7 +354,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <!-- <li class="nav-small-cap">PERSONAL</li> -->
-                        <li> <a class="has-arrow waves-effect waves-dark" href="<?php echo base_url('Admin/dashboard'); ?>"  aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" style="background-color: white;" href="" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                             <!-- <ul aria-expanded="false" class="collapse">
                                 <li><a href="index.html">Minimal </a></li>
                                 <li><a href="index2.html">Analytical</a></li>

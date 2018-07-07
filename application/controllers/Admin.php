@@ -9,6 +9,13 @@ class Admin extends CI_Controller {
                 $this->load->model('Admin_model');
                 $this->load->library('session');
         }
+
+        public function dashboard()
+        {
+         
+          $this->load->view('admin/dashboard');
+        }
+
         public function book_cat_add()
         {
           $this->load->helper('form');
