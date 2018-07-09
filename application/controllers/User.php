@@ -105,7 +105,24 @@ public function about_us()
   $this->load->view("student/about_us.php");
   $this->load->view('student/footer.php');
 
+}
 
+public function changepass()
+{
+
+  $this->load->view('student/header1.php');
+  $this->load->view('student/changepass.php');
+  $this->load->view('student/footer.php');
+  
+}
+
+public function viewprofile()
+{
+
+  $this->load->view('student/header1.php');
+  $this->load->view('student/viewprofile.php');
+  $this->load->view('student/footer.php');
+  
 }
 
 public function bookdisplay()
@@ -125,6 +142,23 @@ public function bookdisplay()
         $this->load->view("student/bookdisplay.php",$data);
         $this->load->view('student/footer.php',$data);
       
+}
+
+public function content()
+{
+        echo " <script> alert ('alsjdklasjdklasj'); </script>";
+
+        
+        $data['book_item'] = $this->User_model->book_display();
+        $data['cat_item'] = $this->User_model->cat_display(); 
+       
+
+        $this->load->view('student/header.php',$data);
+        //$this->load->view('student/sidebar.php');
+        $this->load->view("student/content.php",$data);
+        $this->load->view('student/footer.php',$data);
+      
+        
 }
 
 public function book_table()
@@ -285,7 +319,8 @@ public function login_check()
     'u_password'=>$this->input->post('u_password')
   
       );
-  
+      $data1['book_item'] = $this->User_model->book_display();
+      $data1['cat_item'] = $this->User_model->cat_display(); 
       $data=$this->User_model->home($user_login['u_email_id'],$user_login['u_password']);
         if($data)
         {
@@ -300,14 +335,14 @@ public function login_check()
           // echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
           if($data['u_type']=="admin")
           {
-              $this->load->view('admin/header.php');
+              $this->load->view('admin/dashboard.php');
              
           }
         else
           {
-             $this->load->view('student/header.php');
-             
-             $this->load->view('student/footer.php');
+             $this->load->view('student/header1.php',$data1);
+             $this->load->view("student/bookdisplay.php",$data1);
+             $this->load->view('student/footer.php',$data1);
           }
   
           }
