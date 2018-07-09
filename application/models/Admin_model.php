@@ -217,5 +217,94 @@ class Admin_model extends CI_model{
         return $this->db->update('request_tbl', $data);
 
     }
+
+    public function total_users_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS all_users');
+        $this->db->from('user_tbl');
+        $this->db->where('u_type', 'student');
+        $this->db->where('u_status', 'active');
+        $query=$this->db->get();
+       return $query->row_array();
+
+        // $sql="SELECT COUNT(*) AS all_users FROM user_tbl WHERE u_type='student'";
+        // $query=$this->db->query($sql);
+        // return $query->result_array();
+        // //$query = $this->db->get_where('user_tbl', array('u_type' => "student"));
+    //     return $query->num_rows();
+
+    }
+
+    public function total_inactive_users_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS all_inactive_users');
+        $this->db->from('user_tbl');
+        $this->db->where('u_type', 'student');
+        $this->db->where('u_status', 'in active');
+        $query=$this->db->get();
+       return $query->row_array();
+    }
+
+    public function total_allusers_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS all_active_users');
+        $this->db->from('user_tbl');
+        $this->db->where('u_type', 'student');
+        $query=$this->db->get();
+       return $query->row_array();
+    }
+
+    public function total_available_books_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS avail_books');
+        $this->db->from('book_tbl');
+        $this->db->where('book_availability', 'yes');
+        $query=$this->db->get();
+       return $query->row_array();
+    }
+
+    public function total_unavailable_books_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS unavail_books');
+        $this->db->from('book_tbl');
+        $this->db->where('book_availability', 'no');
+        $query=$this->db->get();
+       return $query->row_array();
+    }
+
+    public function total_category_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS total_catg');
+        $this->db->from('book_cat_tbl');
+        
+        $query=$this->db->get();
+       return $query->row_array();
+    }
+
+    public function total_books_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS total_book');
+        $this->db->from('book_tbl');
+        
+        $query=$this->db->get();
+       return $query->row_array();
+    }
+
+    public function total_pending_request_dashboard()
+    {
+
+       $this->db->select('COUNT(*) AS pendig_request');
+        $this->db->from('request_tbl');
+        $this->db->where('req_book_status', 'not available');
+        $query=$this->db->get();
+       return $query->row_array();
+    }
 }
 ?>

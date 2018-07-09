@@ -12,8 +12,24 @@ class Admin extends CI_Controller {
 
         public function dashboard()
         {
-         
-          $this->load->view('admin/dashboard');
+          $data['total_users'] = $this->Admin_model->total_users_dashboard();
+          
+          $data['total_inactive_users']=$this->Admin_model->total_inactive_users_dashboard();
+          
+          $data['total_all_users']=$this->Admin_model->total_allusers_dashboard();
+          
+          $data['total_available_books']=$this->Admin_model->total_available_books_dashboard();
+
+          $data['total_unavailable_books']=$this->Admin_model->total_unavailable_books_dashboard();
+
+          $data['total_category']=$this->Admin_model->total_category_dashboard();
+
+          $data['total_books']=$this->Admin_model->total_books_dashboard();
+
+          $data['pending_reqst']=$this->Admin_model->total_pending_request_dashboard();
+          
+
+          $this->load->view('admin/dashboard',$data);
         }
 
         public function book_cat_add()

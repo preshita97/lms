@@ -393,11 +393,11 @@
         <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <!-- <div class="page-wrapper"> 
+         <div class="page-wrapper"> 
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <!-- <div class="row page-titles">
+            <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Dashboard</h3>
                 </div>
@@ -409,86 +409,151 @@
                 </div>
                 <div>
                     <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                </div> -->
-         <!-- </div>  -->
+                </div>
+         </div> 
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-     
-     <!-- <div class="card-group">
+          <div class="container-fluid">
+
+            <div class="card-group">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
+                                   
                                     <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
-                                    <h3 class="">2456</h3>
-                                    <h6 class="card-subtitle">New Projects</h6></div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- Column -->
-                    <!-- Column -->
-                    <!-- <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="m-b-0"><i class="mdi mdi-alert-circle text-success"></i></h2>
-                                    <h3 class="">546</h3>
-                                    <h6 class="card-subtitle">Pending Project</h6></div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 40%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- Column -->
-                    <!-- Column -->
-                    <!-- <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="m-b-0"><i class="mdi mdi-wallet text-purple"></i></h2>
-                                    <h3 class="">$24561</h3>
-                                    <h6 class="card-subtitle">Total Cost</h6></div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 56%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- Column -->
-                    <!-- Column -->
-                    <!-- <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2 class="m-b-0"><i class="mdi mdi-buffer text-warning"></i></h2>
-                                    <h3 class="">$30010</h3>
-                                    <h6 class="card-subtitle">Total Earnings</h6></div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 26%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
+                                     
+                                    <h3 class=""><?php echo $total_users['all_users']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">Active Users</h5>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                   
+                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                     
+                                    <h3 class=""><?php echo $total_inactive_users['all_inactive_users']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">Inactive Users</h5>
 
-     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                   
+                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                     
+                                    <h3 class=""><?php echo $total_all_users['all_active_users']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">All Users</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                   
+                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                     
+                                    <h3 class=""><?php echo $total_available_books['avail_books']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">Available Books</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+<div class="card-group">
+                <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                   
+                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                     
+                                    <h3 class=""><?php echo $total_unavailable_books['unavail_books']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">Unavailable Books</h5>
+
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                   
+                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                     
+                                    <h3 class=""><?php echo $total_category['total_catg']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">Total Category of Books</h5>
+
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                   
+                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                     
+                                    <h3 class=""><?php echo $total_books['total_book']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">Total Nuber of Books</h5>
+
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                   
+                                    <h2 class="m-b-0"><i class="mdi mdi-briefcase-check text-info"></i></h2>
+                                     
+                                    <h3 class=""><?php echo $pending_reqst['pendig_request']; ?></h3>
+                                    <h5 class="card-subtitle" style="font-weight: bolder;color: black;">Pending Requests</h5>
+
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+    </div>
+
     
+
     <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/popper.min.js"></script>
