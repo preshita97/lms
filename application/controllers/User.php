@@ -319,8 +319,12 @@ public function login_check()
     'u_password'=>$this->input->post('u_password')
   
       );
+      
       $data1['book_item'] = $this->User_model->book_display();
-      $data1['cat_item'] = $this->User_model->cat_display(); 
+      $data1['cat_item'] = $this->User_model->cat_display();
+      
+      
+      
       $data=$this->User_model->home($user_login['u_email_id'],$user_login['u_password']);
         if($data)
         {
@@ -335,7 +339,7 @@ public function login_check()
           // echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
           if($data['u_type']=="admin")
           {
-              $this->load->view('admin/dashboard.php');
+              $this->load->view('admin/header.php');
              
           }
         else
