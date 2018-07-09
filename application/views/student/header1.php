@@ -169,9 +169,16 @@
                                         </li> -->
                                         <!-- <li><a href="services.html">Services</a></li> -->
                                         <li><a href="<?php echo base_url('User/contact_us'); ?>">Contact Us</a></li>
-
-                                        <!-- <li><a href="<?php echo base_url('User/changepass'); ?>">Change Password</a></li>
-                                        <li><a href="<?php echo base_url('User/viewprofile'); ?>">View Profile</a></li> -->
+                                        <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="">Users</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="<?php echo base_url('User/changepass'); ?>">Change Password</a></li>
+                                                <li><a href="<?php echo base_url('User/viewprofile'); ?>">View Profile</a></li>
+                                                <li><a href="<?php echo base_url('User/editprofile'); ?>">Edit Profile</a></li>
+                                                <li><a href="<?php echo base_url('User/logout'); ?>">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                        
                                     </ul>   
                                 </div>
                             </div>
