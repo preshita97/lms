@@ -339,7 +339,7 @@ public function login_check()
           // echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
           if($data['u_type']=="admin")
           {
-              $this->load->view('admin/header.php');
+            
              
           }
         else
