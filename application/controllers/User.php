@@ -328,8 +328,12 @@ public function login_check()
     'u_password'=>$this->input->post('u_password')
   
       );
+      
       $data1['book_item'] = $this->User_model->book_display();
-      $data1['cat_item'] = $this->User_model->cat_display(); 
+      $data1['cat_item'] = $this->User_model->cat_display();
+      
+      
+      
       $data=$this->User_model->home($user_login['u_email_id'],$user_login['u_password']);
         if($data)
         {
@@ -345,7 +349,6 @@ public function login_check()
           if($data['u_type']=="admin")
           {
               redirect(base_url().'Admin/dashboard','refresh');
-             
           }
         else
           {
