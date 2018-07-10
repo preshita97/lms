@@ -331,19 +331,14 @@
                     <form action="http://libraria.demo.presstigers.com/index.html" method="get">
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="sr-only" for="keywords">Search by Keyword</label>
+                                <label class="sr-only" for="keywords">Search by Book Name</label>
                                 <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
                                 <select name="catalog" id="catalog" class="form-control">
-                                    <option>Search the Catalog</option>
-                                    <option>Catalog 01</option>
-                                    <option>Catalog 02</option>
-                                    <option>Catalog 03</option>
-                                    <option>Catalog 04</option>
-                                    <option>Catalog 05</option>
+                                    <option>Search the Author </option>
                                 </select>
                             </div>
                         </div>
@@ -351,11 +346,10 @@
                             <div class="form-group">
                                 <select name="category" id="category" class="form-control">
                                     <option>All Categories</option>
-                                    <option>Category 01</option>
-                                    <option>Category 02</option>
-                                    <option>Category 03</option>
-                                    <option>Category 04</option>
-                                    <option>Category 05</option>
+                                    <?php foreach ($cat_item as $tbl): ?>
+                                     
+                                    <option><?php echo $tbl['cat_name']; ?></option>
+                                    <?php endforeach; ?>   
                                 </select>
                             </div>
                         </div>

@@ -337,7 +337,7 @@ public function login_check()
       $data=$this->User_model->home($user_login['u_email_id'],$user_login['u_password']);
         if($data)
         {
-          
+          $this->session->set_userdata('u_id',$data['u_id']);
           $this->session->set_userdata('u_email_id',$data['u_email_id']);
           $this->session->set_userdata('u_password',$data['u_password']);
           $this->session->set_userdata('u_name',$data['u_name']);
