@@ -345,7 +345,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
                                 <select name="category" id="category" class="form-control">
-                                    <option>All Categories</option>
+                                    <!-- <option>All Categories</option> -->
                                     <?php foreach ($cat_item as $tbl): ?>
                                      
                                     <option><?php echo $tbl['cat_name']; ?></option>

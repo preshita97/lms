@@ -153,6 +153,8 @@ public function bookdisplay()
       
 }
 
+
+
 public function content()
 {
         echo " <script> alert ('alsjdklasjdklasj'); </script>";
