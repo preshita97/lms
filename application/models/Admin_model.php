@@ -306,5 +306,11 @@ class Admin_model extends CI_model{
         $query=$this->db->get();
        return $query->row_array();
     }
+
+    public function get_user_by_id_dashboard($id)
+    {
+        $query = $this->db->get_where('user_tbl', array('u_id' => $id));
+        return $query->row_array();
+    }
 }
 ?>

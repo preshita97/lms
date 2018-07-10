@@ -302,7 +302,7 @@
                                             <div class="u-img"><img src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>" alt="user"></div>
                                             <div class="u-text">
                                                 <h4><?php echo $this->session->userdata('u_name'); ?></h4>
-                                                <p class="text-muted"><?php echo $this->session->userdata('u_email_id'); ?></p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                <p class="text-muted"><?php echo $this->session->userdata('u_email_id'); ?></p><a href="<?php echo base_url('Admin/view_profile/'.$this->session->userdata('u_id')); ?>" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>

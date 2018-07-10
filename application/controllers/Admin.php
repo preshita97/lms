@@ -66,7 +66,8 @@ class Admin extends CI_Controller {
         public function index()
         {
         $data['title'] = '';
-        
+        $data['book_item'] = $this->User_model->book_display();
+        $data['cat_item'] = $this->User_model->cat_display();
         
         // $this->load->view('User/home', $data);
         $this->load->view('student/header.php',$data);
@@ -609,5 +610,19 @@ class Admin extends CI_Controller {
                             echo " <script> alert ('Error Try Again'); </script>";
                           }
                
+              }
+
+              public function view_profile()
+              {
+                $email_id = $this->uri->segment(3);
+        
+                // echo " <script> alert ('".$email_id."'); </script>";
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+
+                    $this->load->view('admin/header'); 
+                    $this->load->view('admin/view_profile');
               }
 }
