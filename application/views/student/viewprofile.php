@@ -16,12 +16,16 @@
                                                             
                                                         </div>
                                                         <form class="login" method="post">
-                                                            <p class="form-row form-row-first input-required">
+                                                            <p class="form-row form-row-first">
+                                                            
                                                                 <label>
-                                                                    <span class="first-letter">Name : <?php echo $this->session->userdata('u_name'); ?> </span>  
+                                                                    <span class="first-letter"><b>Name :</b> <?php echo $this->session->userdata('u_name'); ?> </span>  
                                                                     
                                                                 </label>
-                                                                <input type="text" id="username1" name="uname" class="input-text">
+
+                                                                
+
+                                                                
                                                             </p>
                                                             <p class="form-row input-required">
                                                                 
@@ -31,10 +35,10 @@
                                                             </p>                               
                                                             <p class="form-row input-required">
                                                                 <label>
-                                                                    <span class="first-letter">Mobile Number</span>  
+                                                                  <b>  <span class="first-letter">Mobile Number</span>  </b>
                                                                     <?php echo $this->session->userdata('u_mno'); ?>
                                                                 </label>
-                                                                <input type="password" id="password1" name="unum" class="input-text">
+                                                               
                                                             </p>                                                                                
                                                             <div class="clear"></div>
                                                             <input type="submit" value="Edit" name="Change" class="button btn btn-default">

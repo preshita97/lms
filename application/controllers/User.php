@@ -125,6 +125,15 @@ public function viewprofile()
   
 }
 
+public function vp()
+{
+
+  $this->load->view('student/header1.php');
+  $this->load->view('student/vp.php');
+  $this->load->view('student/footer.php');
+  
+}
+
 public function bookdisplay()
 {
         //echo " <script> alert ('alsjdklasjdklasj'); </script>";
@@ -335,7 +344,7 @@ public function login_check()
           // echo " <script type='text/javascript'>  alert('Login successfull'); </script>";
           if($data['u_type']=="admin")
           {
-              $this->load->view('admin/dashboard.php');
+              redirect(base_url().'Admin/dashboard','refresh');
              
           }
         else
