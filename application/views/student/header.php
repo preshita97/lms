@@ -338,7 +338,9 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
                                 <select name="catalog" id="catalog" class="form-control">
-                                    <option>Search the Author </option>
+                                <?php foreach ($book_item as $tbl): ?>
+                                    <option><?php echo $tbl['book_author']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>

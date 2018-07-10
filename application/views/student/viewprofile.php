@@ -52,27 +52,36 @@
                                                 <div class="col-md-12">
                                                     <div class="company-detail new-account bg-light margin-right">
                                                         <div class="new-user-head">
-                                                            <h2>Create New Account</h2>
+                                                            <h2>Edit Profile</h2>
                                                             <span class="underline left"></span>
-                                                            <p>If no barcode has been assigned for your account, please contact the library.</p>
+                                                            
                                                         </div>
                                                         <form class="login" method="post">
-                                                            <p class="form-row form-row-first input-required">
-                                                                <label>
-                                                                    <span class="first-letter">Barcode</span>  
-                                                                    <span class="second-letter">*</span>
+                                                            <p class="form-row form-row-first input-required">  Name : 
+                                                                <label> 
+                                                                    <span class="first-letter"> <?php echo $this->session->userdata('u_name'); ?></span>  
+                                                                    
                                                                 </label>
+                                                                
                                                                 <input type="text" id="username1" name="username" class="input-text">
                                                             </p>
-                                                            <p class="form-row input-required">
+                                                            <p class="form-row input-required">Mobile No :
                                                                 <label>
-                                                                    <span class="first-letter">Password</span>  
-                                                                    <span class="second-letter">*</span>
+                                                                    <span class="first-letter"> <?php echo $this->session->userdata('u_mno'); ?> </span>  
+                                                                    
                                                                 </label>
                                                                 <input type="password" id="password1" name="password" class="input-text">
-                                                            </p>                                                                                
+                                                            </p>    
+
+                                                            <p class="form-row input-required">
+                                                                
+                                                                <img style="height: 50px;width: 50px;" src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>">
+                                                                
+                                                                <input type="file"  class="input-text" name="book_photo_upload" id="exampleInputFile" aria-describedby="fileHelp">
+                                                            </p>
+
                                                             <div class="clear"></div>
-                                                            <input type="submit" value="Signup" name="signup" class="button btn btn-default">
+                                                            <input type="submit" value="Edit" name="signup" class="button btn btn-default">
                                                             <div class="clear"></div>
                                                         </form> 
                                                     </div>

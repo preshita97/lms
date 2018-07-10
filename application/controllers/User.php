@@ -385,9 +385,11 @@ public function signup()
 
 public function userdisplay(){
 
-  $this->load->view('student/header.php');
-  $this->load->view('student/content.php');
-  $this->load->view('student/footer.php');
+  $data['book_item'] = $this->User_model->book_display();
+  $data['cat_item'] = $this->User_model->cat_display();
+  $this->load->view('student/header.php',$data);
+  $this->load->view('student/content.php',$data);
+  $this->load->view('student/footer.php',$data);
 }
 
 
