@@ -71,7 +71,7 @@ class Admin extends CI_Controller {
         
         // $this->load->view('User/home', $data);
         $this->load->view('student/header.php',$data);
-       
+       $this->load->view('student/content.php',$data);
           $this->load->view('student/footer.php',$data);
        
         }
@@ -607,6 +607,25 @@ class Admin extends CI_Controller {
                     }
                       else
                           {
+
+                            $user = array(
+                              'isbn_no' => $this->input->post('txt_isbnno'),
+                              'book_availability'=> $this->input->post('radio_book_availability'),
+                              'book_title' => $this->input->post('txt_book_title'),
+                              'book_publisher' => $this->input->post('txt_book_publisher'),
+                              'fk_cat_id' => $this->input->post('reqbook_catg'),
+                              
+                              'book_author' => $this->input->post('txt_book_author'),
+                              'book_edition' => $this->input->post('txt_book_edition'),
+                              'book_edition_year' => $this->input->post('txt_book_editionyr'),
+                              'book_add_date' => $this->input->post('txt_book_date'),
+                            
+                                );
+                                //print_r($user);
+                                $id=$this->input->post('id');
+                                $this->Admin_model->edit_book_rec($user,$id);
+                               redirect(base_url().'admin/book_table','refresh');
+
                             echo " <script> alert ('Error Try Again'); </script>";
                           }
                
@@ -614,15 +633,16 @@ class Admin extends CI_Controller {
 
               public function view_profile()
               {
-                $email_id = $this->uri->segment(3);
+                $id = $this->uri->segment(3);
         
                 // echo " <script> alert ('".$email_id."'); </script>";
 
                 $this->load->helper('form');
                 $this->load->library('form_validation');
 
+                $data['user_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
 
                     $this->load->view('admin/header'); 
-                    $this->load->view('admin/view_profile');
+                    $this->load->view('admin/view_profile',$data);
               }
 }

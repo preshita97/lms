@@ -306,7 +306,7 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <!-- <li><a href="#"><i class="ti-user"></i> My Profile</a></li> -->
                                     <li role="separator" class="divider"></li>
                                     <li><a href="<?php echo base_url(); ?>User/user_logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
@@ -340,7 +340,7 @@
                         <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
                         <div class="dropdown-menu animated flipInY">
                             <!-- text-->
-                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                            <!-- <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> -->
                             <div class="dropdown-divider"></div>
                             <!-- text-->
                             <a href="<?php echo base_url(); ?>User/user_logout" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
