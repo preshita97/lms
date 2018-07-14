@@ -8,8 +8,16 @@ class Admin_model extends CI_model{
 
     public function user_display()
     {
-        $query = $this->db->get('user_tbl');
-        return $query->result_array();
+
+        $this->db->select('*');
+        $this->db->from('user_tbl');
+        $this->db->where('u_type','student');
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
+
+        // $query = $this->db->get('user_tbl');
+        // return $query->result_array();
     }
 
     public function request_display()
@@ -311,6 +319,20 @@ class Admin_model extends CI_model{
     {
         $query = $this->db->get_where('user_tbl', array('u_id' => $id));
         return $query->row_array();
+    }
+
+    public function update_admin_profile($admin,$id)
+    {
+        $this->load->helper('url');
+       
+        // $data = array(
+            
+        //             'isbn_no' => $user['isbn_no']
+        // );     
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('u_id', $id);
+       // $this->db->set($admin);
+        return $this->db->update('user_tbl',$admin);
     }
 }
 ?>

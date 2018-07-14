@@ -294,15 +294,15 @@
                         <!-- Profile -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo base_url(); ?>uploads/<?php echo $user_header_item['u_img']; ?>" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>" alt="user"></div>
+                                            <div class="u-img"><img src="<?php echo base_url(); ?>uploads/<?php echo $user_header_item['u_img']; ?>" alt="user"></div>
                                             <div class="u-text">
-                                                <h4><?php echo $this->session->userdata('u_name'); ?></h4>
-                                                <p class="text-muted"><?php echo $this->session->userdata('u_email_id'); ?></p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                <h4><?php echo $user_header_item['u_name']; ?></h4>
+                                                <p class="text-muted"><?php echo $user_header_item['u_email_id']; ?></p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
@@ -328,13 +328,13 @@
                 <!-- User profile -->
                 <div class="user-profile">
                     <!-- User profile image -->
-                    <div class="profile-img"> <img src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>" alt="user" />
+                    <div class="profile-img"> <img src="<?php echo base_url(); ?>uploads/<?php echo $user_header_item['u_img']; ?>" alt="user" />
                         <!-- this is blinking heartbit-->
                         <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </div>
                     <!-- User profile text-->
                     <div class="profile-text">
-                        <h5><?php echo $this->session->userdata('u_name'); ?></h5>
+                        <h5><?php echo $user_header_item['u_name']; ?></h5>
                         <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
                         <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
                         <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
@@ -384,6 +384,14 @@
                                 
                             </ul>
                         </li>
+
+                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Password Management</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url('Admin/change_password/'.$this->session->userdata('u_id'));?>">Change Password</a></li>
+                                
+                            </ul>
+                        </li>
+                       
                         
             <!-- End Sidebar scroll-->
         </aside>

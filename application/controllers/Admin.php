@@ -34,16 +34,24 @@ class Admin extends CI_Controller {
 
         public function book_cat_add()
         {
+          $id = $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
           $this->load->helper('form');
           $this->load->library('form_validation');
 
-          $this->load->view('admin/header');
+          $this->load->view('admin/header',$data);
           $this->load->view('admin/book_cat_add');
  
         }
 
         public function book_add()
         {
+          $id = $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
           $this->load->helper('form');
           $this->load->library('form_validation');
           $data['book_cat_item'] = $this->Admin_model->book_cat_display();
@@ -55,6 +63,10 @@ class Admin extends CI_Controller {
 
         public function request_add()
         {
+          $id = $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
           $this->load->helper('form');
           $this->load->library('form_validation');
           $data['book_cat_item'] = $this->Admin_model->book_cat_display();
@@ -65,10 +77,14 @@ class Admin extends CI_Controller {
 
         public function index()
         {
+          $id = $this->session->userdata('u_id');
+
         $data['title'] = '';
         $data['book_item'] = $this->User_model->book_display();
         $data['cat_item'] = $this->User_model->cat_display();
         
+        $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
         // $this->load->view('User/home', $data);
         $this->load->view('student/header.php',$data);
        $this->load->view('student/content.php',$data);
@@ -94,7 +110,10 @@ class Admin extends CI_Controller {
 
         public function users_table()
         {
-          
+          $id = $this->session->userdata('u_id');
+
+          $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
          $data['user_item'] = $this->Admin_model->user_display();
         
         if (empty($data['user_item']))
@@ -122,12 +141,16 @@ class Admin extends CI_Controller {
               $this->Admin_model->user_delete($id);
               $this->session->set_flashdata('success_message', 'Successfully Deleted.');
               //echo " <script> alert ('Successfully Deleted'); </script>";        
-              redirect(base_url().'admin/users_table','refresh');
+             // redirect(base_url().'admin/users_table','refresh');
               }
 
         public function request_table()
         {
          
+          $id = $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
           //echo " <script> alert ('alsjdklasjdklasj'); </script>";
           $data['request_item'] = $this->Admin_model->request_display();
         
@@ -165,7 +188,9 @@ class Admin extends CI_Controller {
 
         public function notification_table()
         {
-         
+         $id = $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
           //echo " <script> alert ('alsjdklasjdklasj'); </script>";
         $data['notification_item'] = $this->Admin_model->notification_display();
         
@@ -184,7 +209,9 @@ class Admin extends CI_Controller {
 
         public function book_table()
         {
-         
+          $id = $this->session->userdata('u_id');
+
+          $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
           //echo " <script> alert ('alsjdklasjdklasj'); </script>";
         $data['book_item'] = $this->Admin_model->book_display();
         
@@ -222,7 +249,9 @@ class Admin extends CI_Controller {
 
         public function book_circulation_table()
         {
-         
+          $id = $this->session->userdata('u_id');
+
+          $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
           //echo " <script> alert ('alsjdklasjdklasj'); </script>";
         $data['book_circulation_item'] = $this->Admin_model->book_circulation_display();
         
@@ -259,7 +288,9 @@ class Admin extends CI_Controller {
 
         public function book_cat_table()
         {
-         
+          $id = $this->session->userdata('u_id');
+
+          $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
           //echo " <script> alert ('alsjdklasjdklasj'); </script>";
         $data['book_cat_item'] = $this->Admin_model->book_cat_display();
         
@@ -317,6 +348,10 @@ class Admin extends CI_Controller {
 
               public function request_edit()
               {
+                $id1= $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+
                 $id = $this->uri->segment(3);
         
                 $this->load->helper('form');
@@ -329,7 +364,7 @@ class Admin extends CI_Controller {
                 if($this->form_validation->run() == FALSE)
                 {
                  //echo " <script> alert ('if ma gyu'); </script>";
-                     $this->load->view('admin/header'); 
+                     $this->load->view('admin/header',$data); 
                      $this->load->view('admin/request_edit',$data);
                      
                  }
@@ -346,6 +381,10 @@ class Admin extends CI_Controller {
               public function book_cat_edit()
               {
                 $id = $this->uri->segment(3);
+
+                $id1= $this->session->userdata('u_id');
+
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
         
                 $this->load->helper('form');
                 $this->load->library('form_validation');
@@ -357,7 +396,7 @@ class Admin extends CI_Controller {
                 if($this->form_validation->run() == FALSE)
                 {
                  //echo " <script> alert ('if ma gyu'); </script>";
-                     $this->load->view('admin/header'); 
+                     $this->load->view('admin/header',$data); 
                      $this->load->view('admin/book_cat_edit',$data);
                      
                  }
@@ -385,7 +424,10 @@ class Admin extends CI_Controller {
 
               public function add_book_Category()
               {
-               
+                $id = $this->session->userdata('u_id');
+
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
                 $this->load->helper('form');
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules('txt_cat_add', 'Book Category Name', 'required');
@@ -394,7 +436,7 @@ class Admin extends CI_Controller {
                 if ($this->form_validation->run() == FALSE)
                  {
                   //echo " <script> alert ('if ma gyu'); </script>";
-                      $this->load->view('admin/header'); 
+                      $this->load->view('admin/header',$data); 
                       $this->load->view('admin/book_cat_add');
                   }
                   else
@@ -508,10 +550,14 @@ class Admin extends CI_Controller {
 
               public function notification_add()
               {
+                $id = $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
                 $this->load->helper('form');
                 $this->load->library('form_validation');
 
-                $this->load->view('admin/header');
+                $this->load->view('admin/header',$data);
                 $this->load->view('admin/notification_add');
  
               }
@@ -544,6 +590,11 @@ class Admin extends CI_Controller {
               }
               public function book_update()
               {
+
+                $id1= $this->session->userdata('u_id');
+
+ $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+
                 $id = $this->uri->segment(3);
         
                 $this->load->helper('form');
@@ -554,7 +605,7 @@ class Admin extends CI_Controller {
                 $data['book_item'] = $this->Admin_model->get_book_by_id($id);
 
                  //echo " <script> alert ('if ma gyu'); </script>";
-                     $this->load->view('admin/header'); 
+                     $this->load->view('admin/header',$data); 
                      $this->load->view('admin/book_update',$data);
                    
               }
@@ -633,7 +684,11 @@ class Admin extends CI_Controller {
 
               public function view_profile()
               {
-                $id = $this->uri->segment(3);
+                $id = $this->session->userdata('u_id');
+
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
+                $id = $this->session->userdata('u_id');
         
                 // echo " <script> alert ('".$email_id."'); </script>";
 
@@ -642,7 +697,82 @@ class Admin extends CI_Controller {
 
                 $data['user_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
 
-                    $this->load->view('admin/header'); 
+                    $this->load->view('admin/header',$data); 
+                    $this->load->view('admin/view_profile',$data);
+              }
+
+              public function edit_profile()
+              {
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+               
+                // echo " <script> alert ('Successfully Deleted'); </script>";
+                     
+                $filename = md5(uniqid(rand(), true));
+		            $config = array(
+                'upload_path' => 'uploads',
+                'allowed_types' => "gif|jpg|png|jpeg",
+                'file_name' => $filename
+                );
+
+                $this->load->library('upload', $config);
+                global $user;
+                if($this->upload->do_upload('user_photo_upload'))
+                {
+                  
+
+                    $file_data = $this->upload->data();
+                
+    
+                    $data['file_dir'] = $file_data['file_name'];
+                    $data['date_uploaded'] = date('Y-m-d H:i:s');
+                    $this->load->model('Admin_model');
+
+                    $user = array(
+                      'u_name' => $this->input->post('admin_full_name'),
+                      'u_mno'=> $this->input->post('admin_mobile_no'),
+                      'u_img' => $data['file_dir']
+                    
+                        );
+                        print_r($user);
+                        $id=$this->input->post('id');
+                        $this->Admin_model->update_admin_profile($user,$id);
+                       redirect(base_url().'admin/view_profile','refresh');
+                    }
+                      else
+                          {
+
+                            $user = array(
+                              'u_name' => $this->input->post('admin_full_name'),
+                              'u_mno'=> $this->input->post('admin_mobile_no')
+                            
+                                );
+                                print_r($user);
+                                $id=$this->input->post('id');
+                                $this->Admin_model->update_admin_profile($user,$id);
+                               redirect(base_url().'admin/view_profile','refresh');
+
+                            echo " <script> alert ('Error Try Again'); </script>";
+                          }
+              }
+
+              public function change_password()
+              {
+                $id = $this->session->userdata('u_id');
+
+                $id1= $this->session->userdata('u_id');
+
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+        
+                // echo " <script> alert ('".$email_id."'); </script>";
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $data['user_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
+                    $this->load->view('admin/header',$data); 
                     $this->load->view('admin/view_profile',$data);
               }
 }

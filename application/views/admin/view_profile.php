@@ -28,7 +28,7 @@
                     <div class="col-lg-4 col-xlg-3 col-md-5">
                         <div class="card">
                             <div class="card-body">
-                                <center class="m-t-30"> <img src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>" class="img-circle" width="150" />
+                                <center class="m-t-30"> <img src="<?php echo base_url(); ?>uploads/<?php echo $user_item['u_img']; ?>" class="img-circle" width="150" />
                                     <h4 class="card-title m-t-10"><?php echo $user_item['u_name'] ;?></h4>
                                     <!-- <h6 class="card-subtitle">Accoubts Manager Amix corp</h6> -->
                                     <!-- <div class="row text-center justify-content-md-center">
@@ -168,11 +168,11 @@
                                 </div>
                                 <div class="tab-pane active" id="settings" role="tabpanel">
                                     <div class="card-body">
-                                        <form class="form-horizontal form-material">
+                                        <form enctype="multipart/form-data" class="form-horizontal form-material" method="POST" action="<?php echo base_url('Admin/edit_profile'); ?>">
                                             <div class="form-group">
                                                 <label class="col-md-12">Full Name</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="Johnathan Doe" value="<?php echo $user_item['u_name'] ;?>" class="form-control form-control-line">
+                                                    <input type="text" name="admin_full_name" value="<?php echo $user_item['u_name'] ;?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             <!-- <div class="form-group">
@@ -184,11 +184,11 @@
                                             <div class="form-group">
                                                 <label class="col-md-12">Mobile Number</label>
                                                 <div class="col-md-12">
-                                                    <input type="number" pattern="[+91]{3}[0-9]{10}" value="<?php echo $user_item['u_mno'] ;?>" class="form-control form-control-line">
+                                                    <input type="number" name="admin_mobile_no" pattern="[+91]{3}[0-9]{10}" value="<?php echo $user_item['u_mno'] ;?>" class="form-control form-control-line">
                                                 </div>
                                             </div>
                                             
-                                            <input type="hidden" placeholder="123 456 7890" value="<?php echo $user_item['u_id'] ;?>"  class="form-control form-control-line">
+                                            <input type="hidden" name="id"  value="<?php echo $user_item['u_id'] ;?>"  class="form-control form-control-line">
                                             
                                             <!-- <div class="form-group">
                                                 <label class="col-md-12">User Id</label>
@@ -200,13 +200,13 @@
                                             <div class="form-group">
                                                 <label class="col-md-12">Profile Photo</label>
                                                 <div class="u-img">
-                                                    <img style="height: 70px;width: 70px;margin: 10px;" src="<?php echo base_url(); ?>uploads/<?php echo $user_item['u_img']; ?>" alt="user image">
+                                                    <img style="height: 70px;width: 70px;margin: 10px;"  src="<?php echo base_url(); ?>uploads/<?php echo $user_item['u_img']; ?>" alt="user image">
                                                     </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-12">Upload New Profile Photo</label>
                                                 <div class="col-sm-12">
-                                                <input type="file" value="8d1704457213d58fb724678b8e27daea.jpg" class="form-control" name="book_photo_upload" id="exampleInputFile" aria-describedby="fileHelp">
+                                                <input type="file" name="user_photo_upload" class="form-control" name="book_photo_upload" id="exampleInputFile" aria-describedby="fileHelp">
                                                 </div>
                                             </div>
                                             <div class="form-group">
