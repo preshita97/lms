@@ -55,6 +55,7 @@ class Admin extends CI_Controller {
           $this->load->helper('form');
           $this->load->library('form_validation');
           $data['book_cat_item'] = $this->Admin_model->book_cat_display();
+          $data['author_display'] = $this->Admin_model->author_display();
           $this->load->view('admin/header',$data);
           $this->load->view('admin/book_add',$data);
  
@@ -491,7 +492,7 @@ class Admin extends CI_Controller {
                       'book_add_date' => $this->input->post('txt_book_date'),
                     
                         );
-                        print_r($user);
+                      //  print_r($user);
                         
                         $this->Admin_model->set_book($user);
                         redirect(base_url().'admin/book_table','refresh');
@@ -604,6 +605,8 @@ class Admin extends CI_Controller {
                 $data['book_cat_item'] = $this->Admin_model->book_cat_display();
 
                 $data['book_item'] = $this->Admin_model->get_book_by_id($id);
+
+                $data['author_item'] = $this->Admin_model->author_display();
 
                  //echo " <script> alert ('if ma gyu'); </script>";
                      $this->load->view('admin/header',$data); 
