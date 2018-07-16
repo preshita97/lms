@@ -19,6 +19,8 @@
         <link href="<?php echo base_url(); ?>css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         
         <!-- Mobile Menu -->
+        <link href="<?php echo base_url(); ?>css/jquery.accordion.css" rel="stylesheet" type="text/css">
+        
         <link href="<?php echo base_url(); ?>css/mmenu.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
         

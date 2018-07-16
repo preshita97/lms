@@ -70,6 +70,16 @@ function get_images(){
 
 }
 
+public function book_search($search_book){
+
+  $this->db->like('book_title', $search_book);
+  $this->db->or_like('book_author', $search_book);
+  $this->db->or_like('fk_cat_id', $search_book);
+  $query = $this->db->get('book_tbl');
+  return $query->result();
+}
+
+
 public function book_display()
     {
         $this->db->select('book_tbl.*,book_cat_tbl.*');

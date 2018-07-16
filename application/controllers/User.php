@@ -321,6 +321,18 @@ public function contact_us()
 
 }
 
+public function book_search()
+{
+
+  $user_login=array(
+
+    'book_title'=>$this->input->post('book_title'),
+    'book_author'=>$this->input->post('book_author'),
+    'fk_cat_id'=>$this->input->post('fk_cat_id')
+  
+      );
+}
+
 public function login_check()
 {
 
@@ -391,6 +403,7 @@ public function userdisplay(){
   $this->load->view('student/content.php',$data);
   $this->load->view('student/footer.php',$data);
 }
+
 
 
 public function user_logout(){

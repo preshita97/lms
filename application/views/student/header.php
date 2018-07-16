@@ -17,7 +17,8 @@
         <!-- Fonts -->
         <link href="https://fonts1.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%7CLato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
         <link href="<?php echo base_url(); ?>css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        
+
+        <link href="<?php echo base_url(); ?>css/jquery.accordion.css" rel="stylesheet" type="text/css">
         <!-- Mobile Menu -->
         <link href="<?php echo base_url(); ?>css/mmenu.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>css/mmenu.positioning.css" rel="stylesheet" type="text/css" />
@@ -332,14 +333,15 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
                                 <label class="sr-only" for="keywords">Search by Book Name</label>
-                                <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                <input class="form-control" placeholder="Search by book name" id="keywords" name="book_title" type="text">
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
                                 <select name="catalog" id="catalog" class="form-control">
                                 <?php foreach ($book_item as $tbl): ?>
-                                    <option><?php echo $tbl['book_author']; ?></option>
+                                    <!-- <option value="<?php echo $tbl['book_author']; ?>"></option> -->
+                                    <option value="<?php echo $tbl['book_id']; ?>" ><?php echo $tbl['book_author']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -350,7 +352,7 @@
                                     <!-- <option>All Categories</option> -->
                                     <?php foreach ($cat_item as $tbl): ?>
                                      
-                                    <option><?php echo $tbl['cat_name']; ?></option>
+                                    <option value="<?php echo $tbl['cat_id']; ?>" ><?php echo $tbl['cat_name']; ?></option>
                                     <?php endforeach; ?>   
                                 </select>
                             </div>
