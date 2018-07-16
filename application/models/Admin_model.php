@@ -334,5 +334,13 @@ class Admin_model extends CI_model{
        // $this->db->set($admin);
         return $this->db->update('user_tbl',$admin);
     }
+
+    public function author_display()
+    {
+        $query = $this->db->get('author_tbl');
+        return $query->result_array();
+    }
+
+
 }
 ?>

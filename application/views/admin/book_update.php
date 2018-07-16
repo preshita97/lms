@@ -115,10 +115,17 @@ if($success_message)
 
                                              <div class="col-md-6">
                                                 <div class="form-group">
+                                                
                                                     <label class="control-label">Book Author</label>
-                                                    <input type="text" id="bookauthor" name="txt_book_author" class="form-control" value="<?php echo $book_item['book_author']; ?>">
-                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
-                                                    </div> 
+
+                                                    <select class="form-control custom-select" data-placeholder="Choose a Category" name="txt_book_author"  tabindex="1">
+                                                    <?php foreach ($author_item as $tbl): ?>
+                                                        <option value="<?php echo $tbl['author_id']; ?>" <?php if($tbl['author_id']==$book_item['book_author']) echo "selected='selected'"; ?> ><?php echo $tbl['author_name']; ?></option>
+                                                        
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    
+                                                </div>
                                             </div>
 
                                             <div class="col-md-6">

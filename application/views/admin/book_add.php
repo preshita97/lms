@@ -116,10 +116,19 @@ if($success_message)
 
                                              <div class="col-md-6">
                                                 <div class="form-group">
+                                                
                                                     <label class="control-label">Book Author</label>
-                                                    <input type="text" id="bookauthor" name="txt_book_author" class="form-control" placeholder="Book Author">
-                                                    <!-- <small class="form-control-feedback"> This field has error. </small>  -->
-                                                    </div> 
+
+                                                    <select class="form-control custom-select" data-placeholder="Choose a Category" name="txt_book_author"  tabindex="1">
+                                                    <?php foreach ($author_display as $tbl): ?>
+                                                        <option value="<?php echo $tbl['author_id']; ?>"><?php echo $tbl['author_name']; ?></option>
+                                                        <!-- <option value="Category 2">Category 2</option>
+                                                        <option value="Category 3">Category 5</option>
+                                                        <option value="Category 4">Category 4</option> -->
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    
+                                                </div>
                                             </div>
 
                                             <div class="col-md-6">
