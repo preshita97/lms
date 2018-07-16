@@ -326,11 +326,22 @@ public function book_search()
 
   $user_login=array(
 
+    
     'book_title'=>$this->input->post('book_title'),
-    'book_author'=>$this->input->post('book_author'),
+    'book_author'=>$this->input->post('book_author_name'),
     'fk_cat_id'=>$this->input->post('fk_cat_id')
+    
   
       );
+
+      echo "title name       ".$user_login['book_title'];
+      echo "author name       ".$user_login['book_author'];
+
+      $data['book_item'] = $this->User_model->book_display();
+      $data['author_item'] = $this->User_model->author_display();
+      $data['cat_item'] = $this->User_model->cat_display();
+      $this->load->view('student/header.php',$data);
+      $this->load->view('student/footer.php',$data);
 }
 
 public function login_check()

@@ -95,6 +95,26 @@ public function book_display()
         $query = $this->db->get('book_cat_tbl');
         return $query->result_array();
     }
+
+    public function author_display()
+    {
+        $query = $this->db->get('author_tbl');
+        return $query->result_array();
+    }
+
+    public function book_display_distinct()
+    {
+
+
+    //   $query=$this->db->query("select DISTINCT(book_author) from book_tbl");
+    //  return $query->row_array();
+
+      $this->db->select('DISTINCT(book_author),book_id');
+        $this->db->from('book_tbl');
+        $this->db->distinct();
+        $query = $this->db->get();
+        return $query->result_array();
+    }
    
 }
 

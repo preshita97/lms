@@ -329,7 +329,7 @@
             <div class="container">
                 <div class="filter-box">
                     <h3>What are you looking for at the library?</h3>
-                    <form action="http://libraria.demo.presstigers.com/index.html" method="get">
+                    <form action="<?php echo base_url('User/book_search'); ?>" method="POST">
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
                                 <label class="sr-only" for="keywords">Search by Book Name</label>
@@ -338,17 +338,17 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
-                                <select name="catalog" id="catalog" class="form-control">
-                                <?php foreach ($book_item as $tbl): ?>
-                                    <!-- <option value="<?php echo $tbl['book_author']; ?>"></option> -->
-                                    <option value="<?php echo $tbl['book_id']; ?>" ><?php echo $tbl['book_author']; ?></option>
+                                <select id="catalog" name="book_author_name" class="form-control">
+                                <?php foreach ($author_item as $tbl): ?>
+                                    <!-- <option value="<?php echo $tbl['author_name']; ?>"></option> -->
+                                    <option value="<?php echo $tbl['author_id']; ?>"><?php echo $tbl['author_name']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
-                                <select name="category" id="category" class="form-control">
+                                <select  id="category" name="fk_cat_id" class="form-control">
                                     <!-- <option>All Categories</option> -->
                                     <?php foreach ($cat_item as $tbl): ?>
                                      
