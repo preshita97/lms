@@ -381,6 +381,7 @@
                                 <li><a href="<?php echo base_url('Admin/Request_add');?>">Add New Request</a></li>
                                 <li><a href="<?php echo base_url('Admin/book_add');?>">Add New Book</a></li>
                                 <li><a href="<?php echo base_url('Admin/notification_add');?>">Add New Notification</a></li>
+                                <li><a href="<?php echo base_url('Admin/add_author');?>">Add New Author</a></li>
                                 
                             </ul>
                         </li>

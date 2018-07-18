@@ -367,5 +367,15 @@ class Admin_model extends CI_model{
 
     }
 
+    public function set_author_name()
+    {
+        $data = array(
+            
+            'author_name' => $this->input->post('txt_author_add')
+        );
+
+        return $this->db->insert('author_tbl', $data);
+    }
+
 }
 ?>

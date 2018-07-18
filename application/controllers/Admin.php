@@ -850,4 +850,32 @@ class Admin extends CI_Controller {
                    
               }
 
+              public function add_author()
+              {
+                $id = $this->session->userdata('u_id');
+
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('txt_author_add', 'Author Name', 'required');
+                //echo " <script> alert ('Successfully Deleted'); </script>";
+
+                if ($this->form_validation->run() == FALSE)
+                 {
+                  //echo " <script> alert ('if ma gyu'); </script>";
+                      $this->load->view('admin/header',$data); 
+                      $this->load->view('admin/author_add');
+                  }
+                  else
+                  {
+                      $this->Admin_model->set_author_name();
+
+                      // $this->load->view('admin/header'); 
+                      redirect(base_url().'admin/author_table','refresh');
+                      
+                  }
+                
+              }
+
 }
