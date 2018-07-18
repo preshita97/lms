@@ -70,13 +70,13 @@ function get_images(){
 
 }
 
-public function book_search($search_book){
+public function book_search($title,$author,$catg){
 
-  $this->db->like('book_title', $search_book);
-  $this->db->or_like('book_author', $search_book);
-  $this->db->or_like('fk_cat_id', $search_book);
+  $this->db->like('book_title', $title);
+  $this->db->or_like('book_author', $author);
+  $this->db->or_like('fk_cat_id', $catg);
   $query = $this->db->get('book_tbl');
-  return $query->result();
+  return $query->result_array();
 }
 
 
@@ -88,6 +88,26 @@ public function book_display()
 
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function update_user_profile($user,$id)
+    {
+        $this->load->helper('url');
+       
+        // $data = array(
+            
+        //             'isbn_no' => $user['isbn_no']
+        // );     
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('u_id', $id);
+       // $this->db->set($admin);
+        return $this->db->update('user_tbl',$user);
+    }
+
+    public function get_user_by_id($id)
+    {
+        $query = $this->db->get_where('user_tbl', array('u_id' => $id));
+        return $query->row_array();
     }
 
     public function cat_display()

@@ -17,7 +17,7 @@
                                                         <form class="login" method="get">
                                                             <p class="form-row form-row-first input-required">
                                                                 <label >
-                                                                    <span class="first-letter" style="color: white;">Name : <?php echo $this->session->userdata('u_name'); ?></span>  
+                                                                    <span class="first-letter" style="color: white;">Name : <?php echo $user_item['u_name'] ;?></span>  
                                                                     
                                                                     
                                                                 </label>
@@ -27,14 +27,14 @@
                                                              </br>
                                                             <p class="form-row form-row-last input-required">
                                                                 <label>
-                                                                    <span class="first-letter" style="color: white;">Mobile no : <?php echo $this->session->userdata('u_mno'); ?></span>  
+                                                                    <span class="first-letter" style="color: white;">Mobile no : <?php echo $user_item['u_mno'] ;?></span>  
                                                                     
                                                                 </label>
                                                             
                                                             </p>
                                                             <p class="form-row input-required">
                                                                 
-                                                                <img style="height: 160px;width: 160px;" src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>"
+                                                                <img style="height: 160px;width: 160px;" src="<?php echo base_url(); ?>uploads/<?php echo $user_item['u_img'] ;?>"
                                                                                                                                    
                                                                 <input type="password" id="password1" name="uphoto" class="input-text">
                                                             </p> 
@@ -56,32 +56,34 @@
                                                             <span class="underline left"></span>
                                                             
                                                         </div>
-                                                        <form class="login" method="post">
+                                                        <form enctype="multipart/form-data" class="login" method="POST" action="<?php echo base_url('User/edit_profile'); ?>">
                                                             <p class="form-row form-row-first input-required">  Name : 
                                                                 <label> 
-                                                                    <span class="first-letter"> <?php echo $this->session->userdata('u_name'); ?></span>  
+                                                                    <!-- <span class="first-letter" ><?php echo $user_item['u_name'] ;?> </span>  -->
+                                                                    
                                                                     
                                                                 </label>
                                                                 
-                                                                <input type="text" id="username1" name="username" class="input-text">
+                                                                <input type="text" id="username1" name="username"  class="input-text" value="<?php echo $user_item['u_name'] ;?>">
+                                                                <input type="hidden"  name="id" value="<?php echo $this->session->userdata('u_id'); ?>" class="input-text">
                                                             </p>
                                                             <p class="form-row input-required">Mobile No :
                                                                 <label>
-                                                                    <span class="first-letter"> <?php echo $this->session->userdata('u_mno'); ?> </span>  
+                                                                    <!-- <span class="first-letter"> <?php echo $user_item['u_mno'] ;?> </span>   -->
                                                                     
                                                                 </label>
-                                                                <input type="password" id="password1" name="password" class="input-text">
+                                                                <input type="text" id="mno" value="<?php echo $user_item['u_mno'] ;?>" name="mno" class="input-text">
                                                             </p>    
 
                                                             <p class="form-row input-required">
                                                                 
-                                                                <img style="height: 50px;width: 50px;" src="<?php echo base_url(); ?>uploads/<?php echo $this->session->userdata('u_img'); ?>">
+                                                                <img style="height: 50px;width: 50px;" src="<?php echo base_url(); ?>uploads/<?php echo $user_item['u_img'] ;?>">
                                                                 
-                                                                <input type="file"  class="input-text" name="book_photo_upload" id="exampleInputFile" aria-describedby="fileHelp">
+                                                                <input type="file"  class="input-text" name="user_photo_upload" id="exampleInputFile" aria-describedby="fileHelp">
                                                             </p>
 
                                                             <div class="clear"></div>
-                                                            <input type="submit" value="Edit" name="signup" class="button btn btn-default">
+                                                            <input type="submit" value="Edit" class="button btn btn-default">
                                                             <div class="clear"></div>
                                                         </form> 
                                                     </div>

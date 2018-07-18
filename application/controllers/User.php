@@ -118,21 +118,27 @@ public function changepass()
 
 public function viewprofile()
 {
+        $id = $this->session->userdata('u_id');
 
-  $this->load->view('student/header1.php');
-  $this->load->view('student/viewprofile.php');
-  $this->load->view('student/footer.php');
+                //$data['user_header_item'] = $this->User_model->get_user_by_id($id);
+
+                //$id = $this->session->userdata('u_id');
+        
+                // echo " <script> alert ('".$email_id."'); </script>";
+
+                // $this->load->helper('form');
+                // $this->load->library('form_validation');
+
+                $data['user_item'] = $this->User_model->get_user_by_id($id);
+
+
+  $this->load->view('student/header1.php',$data);
+  $this->load->view('student/viewprofile.php',$data);
+  $this->load->view('student/footer.php',$data);
   
 }
 
-public function vp()
-{
 
-  $this->load->view('student/header1.php');
-  $this->load->view('student/vp.php');
-  $this->load->view('student/footer.php');
-  
-}
 
 public function bookdisplay()
 {
@@ -334,15 +340,80 @@ public function book_search()
   
       );
 
-      echo "title name       ".$user_login['book_title'];
-      echo "author name       ".$user_login['book_author'];
+      // echo "title name       ".$user_login['book_title'];
+      
+      // echo "author name       ".$user_login['book_author'];
+      // echo "author name       ".$user_login['fk_cat_id'];
+
+      $data['search_item'] = $this->User_model->book_search($user_login['book_title'],$user_login['book_author'],$user_login['fk_cat_id']);
 
       $data['book_item'] = $this->User_model->book_display();
       $data['author_item'] = $this->User_model->author_display();
       $data['cat_item'] = $this->User_model->cat_display();
+
       $this->load->view('student/header.php',$data);
+      $this->load->view('student/book_search.php',$data);
       $this->load->view('student/footer.php',$data);
+      //print_r($data['search_item']);
+
+
 }
+
+              public function edit_profile()
+              {
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+               
+                // echo " <script> alert ('Successfully Deleted'); </script>";
+                     
+                $filename = md5(uniqid(rand(), true));
+		            $config = array(
+                'upload_path' => 'uploads',
+                'allowed_types' => "gif|jpg|png|jpeg",
+                'file_name' => $filename
+                );
+
+                $this->load->library('upload', $config);
+                global $user;
+                if($this->upload->do_upload('user_photo_upload'))
+                {
+                  
+
+                    $file_data = $this->upload->data();
+                
+    
+                    $data['file_dir'] = $file_data['file_name'];
+                    $data['date_uploaded'] = date('Y-m-d H:i:s');
+                    $this->load->model('User_model');
+
+                    $user = array(
+                      'u_name' => $this->input->post('username'),
+                      'u_mno'=> $this->input->post('mno'),
+                      'u_img' => $data['file_dir']
+                    
+                        );
+                        print_r($user);
+                        $id=$this->input->post('id');
+                        $this->User_model->update_user_profile($user,$id);
+                       redirect(base_url().'User/viewprofile','refresh');
+                    }
+                      else
+                          {
+
+                            $user = array(
+                              'u_name' => $this->input->post('username'),
+                              'u_mno'=> $this->input->post('mno')
+                            
+                                );
+                                print_r($user);
+                                $id=$this->input->post('id');
+                                $this->User_model->update_user_profile($user,$id);
+                               redirect(base_url().'User/viewprofile','refresh');
+
+                            echo " <script> alert ('Error Try Again'); </script>";
+                          }
+              }
 
 public function login_check()
 {
