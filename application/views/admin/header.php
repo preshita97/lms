@@ -372,7 +372,7 @@
                                 <li><a href="<?php echo base_url('Admin/book_table');?>">Book Table</a></li>
                                 <li><a href="<?php echo base_url('Admin/book_circulation_table');?>">Book Circulation Table</a></li>
                                 <li><a href="<?php echo base_url('Admin/book_cat_table');?>">Book Category Table</a></li>
-                                
+                                <li><a href="<?php echo base_url('Admin/author_table');?>">Author Table</a></li>
                             </ul>
                         </li>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Forms</span></a>

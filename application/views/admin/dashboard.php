@@ -372,6 +372,7 @@
                                 <li><a href="<?php echo base_url('Admin/book_table');?>">Book Table</a></li>
                                 <li><a href="<?php echo base_url('Admin/book_circulation_table');?>">Book Circulation Table</a></li>
                                 <li><a href="<?php echo base_url('Admin/book_cat_table');?>">Book Category Table</a></li>
+                                <li><a href="<?php echo base_url('Admin/author_table');?>">Author Table</a></li>
                                 
                             </ul>
                         </li>

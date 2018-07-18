@@ -83,7 +83,7 @@ class Admin extends CI_Controller {
         $data['title'] = '';
         $data['book_item'] = $this->User_model->book_display();
         $data['cat_item'] = $this->User_model->cat_display();
-        
+        $data['author_item'] = $this->User_model->author_display();
 
         $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
 
@@ -595,7 +595,7 @@ class Admin extends CI_Controller {
 
                 $id1= $this->session->userdata('u_id');
 
- $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
 
                 $id = $this->uri->segment(3);
         
@@ -779,4 +779,75 @@ class Admin extends CI_Controller {
                     $this->load->view('admin/header',$data); 
                     $this->load->view('admin/view_profile',$data);
               }
+
+         public function author_table()
+        {
+          $id = $this->session->userdata('u_id');
+
+          $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+          //echo " <script> alert ('alsjdklasjdklasj'); </script>";
+        $data['author_item'] = $this->Admin_model->author_display();
+        
+        //   if (empty($data['request_item']))
+        // {
+        //     show_404();
+        // }
+ 
+        // //$data[''] = $data['news_item']['title'];
+ 
+        $this->load->view('admin/header', $data);
+        $this->load->view('admin/author_table', $data);
+        //$this->load->view('admin/request_tbl', $data);
+        //$this->load->view('templates/footer');
+        }
+
+        public function author_delete()
+        {
+          $id = $this->uri->segment(3);
+        
+        if (empty($id))
+        {
+            show_404();
+        }
+      
+        $this->Admin_model->author_delete($id);
+        $this->session->set_flashdata('success_message', 'Successfully Deleted.');
+      
+        redirect(base_url().'admin/author_table','refresh');
+        }
+
+
+              public function author_update()
+              {
+
+                $id = $this->uri->segment(3);
+
+                $id1= $this->session->userdata('u_id');
+
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+        
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                $data['author_item'] = $this->Admin_model->get_author_by_id($id);
+
+                $this->form_validation->set_rules('txt_author_edit', 'Book Category Name', 'required');
+
+                if($this->form_validation->run() == FALSE)
+                {
+                 //echo " <script> alert ('if ma gyu'); </script>";
+                     $this->load->view('admin/header',$data); 
+                     $this->load->view('admin/author_update',$data);
+                     
+                 }
+                 else
+                 {
+                  //echo " <script> alert ('".$id."'); </script>"; 
+                     $this->Admin_model->edit_author_name($id);
+                     // $this->load->view('admin/header'); 
+                     redirect(base_url().'admin/author_table','refresh');   
+                 }
+                   
+              }
+
 }

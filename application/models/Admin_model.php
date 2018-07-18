@@ -340,7 +340,32 @@ class Admin_model extends CI_model{
         $query = $this->db->get('author_tbl');
         return $query->result_array();
     }
+    
+    public function author_delete($id)
+    {
+        $this->db->where('author_id', $id);
+        return $this->db->delete('author_tbl');
+    }
 
+    public function get_author_by_id($id)
+    {
+        $query = $this->db->get_where('author_tbl', array('author_id' => $id));
+        return $query->row_array();
+    }
+
+    public function edit_author_name($id)
+    {
+        $this->load->helper('url');
+       
+        $data = array(
+            
+            'author_name' => $this->input->post('txt_author_edit')
+        );
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('author_id', $id);
+        return $this->db->update('author_tbl', $data);
+
+    }
 
 }
 ?>
