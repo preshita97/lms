@@ -483,6 +483,7 @@ public function userdisplay(){
   $data['book_item'] = $this->User_model->book_display();
   $data['cat_item'] = $this->User_model->cat_display();
   $data['author_item'] = $this->User_model->author_display();
+  $data['book_author_item'] = $this->User_model->book_author_display();
   $this->load->view('student/header.php',$data);
   $this->load->view('student/content.php',$data);
   $this->load->view('student/footer.php',$data);
