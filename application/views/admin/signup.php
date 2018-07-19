@@ -62,11 +62,11 @@
 
                   if($success_msg)
                   {
-                          echo $success_msg;
+                    echo "alert('".$success_msg."');";
                   }
                   elseif($error_msg)
                   {
-                    echo $error_msg;
+                    echo "alert('".$error_msg."');";
                   }
                   else
                   {
