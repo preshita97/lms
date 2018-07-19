@@ -377,5 +377,50 @@ class Admin_model extends CI_model{
         return $this->db->insert('author_tbl', $data);
     }
 
+    public function change_password_admin($user,$id)
+    {
+        $this->load->helper('url');
+
+        $user= array(
+            'email_id'=>$this->input->post('u_emailid'),
+            'old_password' => $this->input->post('old_admin_password'),
+            'new_password'=> $this->input->post('u_password'),
+            '$id' => $this->session->userdata('u_id')
+            );
+
+        $this->db->select('*');
+        $this->db->from('user_tbl');
+        $this->db->where('u_password',$user['old_password']);
+        $this->db->where('u_id',$id);
+        $query=$this->db->get();
+
+        if($query->num_rows()>0){
+            
+            $data = array(
+            
+                'u_password' => $this->input->post('u_password')
+            );
+            //echo " <script> alert ('".$id."'); </script>";        
+            $this->db->where('u_id', $id);
+            return $this->db->update('user_tbl', $data);
+            
+        }else{
+            return false;
+        }
+       
+
+        
+
+
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('u_email_id', $admin);
+        return $this->db->update('user_tbl', $data);
+
+        // $this->db->where('u_email_id', $admin);
+        // $this->db->set($new_password);
+        // return $this->db->update('user_tbl',$admin);
+
+    }
+
 }
 ?>

@@ -42,11 +42,11 @@
 
                   if($success_msg)
                   {
-                          echo $success_msg;
+                    echo "alert('".$success_msg."');";
                   }
                   elseif($error_msg)
                   {
-                    echo $error_msg;
+                    echo "<script> alert('".$error_msg."'); </script>";
                   }
                   else
                   {

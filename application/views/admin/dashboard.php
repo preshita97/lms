@@ -385,8 +385,9 @@
                                 
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Password Management</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Management</span></a>
                             <ul aria-expanded="false" class="collapse">
+                            <li><a href="<?php echo base_url('Admin/view_profile/');?>">View Profile</a></li>
                                 <li><a href="<?php echo base_url('Admin/change_password/'.$this->session->userdata('u_id'));?>">Change Password</a></li>
                                 
                             </ul>

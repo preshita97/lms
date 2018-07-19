@@ -84,8 +84,7 @@ class Admin extends CI_Controller {
         $data['book_item'] = $this->User_model->book_display();
         $data['cat_item'] = $this->User_model->cat_display();
         $data['author_item'] = $this->User_model->author_display();
-        
-        
+        $data['book_author_item'] = $this->User_model->book_author_display();
         $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
 
         // $this->load->view('User/home', $data);
@@ -119,10 +118,10 @@ class Admin extends CI_Controller {
 
          $data['user_item'] = $this->Admin_model->user_display();
         
-        if (empty($data['user_item']))
-        {
-            show_404();
-        }
+        // if (empty($data['user_item']))
+        // {
+        //     show_404();
+        // }
  
         $this->load->view('admin/header', $data);
         $this->load->view('admin/user_tbl', $data);
@@ -144,7 +143,7 @@ class Admin extends CI_Controller {
               $this->Admin_model->user_delete($id);
               $this->session->set_flashdata('success_message', 'Successfully Deleted.');
               //echo " <script> alert ('Successfully Deleted'); </script>";        
-             // redirect(base_url().'admin/users_table','refresh');
+              //redirect(base_url().'admin/users_table','refresh');
               }
 
         public function request_table()
@@ -157,10 +156,10 @@ class Admin extends CI_Controller {
           //echo " <script> alert ('alsjdklasjdklasj'); </script>";
           $data['request_item'] = $this->Admin_model->request_display();
         
-          if (empty($data['request_item']))
-        {
-            show_404();
-        }
+        //   if (empty($data['request_item']))
+        // {
+        //     show_404();
+        // }
  
         //$data[''] = $data['news_item']['title'];
  
@@ -740,7 +739,7 @@ class Admin extends CI_Controller {
                       'u_img' => $data['file_dir']
                     
                         );
-                        print_r($user);
+                      //  print_r($user);
                         $id=$this->input->post('id');
                         $this->Admin_model->update_admin_profile($user,$id);
                        redirect(base_url().'admin/view_profile','refresh');
@@ -764,21 +763,83 @@ class Admin extends CI_Controller {
 
               public function change_password()
               {
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                
                 $id = $this->session->userdata('u_id');
 
                 $id1= $this->session->userdata('u_id');
 
                 $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
-        
-                // echo " <script> alert ('".$email_id."'); </script>";
 
+                $this->load->view('admin/header',$data);
+                $this->load->view('admin/change_password',$data);
+                
+                // $user= array(
+                //   'email_id'=>$this->input->post('u_emailid'),
+                //   'old_password' => $this->input->post('old_admin_password'),
+                //   'new_password'=> $this->input->post('u_password')
+                //   );
+                
+                // $data['user_item'] =$this->Admin_model->get_user_by_id_dashboard($id);
+
+                //  print_r($user_item);
+                // //  global $old_pwd;
+
+                //  $old_pwd=$user_item['u_password'];
+
+                // if($old_pwd==$user['old_password'])
+                // {
+                  // $this->Admin_model->change_password_admin($user_header_item['u_email_id'],$user['new_password']);
+               // }
+                // else{
+                  
+                //   echo "you entered wrong old password  ";
+                  
+                //   $this->load->view('admin/header',$data); 
+                //   $this->load->view('admin/change_password',$data);
+
+                // }
+
+              }
+
+              public function change_password_admin()
+              {
                 $this->load->helper('form');
                 $this->load->library('form_validation');
+                
+                $id = $this->session->userdata('u_id');
 
-                $data['user_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+                $id1= $this->session->userdata('u_id');
 
-                    $this->load->view('admin/header',$data); 
-                    $this->load->view('admin/view_profile',$data);
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+
+
+               // $id1= $this->session->userdata('u_id');
+                
+                $user= array(
+                    'email_id'=>$this->input->post('u_emailid'),
+                    'old_password' => $this->input->post('old_admin_password'),
+                    'new_password'=> $this->input->post('u_password'),
+                    '$id' => $this->session->userdata('u_id')
+                    );
+
+                $change_pwd= $this->Admin_model->change_password_admin($user,$id);
+
+
+                if($change_pwd)
+                {
+                  //echo " <script> alert ('success'); </script>";
+                  $this->load->view('admin/header',$data); 
+                   $this->load->view('admin/change_password',$data);
+                }
+                else
+                {
+                  //echo " <script> alert ('not success'); </script>";
+                  $this->load->view('admin/header',$data); 
+                   $this->load->view('admin/change_password',$data);
+                }
               }
 
          public function author_table()
