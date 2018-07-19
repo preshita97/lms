@@ -415,6 +415,7 @@ public function book_search()
                           }
               }
 
+            
 public function login_check()
 {
 
@@ -507,6 +508,8 @@ public function user_logout(){
   //$this->session->sess_destroy();
   redirect(base_url().'User/userdisplay', 'refresh');
 }
+
+
 
 }
 

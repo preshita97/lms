@@ -176,7 +176,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="<?php echo base_url('User/changepass'); ?>">Change Password</a></li>
                                                 <li><a href="<?php echo base_url('User/viewprofile'); ?>">View Profile</a></li>
-                                                <li><a href="<?php echo base_url('User/editprofile'); ?>">Edit Profile</a></li>
+                                                
                                                 <li><a href="<?php echo base_url('User/user_logout'); ?>">Logout</a></li>
                                             </ul>
                                         </li>

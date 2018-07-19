@@ -135,6 +135,30 @@ public function book_display()
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function book_author_display()
+    {
+        $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
+        $this->db->from('book_tbl');
+        $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+        $this->db->join('author_tbl', 'book_tbl.book_author = author_tbl.author_id');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function saveNewPass($new_pass){
+      $array = array(
+              'password'=>$new_pass
+              );
+      $this->db->where('username', $this->session->userdata('username'));
+      $query = $this->db->update('users');
+      if($query){
+        return true;
+      }else{
+        return false;
+      }
+    }  
    
 }
 

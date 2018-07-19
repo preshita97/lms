@@ -6,17 +6,16 @@
                         <span class="underline center"></span>
                         <p class="lead">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
                     </div>
+                    
                     <div class="filter-buttons">
                         <div class="filter btn" data-filter="all">All Releases</div>
-                        <div class="filter btn" data-filter=".adults">Adults</div>
-                        <div class="filter btn" data-filter=".kids-teens">Kids &amp; Teens</div>
-                        <div class="filter btn" data-filter=".video">Video</div>
-                        <div class="filter btn" data-filter=".audio">Audio</div>
-                        <div class="filter btn" data-filter=".books">Books</div>
-                        <div class="filter btn" data-filter=".magazines">Magazines</div>
+                    <?php foreach ($cat_item as $tbl): ?>
+                        <div class="filter btn" data-filter=".adults"><a href="#"><?php echo $tbl['cat_name']; ?></a></div>
+                        
+                    <?php endforeach; ?>
                     </div>
                     <div id="category-filter">
-                    <?php foreach ($book_item as $tbl): ?>
+                    <?php foreach ($book_author_item as $tbl): ?>
                         <ul class="category-list">
                             <li class="category-item adults">
                                 <figure>
@@ -28,19 +27,18 @@
                                         </div>
                                         <div class="info-block">
                                         <h4><li><strong>Book Title :</strong><?php echo $tbl['book_title']; ?></li></h4>    
-                                            <span class="author"><strong>Author:</strong><?php echo $tbl['book_author']; ?></span>
+                                            <span class="author"><strong>Author:</strong><?php echo $tbl['author_name']; ?></span>
                                             <span class="author"><strong>ISBN:</strong> <?php echo $tbl['isbn_no']; ?></span>
+                                            <span class="author"><strong>Book Edition:</strong> <?php echo $tbl['book_edition']; ?></span>
+                                            <span class="author"><strong>Book Publisher:</strong> <?php echo $tbl['book_publisher']; ?></span>
+                                            <span class="author"><strong>Book Edition Year:</strong> <?php echo $tbl['book_edition_year']; ?></span>
                                             <div class="rating">
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
+                                                
                                             </div>
-                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                            
                                             <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
                                             <ol>
-                                                <li>
+                                                <!-- <li>
                                                     <a href="#" data-toggle="blog-tags" data-placement="top" title="Add To Cart">
                                                         <i class="fa fa-shopping-cart"></i>
                                                     </a>
@@ -49,13 +47,13 @@
                                                     <a href="#" data-toggle="blog-tags" data-placement="top" title="Add To List">
                                                         <i class="fa fa-heart"></i>
                                                     </a>
-                                                </li>
+                                                </li> -->
                                                 <li>
-                                                    <a href="#" data-toggle="blog-tags" data-placement="top" title="Send Email">
-                                                        <i class="fa fa-envelope"></i>
+                                                    <a href="#" data-toggle="blog-tags" data-placement="top" title="Add To List">
+                                                        <i class="fa fa-heart"></i>
                                                     </a>
                                                 </li>
-                                                <li>
+                                                <!-- <li>
                                                     <a href="#" data-toggle="blog-tags" data-placement="top" title="Share This">
                                                         <i class="fa fa-share-alt"></i>
                                                     </a>
@@ -64,7 +62,7 @@
                                                     <a href="#" data-toggle="blog-tags" data-placement="top" title="View Image">
                                                         <i class="fa fa-search"></i>
                                                     </a>
-                                                </li>
+                                                </li> -->
                                             </ol>
                                         </div>
                                     </figcaption>

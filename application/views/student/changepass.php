@@ -15,27 +15,27 @@
                                                             <span class="underline left"></span>
                                                             
                                                         </div>
-                                                        <form class="login" method="post">
+                                                        <form class="login" action="<?php echo base_url().'student/changepass'?>" method="post">
                                                             <p class="form-row form-row-first input-required">
                                                                 <label>
                                                                     <span class="first-letter">Old Password</span>  
                                                                     
                                                                 </label>
-                                                                <input type="password" id="username1" name="coldpass" class="input-text">
+                                                                <input type="password" id="username1" name="old_password" class="input-text">
                                                             </p>
                                                             <p class="form-row input-required">
                                                                 <label>
                                                                     <span class="first-letter">New Password</span>  
                                                                     
                                                                 </label>
-                                                                <input type="password" id="password1" name="cnewpass" class="input-text">
+                                                                <input type="password" id="password1" name="newpassword"  class="input-text">
                                                             </p>                               
                                                             <p class="form-row input-required">
                                                                 <label>
                                                                     <span class="first-letter">Confirm Password</span>  
                                                                     
                                                                 </label>
-                                                                <input type="password" id="password1" name="ccpass" class="input-text">
+                                                                <input type="password" id="password1" name="re_password" class="input-text">
                                                             </p>                                                                                
                                                             <div class="clear"></div>
                                                             <input type="submit" value="Change" name="Change" class="button btn btn-default">
