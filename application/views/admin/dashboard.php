@@ -51,7 +51,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="<?php echo base_url('Admin/dashboard'); ?>">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -388,6 +388,7 @@
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Management</span></a>
                             <ul aria-expanded="false" class="collapse">
                             <li><a href="<?php echo base_url('Admin/view_profile/');?>">View Profile</a></li>
+                            <li><a href="<?php echo base_url('Admin/view_profile/');?>">Edit Profile</a></li>
                                 <li><a href="<?php echo base_url('Admin/change_password/'.$this->session->userdata('u_id'));?>">Change Password</a></li>
                                 
                             </ul>
@@ -493,7 +494,7 @@
 
                 </div>
 
-<div class="card-group">
+            <div class="card-group">
                 <div class="card">
                         <div class="card-body">
                             <div class="row">
