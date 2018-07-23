@@ -16,14 +16,14 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Table basic</h3>
+                    <h3 class="text-themecolor">Request Availability Status Edit Form</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
+                    <!-- <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item">pages</li>
                         <li class="breadcrumb-item active">Table basic</li>
-                    </ol>
+                    </ol> -->
                 </div>
                 
             </div>
@@ -49,7 +49,7 @@ if($success_message)
                     <div class="col-lg-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white">Request Add Form </h4>
+                                <h4 class="m-b-0 text-white">Request Edit Form </h4>
                             </div>
                             <div class="card-body">
                                 <form method="POST">

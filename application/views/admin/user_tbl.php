@@ -16,14 +16,14 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Table basic</h3>
+                    <h3 class="text-themecolor">User Table</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
+                    <!-- <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         <li class="breadcrumb-item">pages</li>
                         <li class="breadcrumb-item active">Table basic</li>
-                    </ol>
+                    </ol> -->
                 </div>
                 
             </div>
@@ -41,7 +41,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">User</h4>
+                                <h4 class="card-title">User Table</h4>
                                 <h6 class="card-subtitle"></h6>
                                 <div class="table-responsive m-t-40">
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
@@ -155,7 +155,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2017 Admin Press Admin by themedesigner.in </footer>
+            <!-- <footer class="footer"> © 2017 Admin Press Admin by themedesigner.in </footer> -->
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
