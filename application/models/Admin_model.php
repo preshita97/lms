@@ -422,5 +422,10 @@ class Admin_model extends CI_model{
 
     }
 
+    public function request_update_book_avail()
+    {
+
+    }
+
 }
 ?>

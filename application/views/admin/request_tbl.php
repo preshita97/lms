@@ -84,8 +84,9 @@
                                             <td><?php echo $tbl['req_date']; ?></td>
                                             <td><?php echo $tbl['req_book_status']; ?></td>
                                             <td>
-                                            <a href="<?php echo base_url('Admin/request_edit/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return edit()"  class="btn btn-success btn-circle"><i class="mdi mdi-grease-pencil">  </i> </button></a>
-                                            <a href="<?php echo base_url('Admin/request_delete/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return del()"  class="btn btn-danger btn-circle"><i class="mdi mdi-delete-forever">  </i> </button></a></td>
+                                            <a href="<?php echo base_url('Admin/request_edit/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return edit()"  class="btn waves-effect waves-light btn-success"> Accept</button></a>
+                                            
+                                            <!-- <a href="<?php echo base_url('Admin/request_delete/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return del()"  class="btn btn-danger btn-circle"><i class="mdi mdi-delete-forever">  </i> </button></a>--></td> 
                                          </tr>
                                         <?php endforeach; ?>
                                         </tbody>
