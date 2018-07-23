@@ -109,12 +109,51 @@ public function about_us()
 
 public function changepass()
 {
+  $this->load->helper('form');
+  $this->load->library('form_validation');
+                    
+  $id = $this->session->userdata('u_id');
+
 
   $this->load->view('student/header1.php');
   $this->load->view('student/changepass.php');
   $this->load->view('student/footer.php');
   
 }
+
+public function change_password_user()
+              {
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                
+                $id = $this->session->userdata('u_id');
+
+                $user= array(
+                    
+                    'old_password' => $this->input->post('old_password'),
+                    'new_password'=> $this->input->post('newpassword')
+                
+                    );
+                 //   print_r ($user);
+
+                 $change_pwd= $this->User_model->change_password_user($user,$id);
+
+
+                if($change_pwd)
+                {
+                //  echo " <script> alert ('success'); </script>";
+                  $this->load->view('student/header1'); 
+                   $this->load->view('student/changepass');
+                   $this->load->view('student/footer');
+                }
+                else
+                {
+                  //echo " <script> alert ('not success'); </script>";
+                  $this->load->view('student/header1'); 
+                   $this->load->view('student/changepass');
+                   $this->load->view('student/footer');
+                }
+              }
 
 public function viewprofile()
 {
@@ -508,6 +547,8 @@ public function user_logout(){
   //$this->session->sess_destroy();
   redirect(base_url().'User/userdisplay', 'refresh');
 }
+
+
 
 
 

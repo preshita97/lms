@@ -1,3 +1,15 @@
+<script type="text/javascript">
+    function checkPasswordMatch() {
+        var password = $("#txtNewPassword").val();
+        var confirmPassword = $("#txtConfirmPassword").val();
+
+        if (password != confirmPassword)
+            $("#divCheckPasswordMatch").html("Passwords do not match!");
+        else
+            $("#divCheckPasswordMatch").html("Passwords match.");
+    }
+</script>
+
 <div id="content" class="site-content">
             <div id="primary" class="content-area">
                 <main id="main" class="site-main">
@@ -15,11 +27,11 @@
                                                             <span class="underline left"></span>
                                                             
                                                         </div>
-                                                        <form class="login" action="<?php echo base_url().'student/changepass'?>" method="post">
+                                                        <form class="login" action="<?php echo base_url().'User/change_password_user'?>" method="post">
                                                             <p class="form-row form-row-first input-required">
                                                                 <label>
                                                                     <span class="first-letter">Old Password</span>  
-                                                                    
+                                                                    <!-- <?php  $this->session->userdata('u_password');?> -->
                                                                 </label>
                                                                 <input type="password" id="username1" name="old_password" class="input-text">
                                                             </p>
@@ -28,15 +40,17 @@
                                                                     <span class="first-letter">New Password</span>  
                                                                     
                                                                 </label>
-                                                                <input type="password" id="password1" name="newpassword"  class="input-text">
+                                                                <input type="password" id="txtNewPassword"  name="newpassword" pattern=".{6,}"  class="input-text">
                                                             </p>                               
                                                             <p class="form-row input-required">
                                                                 <label>
                                                                     <span class="first-letter">Confirm Password</span>  
                                                                     
                                                                 </label>
-                                                                <input type="password" id="password1" name="re_password" class="input-text">
-                                                            </p>                                                                                
+                                                                
+                                                                <input type="password" id="txtConfirmPassword"  name="re_password" onkeyup="checkPasswordMatch();" class="input-text">
+                                                            </p>  
+                                                            <p id="divCheckPasswordMatch" style="color:red;"></p>                                                                              
                                                             <div class="clear"></div>
                                                             <input type="submit" value="Change" name="Change" class="button btn btn-default">
                                                             <div class="clear"></div>

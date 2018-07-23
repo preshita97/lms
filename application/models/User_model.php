@@ -160,6 +160,48 @@ public function book_display()
       }
     }  
    
+
+    public function change_password_user($user,$id)
+    {
+        $this->load->helper('url');
+
+        $user= array(
+          
+            'old_password' => $this->input->post('old_password'),
+            'new_password'=> $this->input->post('newpassword'),
+            '$id' => $this->session->userdata('u_id')
+            );
+
+            //print_r($user);
+
+        $this->db->select('*');
+        $this->db->from('user_tbl');
+        $this->db->where('u_password',$user['old_password']);
+        $this->db->where('u_id',$id);
+        $query=$this->db->get();
+
+        if($query->num_rows()>0){
+            
+            $data = array(
+            
+                'u_password' => $this->input->post('newpassword')
+            );
+            //print_r($data);
+            //echo " <script> alert ('".$id."'); </script>";        
+            $this->db->where('u_id', $id);
+            return $this->db->update('user_tbl', $data);
+            
+        }else{
+            return false;
+        }
+       
+        //echo " <script> alert ('".$id."'); </script>";        
+     
+        // $this->db->where('u_email_id', $admin);
+        // $this->db->set($new_password);
+        // return $this->db->update('user_tbl',$admin);
+
+    }
 }
 
 

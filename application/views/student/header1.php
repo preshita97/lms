@@ -67,10 +67,10 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="topbar-links">
-                                            <a href="<?php echo base_url('User/home'); ?>"><i class="fa fa-lock"></i>Login</a>
+                                            <!-- <a href="<?php echo base_url('User/home'); ?>"><i class="fa fa-lock"></i>Login</a>
                                                 <span>|</span>
 
-                                            <a href="<?php echo base_url('User/signup'); ?>"> Signup</a>
+                                            <a href="<?php echo base_url('User/signup'); ?>"> Signup</a> -->
                                                 <div class="header-cart dropdown">
                                                     <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                                         <i class="fa fa-shopping-cart"></i>
