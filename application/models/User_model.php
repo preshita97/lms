@@ -82,7 +82,6 @@ $query = $this->db->get();
 return $query->result_array();
 }
 
-  }
 
 public function book_search_where($title,$author,$catg){
 
