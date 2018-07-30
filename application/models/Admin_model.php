@@ -516,5 +516,37 @@ class Admin_model extends CI_model{
         return $this->db->update('request_tbl', $data);
   
     }
+    public function notification_display_admin_dashboard()
+    {
+
+        $this->db->select('*');
+        $this->db->from('notification_tbl');
+        $this->db->where('notification_status', '0');
+      
+        $query=$this->db->get();
+
+
+        // $this->db->select('notification_tbl.*');
+        // $this->db->from('notification_tbl');
+        // $this->db->where('notification_status', '0');
+        // $this->db->join('user_tbl', 'notification_tbl.fk_u_email_id = user_tbl.u_email_id');
+        
+        // $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function edit_notification_status($id)
+    {
+        $this->load->helper('url');
+       
+        $data = array(
+            
+            'notification_status' => '1'
+        );
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('notification_id', $id);
+        return $this->db->update('notification_tbl', $data);
+
+    }
 }
 ?>

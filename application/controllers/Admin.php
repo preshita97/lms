@@ -12,6 +12,14 @@ class Admin extends CI_Controller {
 
         public function dashboard()
         {
+
+          if($this->session->userdata('u_email_id')=="")
+          {
+            //$this->load->view('User/home');
+            redirect(base_url().'User/home');
+          }
+          
+
           $data['total_users'] = $this->Admin_model->total_users_dashboard();
           
           $data['total_inactive_users']=$this->Admin_model->total_inactive_users_dashboard();
@@ -28,8 +36,11 @@ class Admin extends CI_Controller {
 
           $data['pending_reqst']=$this->Admin_model->total_pending_request_dashboard();
           
+          $data['notification_item'] = $this->Admin_model->notification_display_admin_dashboard();
 
-          $this->load->view('admin/dashboard',$data);
+          
+          //          print_r($data['notification_item']);
+         $this->load->view('admin/dashboard',$data);
         }
 
         public function book_cat_add()
@@ -1004,6 +1015,24 @@ class Admin extends CI_Controller {
                       
                   }
                 
+              }
+
+              public function notification_update_admin()
+              {
+
+                $id = $this->uri->segment(3);
+
+                $id1= $this->session->userdata('u_id');
+
+                $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+        
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+
+                     $this->Admin_model->edit_notification_status($id);
+                     // $this->load->view('admin/header'); 
+                     redirect(base_url().'admin/dashboard','refresh');   
+
               }
 
 }
