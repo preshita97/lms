@@ -16,7 +16,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Request Table</h3>
+                    <h3 class="text-themecolor">Approve requests Table</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <!-- <ol class="breadcrumb">
@@ -47,14 +47,15 @@
                                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>User Name</th>
-                                               
-                                                <th>Book Category Name </th>
+                                            <th>User Name</th>
+                                                <th>Book Category Name</th>
                                                 <th>Req Date</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
                                                 <th>Status</th>
+                                                <th>Fine Amt</th>
                                                 <th>Action</th>
+                                            
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -65,23 +66,26 @@
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
                                                 <th>Status</th>
+                                                <th>Fine Amt</th>
                                                 <th>Action</th>
+                                            
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                         <?php foreach ($request_item as $tbl): ?>
 
                                         <tr>
-                                            <td><?php echo $tbl['u_name']; ?></td>
+                                        <td><?php echo $tbl['u_name']; ?></td>
                                             <td><?php echo $tbl['cat_name']; ?></td>
                                             <td><?php echo $tbl['req_date']; ?></td>
                                             <td><?php echo $tbl['start_date']; ?></td>
                                             <td><?php echo $tbl['end_date']; ?></td>
                                             <td><?php echo $tbl['req_book_status']; ?></td>
-                                            <td>
-                                            <a href="<?php echo base_url('Admin/request_edit/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return edit()"  class="btn waves-effect waves-light btn-success"> Accept</button></a>
+                                            <td><?php echo $tbl['fine_amt']; ?></td>
+                                           <td>
+                                           <a href="<?php echo base_url('Admin/approve_requests_by_admin/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return edit()"  class="btn waves-effect waves-light btn-success"> Return</button></a>
+                                           </td>
                                             
-                                            <!-- <a href="<?php echo base_url('Admin/request_delete/'.$tbl['request_id']); ?>"><button alt="default"  type="button" onClick="return del()"  class="btn btn-danger btn-circle"><i class="mdi mdi-delete-forever">  </i> </button></a>--></td> 
                                          </tr>
                                         <?php endforeach; ?>
                                         </tbody>

@@ -43,7 +43,7 @@ global $user;
       
       $user=array(
         
-        'u_id'=>$this->input->post('u_id'),
+        
         'u_email_id'=>$this->input->post('u_email_id'),
         'u_password'=>$this->input->post('u_password'),
         'u_name'=>$this->input->post('u_name'),
@@ -56,6 +56,21 @@ global $user;
           print_r($user);
   
 			
+          $email_check=$this->User_model->email_check($user['u_email_id']);
+          echo " <script> alert ('".$email_check."'); </script>";    
+
+          if($email_check){
+            $this->User_model->register_user($user);
+            $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
+            //redirect(base_url().'Admin/index');
+            redirect(base_url().'User/userdisplay');
+          }
+          else{
+           // print_r($user);
+            $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+            redirect(base_url().'Admin/signup');
+          }
+
 			// $data['message'] = "Image uploaded";
 		
 			// $this->load->model('upload_images');
@@ -75,19 +90,6 @@ global $user;
 			// $this->load->view('home', $data);
       }
       
-      $email_check=$this->User_model->email_check($user['u_email_id']);
-
-      if($email_check){
-        $this->User_model->register_user($user);
-        $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-        //redirect(base_url().'Admin/index');
-        redirect(base_url().'User/userdisplay');
-      }
-      else{
-
-        $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-        redirect(base_url().'Admin/signup');
-      }
 
       }
 
@@ -370,21 +372,11 @@ public function book_search()
 {
 
   $user_login=array(
-
-    
     'book_title'=>$this->input->post('book_title'),
-    'book_author'=>$this->input->post('book_author_name'),
-    'fk_cat_id'=>$this->input->post('fk_cat_id')
-    
-  
-      );
+   );
 
-      // echo "title name       ".$user_login['book_title'];
-      
-      // echo "author name       ".$user_login['book_author'];
-      // echo "author name       ".$user_login['fk_cat_id'];
 
-      $data['search_item'] = $this->User_model->book_search($user_login['book_title'],$user_login['book_author'],$user_login['fk_cat_id']);
+      $data['search_item'] = $this->User_model->book_search($user_login['book_title']);
 
       $data['book_item'] = $this->User_model->book_display();
       $data['author_item'] = $this->User_model->author_display();
@@ -393,9 +385,6 @@ public function book_search()
       $this->load->view('student/header.php',$data);
       $this->load->view('student/book_search.php',$data);
       $this->load->view('student/footer.php',$data);
-      //print_r($data['search_item']);
-
-
 }
 
               public function edit_profile()
