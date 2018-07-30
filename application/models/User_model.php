@@ -40,9 +40,9 @@ public function email_check($email){
   $query=$this->db->get();
 
   if($query->num_rows()>0){
-    return true;
-  }else{
     return false;
+  }else{
+    return true;
   }
 
 }
@@ -72,27 +72,15 @@ function get_images(){
 
 public function book_search($title){
 
-    $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
-    $this->db->from('book_tbl');
-    $this->db->where('book_title',$title);
-    $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
-    $this->db->join('author_tbl', 'book_tbl.book_author = author_tbl.author_id');
-    
-    $query = $this->db->get();
-    return $query->result_array();
-    }
+$this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
+$this->db->from('book_tbl');
+$this->db->where('book_title',$title);
+$this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+$this->db->join('author_tbl', 'book_tbl.book_author = author_tbl.author_id');
 
-public function book_search1($book){
-
-    $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
-        $this->db->from('book_tbl');
-        $this->db->where('book_title', $book);
-        $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
-        $this->db->join('author_tbl','book_tbl.book_author = author_tbl.author_id');
-
-        $query = $this->db->get();
-        
-       return $query->row_array();
+$query = $this->db->get();
+return $query->result_array();
+}
 
   }
 

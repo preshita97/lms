@@ -24,12 +24,26 @@ class Admin_model extends CI_model{
     {
         $this->db->select('user_tbl.*,request_tbl.*,book_cat_tbl.*');
         $this->db->from('request_tbl');
+        $this->db->where('req_book_status','not available');
         $this->db->join('user_tbl', 'request_tbl.fk_u_email_id = user_tbl.u_email_id');
         $this->db->join('book_cat_tbl','book_cat_tbl.cat_id = request_tbl.fk_book_id');
         
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function request_display_approve()
+    {
+        $this->db->select('user_tbl.*,request_tbl.*,book_cat_tbl.*');
+        $this->db->from('request_tbl');
+        $this->db->where('req_book_status','1');
+        $this->db->join('user_tbl', 'request_tbl.fk_u_email_id = user_tbl.u_email_id');
+        $this->db->join('book_cat_tbl','book_cat_tbl.cat_id = request_tbl.fk_book_id');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function notification_display()
     {
         $this->db->select('user_tbl.*,notification_tbl.*');
@@ -407,14 +421,10 @@ class Admin_model extends CI_model{
         }else{
             return false;
         }
-       
-
-        
-
 
         //echo " <script> alert ('".$id."'); </script>";        
-        $this->db->where('u_email_id', $admin);
-        return $this->db->update('user_tbl', $data);
+      //  $this->db->where('u_email_id', $admin);
+      //  return $this->db->update('user_tbl', $data);
 
         // $this->db->where('u_email_id', $admin);
         // $this->db->set($new_password);
@@ -422,10 +432,89 @@ class Admin_model extends CI_model{
 
     }
 
-    public function request_update_book_avail()
+    public function calculate_fine_amt($id)
+    {
+        date_default_timezone_set("Asia/Kolkata");
+        $date1=date("Y-m-d");
+
+        $query = $this->db->get_where('request_tbl', array('request_id' => $id));
+        $fetch=$query->row_array();
+
+        $date2=$fetch["end_date"];
+
+
+        $datediff = (strtotime($date1) - strtotime($date2));
+        $days= floor($datediff / (60 * 60 * 24));
+        return $days*10;
+
+//echo " <script> alert ('".$days."'); </script>"; 
+
+
+    }
+
+    public function request_update_book_avail($id)
+    {
+
+        $this->load->helper('url');
+       
+        $query = $this->db->get_where('request_tbl', array('request_id' => $id));
+        $fetch=$query->row_array();
+
+        $data = array(
+            
+            'book_availability' => 'no'
+        );
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('book_id', $fetch['request_id']);
+        $this->db->update('book_tbl', $data);
+
+        date_default_timezone_set("Asia/Kolkata");
+        $start_date=date("Y-m-d");
+        $end_date=date('Y-m-d', strtotime("+30 days")); 
+
+        $data1 = array(
+            
+            'start_date' => $start_date,
+            'end_date'=>$end_date,
+            'req_book_status'=>'1'
+        );
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('request_id', $id);
+        return $this->db->update('request_tbl', $data1);
+
+    }
+
+    public function approve_requests_by_admin($id)
     {
 
     }
 
+    public function update_fine_amt($id)
+    {
+
+        $this->load->helper('url');
+       
+        $query = $this->db->get_where('request_tbl', array('request_id' => $id));
+        $fetch=$query->row_array();
+
+        $data = array(
+            
+            'book_availability' => 'yes'
+        );
+        //echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('book_id', $fetch['request_id']);
+        $this->db->update('book_tbl', $data);
+       
+        $data = array(
+            
+            'fine_amt' => $this->input->post('txt_fine_amt')
+        );
+        print_r($data);
+
+        echo " <script> alert ('".$id."'); </script>";        
+        $this->db->where('request_id', $id);
+        return $this->db->update('request_tbl', $data);
+  
+    }
 }
 ?>

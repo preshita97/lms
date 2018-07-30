@@ -148,6 +148,54 @@ class Admin extends CI_Controller {
               //redirect(base_url().'admin/users_table','refresh');
               }
 
+              public function approve_requests_by_admin()
+              {
+
+                $id1 = $this->session->userdata('u_id');
+
+                  $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
+
+                $id = $this->uri->segment(3);
+                
+             //   echo $id;
+             $data['fine_amt_user'] = $this->Admin_model->calculate_fine_amt($id);
+
+                $this->load->view('admin/header', $data);
+                $this->load->view('admin/user_amt', $data);
+              }
+
+              public function fine_ammount_user()
+              {
+                $id=$this->input->post('id');
+                $user = array(
+                  'fine_amt' => $this->input->post('txt_fine_amt')
+                );
+                print_r($user);
+
+                $this->Admin_model->update_fine_amt($id);
+                
+                redirect(base_url().'admin/approve_requests_table','refresh');
+              }
+
+          public function approve_requests_table()
+            {
+                  $id = $this->session->userdata('u_id');
+
+                  $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+           
+                     //echo " <script> alert ('alsjdklasjdklasj'); </script>";
+                     $data['request_item'] = $this->Admin_model->request_display_approve();
+                   
+                   //   if (empty($data['request_item']))
+                   // {
+                   //     show_404();
+                   // }
+            
+                   //$data[''] = $data['news_item']['title'];
+            
+                   $this->load->view('admin/header', $data);
+                   $this->load->view('admin/approve_requests_table', $data);
+          }
         public function request_table()
         {
          
@@ -382,16 +430,20 @@ class Admin extends CI_Controller {
                 
               // }
 
+              $this->load->helper('form');
+              $this->load->library('form_validation');
+              $id = $this->uri->segment(3);
+              
               $id1= $this->session->userdata('u_id');
 
                 $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id1);
-
-                $id = $this->uri->segment(3);
-        
-                $this->load->helper('form');
-                $this->load->library('form_validation');
+              
+               // $data['req_avail_item_by_id'] = $this->Admin_model->request_availability_by_id($id);
                 
                 $this->Admin_model->request_update_book_avail($id);
+
+                $this->load->view('admin/header',$data); 
+                redirect(base_url().'admin/request_table','refresh'); 
                 
             }
               public function book_cat_edit()

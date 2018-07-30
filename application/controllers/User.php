@@ -43,7 +43,7 @@ global $user;
       
       $user=array(
         
-        'u_id'=>$this->input->post('u_id'),
+        
         'u_email_id'=>$this->input->post('u_email_id'),
         'u_password'=>$this->input->post('u_password'),
         'u_name'=>$this->input->post('u_name'),
@@ -56,6 +56,21 @@ global $user;
           print_r($user);
   
 			
+          $email_check=$this->User_model->email_check($user['u_email_id']);
+          echo " <script> alert ('".$email_check."'); </script>";    
+
+          if($email_check){
+            $this->User_model->register_user($user);
+            $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
+            //redirect(base_url().'Admin/index');
+            redirect(base_url().'User/userdisplay');
+          }
+          else{
+           // print_r($user);
+            $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+            redirect(base_url().'Admin/signup');
+          }
+
 			// $data['message'] = "Image uploaded";
 		
 			// $this->load->model('upload_images');
@@ -75,19 +90,6 @@ global $user;
 			// $this->load->view('home', $data);
       }
       
-      $email_check=$this->User_model->email_check($user['u_email_id']);
-
-      if($email_check){
-        $this->User_model->register_user($user);
-        $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-        //redirect(base_url().'Admin/index');
-        redirect(base_url().'User/userdisplay');
-      }
-      else{
-
-        $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-        redirect(base_url().'Admin/signup');
-      }
 
       }
 
