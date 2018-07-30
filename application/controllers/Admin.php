@@ -85,6 +85,8 @@ class Admin extends CI_Controller {
         $data['cat_item'] = $this->User_model->cat_display();
         $data['author_item'] = $this->User_model->author_display();
         $data['book_author_item'] = $this->User_model->book_author_display();
+        $data['book_cat_item'] = $this->User_model->book_cat_display();
+
         $data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
 
         // $this->load->view('User/home', $data);

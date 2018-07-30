@@ -10,7 +10,7 @@
                                 <div class="col-md-9 col-md-push-3">
                                     <div class="filter-options margin-list">
                                         <div class="row">                                            
-                                            <div class="col-md-4 col-sm-4">
+                                            <!-- <div class="col-md-4 col-sm-4">
                                                 <select name="orderby">
                                                     <option selected="selected">Default sorting</option>
                                                     <option>Sort by popularity</option>
@@ -21,7 +21,7 @@
                                             </div>
                                             <div class="col-md-4 col-sm-4">
                                                 <div class="filter-result">Showing items 1 to 9 of 19 total</div>
-                                            </div>
+                                            </div> -->
                                             <!-- <div class="col-md-3 col-sm-3 pull-right">
                                                 <div class="filter-toggle">
                                                     <a href="books-media-gird-view-v1.html"><i class="glyphicon glyphicon-th-large"></i></a>
@@ -65,11 +65,7 @@
                                                                     <!-- <li>
                                                                         <div class="rating">
                                                                             <strong>Rating: </strong>
-                                                                            <span>☆</span>
-                                                                            <span>☆</span>
-                                                                            <span>☆</span>
-                                                                            <span>☆</span>
-                                                                            <span>☆</span>
+                                                                           
                                                                         </div>
                                                                     </li> -->
                                                                 </ul>                                                                
@@ -85,7 +81,7 @@
                                         
                                     </div>
 
-                                    <nav class="navigation pagination text-center">
+                                    <!-- <nav class="navigation pagination text-center">
                                         <h2 class="screen-reader-text">Posts navigation</h2>
                                         <div class="nav-links">
                                             <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
@@ -95,7 +91,7 @@
                                             <a class="page-numbers" href="#.">4</a>
                                             <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
                                         </div>
-                                    </nav>
+                                    </nav> -->
                                 </div>
                                 <div class="col-md-3 col-md-pull-9">
                                     <aside id="secondary" class="sidebar widget-area" data-accordion-group>
@@ -114,10 +110,10 @@
                                                 </div>
                                                 <div data-accordion>
                                                     <h5 class="widget-sub-title" data-control>Authors</h5>
-                                                    <?php foreach ($book_item as $tbl): ?>
+                                                    <?php foreach ($author_item as $tbl): ?>
                                                     <div class="widget_categories" data-content>
                                                         <ul>
-                                                            <li><a href="#"><?php echo $tbl['book_author']; ?><span>(18)</span></a></li>
+                                                            <li><a href="#"><?php echo $tbl['author_name']; ?><span>(18)</span></a></li>
                                                             </ul>
                                                     </div>
                                                     <?php endforeach; ?>   
@@ -135,7 +131,7 @@
                                                     <?php endforeach; ?>   
                                                     <div class="clearfix"></div>
                                                 </div>
-                                                <div data-accordion>
+                                                <!-- <div data-accordion>
                                                     <h5 class="widget-sub-title" data-control>Other Searches</h5>
                                                     <div class="widget_categories" data-content>
                                                         <ul>
@@ -151,10 +147,10 @@
                                                     </div>
                                                     <div class="clearfix"></div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="clearfix"></div>
                                         </div>
-                                        <div class="widget widget_narrow_search" data-accordion>
+                                        <!-- <div class="widget widget_narrow_search" data-accordion>
                                             <h4 class="widget-title" data-control>Narrow your search</h4>
                                             <div data-content>
                                                 <div data-accordion>
@@ -224,7 +220,7 @@
                                             </ul>
                                             <div class="clearfix"></div>
                                         </div>
-                                        
+                                         -->
                                     </aside>
                                 </div> 
                             </div>

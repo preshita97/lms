@@ -5,7 +5,7 @@
             <div class="container">
                 <div id="footer-widgets">
                     <div class="row">
-                        <div class="col-md-4 col-sm-6 widget-container">
+                        <!-- <div class="col-md-4 col-sm-6 widget-container">
                             <div id="text-2" class="widget widget_text">
                                 <h3 class="footer-widget-title">About Libraria</h3>
                                 <span class="underline left"></span>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div>                
-            </div>
+            </div> -->
             <div class="sub-footer">
                 <div class="container">
                     <div class="row">
@@ -88,14 +88,10 @@
                         </div>
                         <div class="col-md-9 pull-right">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="books-media-list-view.html">Books &amp; Media</a></li>
-                                <li><a href="news-events-list-view.html">News &amp; Events</a></li>
-                                <li><a href="#">Kids &amp; Teens</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="#">Research</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                
+                                <li><a href="<?php echo base_url('User/bookdisplay'); ?>">Books</a></li>
+                                <li><a href="<?php echo base_url('User/about_us'); ?>">About Us</a></li>
+                                <li><a href="<?php echo base_url('User/contact_us'); ?>">Contact</a></li>
                             </ul>
                         </div>
                     </div>

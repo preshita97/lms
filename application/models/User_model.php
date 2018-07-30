@@ -70,21 +70,92 @@ function get_images(){
 
 }
 
-public function book_search($title,$author,$catg){
+public function book_search($title){
 
-  $this->db->like('book_title', $title);
-  $this->db->or_like('book_author', $author);
-  $this->db->or_like('fk_cat_id', $catg);
-  $query = $this->db->get('book_tbl');
-  return $query->result_array();
-}
+    $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
+    $this->db->from('book_tbl');
+    $this->db->where('book_title',$title);
+    $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+    $this->db->join('author_tbl', 'book_tbl.book_author = author_tbl.author_id');
+    
+    $query = $this->db->get();
+    return $query->result_array();
+    }
 
+public function book_search1($book){
+
+    $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
+        $this->db->from('book_tbl');
+        $this->db->where('book_title', $book);
+        $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+        $this->db->join('author_tbl','book_tbl.book_author = author_tbl.author_id');
+
+        $query = $this->db->get();
+        
+       return $query->row_array();
+
+  }
+
+public function book_search_where($title,$author,$catg){
+
+
+    
+  $this->db->select('*');
+  $this->db->from('book_tbl');
+  $this->db->where('book_title', $title);
+  $this->db->where('book_author', $author);
+  $this->db->where('fk_cat_id', $catg);
+  $query=$this->db->get();
+  return $query->result_array(); 
+  }
 
 public function book_display()
     {
-        $this->db->select('book_tbl.*,book_cat_tbl.*');
+        $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
         $this->db->from('book_tbl');
         $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+        $this->db->join('author_tbl','book_tbl.book_author = author_tbl.author_id');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    public function book_cat_display()
+    {
+        $this->db->select('*');
+        $this->db->from('book_cat_tbl');
+        
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function book_cat_display_by_id($id)
+    {
+        $this->db->select('book_tbl.*,book_cat_tbl.*');
+        $this->db->from('book_tbl');
+        $this->db->where('cat_id',$id);
+        $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function book_cat_display_by_id1($id)
+    {
+        // $this->db->select('book_tbl.*,book_cat_tbl.*');
+        // $this->db->from('book_tbl');
+        // $this->db->where('cat_id',$id);
+        // $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+
+
+        $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
+        $this->db->from('book_tbl');
+        $this->db->where('cat_id',$id);
+        $this->db->join('book_cat_tbl', 'book_tbl.fk_cat_id = book_cat_tbl.cat_id');
+        $this->db->join('author_tbl','book_tbl.book_author = author_tbl.author_id');
+
 
         $query = $this->db->get();
         return $query->result_array();
@@ -109,6 +180,13 @@ public function book_display()
         $query = $this->db->get_where('user_tbl', array('u_id' => $id));
         return $query->row_array();
     }
+
+    public function userhistory()
+    {
+        $query = $this->db->get_where('request_tbl', array('fk_u_email_id' => $this->session->userdata('u_email_id')));
+        return $query->row_array();
+    }
+
 
     public function cat_display()
     {
@@ -145,6 +223,21 @@ public function book_display()
 
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function book_req_display()
+    {
+        // SELECT b.*,r.*,a.* FROM book_tbl AS b, request_tbl AS r, author_tbl AS a 
+        // WHERE fk_u_email_id='preshitachoksi97@gmail.com' AND request_id=4 AND fk_book_id=3
+
+        $this->db->select('book_tbl.*,request_tbl.*,author_tbl.*');
+        $this->db->from('request_tbl');
+        $this->db->where('fk_u_email_id',$this->session->userdata('u_email_id'));
+        $this->db->join('book_tbl', 'request_tbl.fk_book_id = book_tbl.book_id');
+        $this->db->join('author_tbl', 'author_tbl.author_id = book_tbl.book_author');
+
+        $query = $this->db->get();
+       return $query->result_array();
     }
 
     public function saveNewPass($new_pass){
@@ -201,6 +294,21 @@ public function book_display()
         // $this->db->set($new_password);
         // return $this->db->update('user_tbl',$admin);
 
+    }
+
+    public function set_request_user($user)
+     {
+    //     $data = array(
+            
+    //         'cat_name' => $this->input->post('txt_cat_add')
+    //     );
+
+     $this->db->insert('request_tbl', $user);
+    }
+
+    public function set_new_notification_user($user)
+    {
+        $this->db->insert('notification_tbl', $user);  
     }
 }
 

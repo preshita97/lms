@@ -51,9 +51,7 @@
                                             <div class="single-book-box">                                                
                                                 <div class="post-thumbnail">
                                                     <!-- <div class="book-list-icon yellow-icon"></div> -->
-                                                    <a href="books-media-detail-v1.html">
-                                                    <img style="height: 300px;width: 300px;" alt="Book" src="<?php echo base_url();?>uploads/<?php echo $tbl['book_photo']; ?>" /></a>
-                                                    </div>
+                                                    <a href="books-media-detail-v1.html"><img style="height: 300px;width: 300px;" alt="Book" src="<?php echo base_url();?>uploads/<?php echo $tbl['book_photo']; ?>" /></a>                                                                 </div>
                                                 <div class="post-detail">
                                                     
                                                     <header class="entry-header">
@@ -123,7 +121,7 @@
                                             <div data-content>
                                                 <div data-accordion>
                                                     <h5 class="widget-sub-title" data-control>Categories</h5>
-                                                    <?php foreach ($book_cat_item as $tbl): ?>
+                                                    <?php foreach ($cat_item as $tbl): ?>
                                                     <div class="widget_categories" data-content>
                                                         <ul>
                                                             <li><a href="<?php echo base_url('User/book_cat_display/'.$tbl['cat_id']); ?>"><?php echo $tbl['cat_name']; ?></a></li>

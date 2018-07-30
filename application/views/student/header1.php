@@ -122,29 +122,29 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                      </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="navbar-collapse hidden-sm hidden-xs">
                                     <ul class="nav navbar-nav">
-                                        <li class="dropdown active">
+                                        <!-- <li class="dropdown active">
                                             <a data-toggle="dropdown" class="dropdown-toggle disabled" href="index.html">Home</a>
                                             <ul class="dropdown-menu">
                                                 <li><a href="index.html">Home V1</a></li>
                                                 <li><a href="home-v2.html">Home V2</a></li>
                                                 <li><a href="home-v3.html">Home V3</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li class="dropdown">
-                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="<?php echo base_url('User/bookdisplay'); ?>">Books</a>
-                                            <ul class="dropdown-menu">
+                                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="<?php echo base_url('User/bookdisplay1'); ?>">Books</a>
+                                            <!-- <ul class="dropdown-menu">
                                                 <li><a href="books-media-list-view.html">Books &amp; Media List View</a></li>
                                                 <li><a href="books-media-gird-view-v1.html">Books &amp; Media Grid View V1</a></li>
                                                 <li><a href="books-media-gird-view-v2.html">Books &amp; Media Grid View V2</a></li>
                                                 <li><a href="books-media-detail-v1.html">Books &amp; Media Detail V1</a></li>
                                                 <li><a href="books-media-detail-v2.html">Books &amp; Media Detail V2</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
                                         <li class="dropdown">
                                             <a href="<?php echo base_url('User/about_us'); ?>">About Us</a>
@@ -176,7 +176,7 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="<?php echo base_url('User/changepass'); ?>">Change Password</a></li>
                                                 <li><a href="<?php echo base_url('User/viewprofile'); ?>">View Profile</a></li>
-                                                
+                                                <li><a href="<?php echo base_url('User/userhistory'); ?>">History</a></li>
                                                 <li><a href="<?php echo base_url('User/user_logout'); ?>">Logout</a></li>
                                             </ul>
                                         </li>
@@ -258,11 +258,11 @@
                         <div class="carousel-caption">
                             <h3>Online Learning Anytime, Anywhere!</h3>
                             <h2>Discover Your Roots</h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
-                            <div class="slide-buttons hidden-sm hidden-xs">    
+                            
+                         <!-- <div class="slide-buttons hidden-sm hidden-xs">    
                                 <a href="#" class="btn btn-primary">Read More</a>
                                 <a href="#" class="btn btn-default">Purchase</a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -274,11 +274,11 @@
                         <div class="carousel-caption">
                             <h3>Online Learning Anytime, Anywhere!</h3>
                             <h2>Discover Your Roots</h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
-                            <div class="slide-buttons hidden-sm hidden-xs">    
+                            
+                            <!--<div class="slide-buttons hidden-sm hidden-xs">    
                                 <a href="#" class="btn btn-primary">Read More</a>
                                 <a href="#" class="btn btn-default">Purchase</a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -290,11 +290,11 @@
                         <div class="carousel-caption">
                             <h3>Online Learning Anytime, Anywhere!</h3>
                             <h2>Discover Your Roots</h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humor, or randomized words.</p>
-                            <div class="slide-buttons hidden-sm hidden-xs">    
+                           
+                            <!--<div class="slide-buttons hidden-sm hidden-xs">    
                                 <a href="#" class="btn btn-primary">Read More</a>
                                 <a href="#" class="btn btn-default">Purchase</a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -337,37 +337,35 @@
             <div class="container">
                 <div class="filter-box">
                     <h3>What are you looking for at the library?</h3>
-                    <form action="http://libraria.demo.presstigers.com/index.html" method="get">
+                    <form action="<?php echo base_url('User/book_search'); ?>" method="POST">
                         <div class="col-md-4 col-sm-6">
                             <div class="form-group">
-                                <label class="sr-only" for="keywords">Search by Keyword</label>
-                                <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                <label class="sr-only" for="keywords">Search by Book Name</label>
+                                <input class="form-control" placeholder="Search by book name" id="keywords" name="book_title" type="text" required>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6">
+                        <!-- <div class="col-md-3 col-sm-6">
                             <div class="form-group">
-                                <select name="catalog" id="catalog" class="form-control">
-                                    <option>Search the Catalog</option>
-                                    <option>Catalog 01</option>
-                                    <option>Catalog 02</option>
-                                    <option>Catalog 03</option>
-                                    <option>Catalog 04</option>
-                                    <option>Catalog 05</option>
+                                <select id="catalog" name="book_author_name" class="form-control" >
+                                <option value="0">Select the Author name</option>
+                                <?php foreach ($author_item as $tbl): ?>
+                                    <option value="<?php echo $tbl['author_name']; ?>"></option>
+                                    <option value="<?php echo $tbl['author_id']; ?>"><?php echo $tbl['author_name']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="form-group">
-                                <select name="category" id="category" class="form-control">
+                                <select  id="category" name="fk_cat_id" class="form-control">
                                     <option>All Categories</option>
-                                    <option>Category 01</option>
-                                    <option>Category 02</option>
-                                    <option>Category 03</option>
-                                    <option>Category 04</option>
-                                    <option>Category 05</option>
+                                    <?php foreach ($cat_item as $tbl): ?>
+                                     
+                                    <option value="<?php echo $tbl['cat_id']; ?>" ><?php echo $tbl['cat_name']; ?></option>
+                                    <?php endforeach; ?>   
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-2 col-sm-6">
                             <div class="form-group">
                                 <input class="form-control" type="submit" value="Search">

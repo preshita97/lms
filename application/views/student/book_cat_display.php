@@ -1,15 +1,3 @@
-<!-- <script type="text/javascript">
-    function checkPasswordMatch() {
-        var password = $("#txtNewPassword").val();
-        var confirmPassword = $("#txtConfirmPassword").val();
-
-        if (password != confirmPassword)
-            $("#divCheckPasswordMatch").html("Passwords do not match!");
-        else
-            $("#divCheckPasswordMatch").html("Passwords match.");
-    }
-</script> -->
-
 <div id="content" class="site-content">
             <div id="primary" class="content-area">
                 <main id="main" class="site-main">
@@ -30,8 +18,8 @@
                                                     <option>Sort by newness</option>
                                                     <option>Sort by price</option>
                                                 </select>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4">
+                                            </div> -->
+                                            <!-- <div class="col-md-4 col-sm-4">
                                                 <div class="filter-result">Showing items 1 to 9 of 19 total</div>
                                             </div> -->
                                             <!-- <div class="col-md-3 col-sm-3 pull-right">
@@ -46,14 +34,12 @@
 
                                     
                                         <article> 
-                                        <?php foreach ($book_item as $tbl): ?>
+                                        <?php foreach ($book_cat_item as $tbl): ?>
 
                                             <div class="single-book-box">                                                
                                                 <div class="post-thumbnail">
                                                     <!-- <div class="book-list-icon yellow-icon"></div> -->
-                                                    <a href="books-media-detail-v1.html">
-                                                    <img style="height: 300px;width: 300px;" alt="Book" src="<?php echo base_url();?>uploads/<?php echo $tbl['book_photo']; ?>" /></a>
-                                                    </div>
+                                                    <a href="books-media-detail-v1.html"><img style="height: 300px;width: 300px;" alt="Book" src="<?php echo base_url();?>uploads/<?php echo $tbl['book_photo']; ?>" /></a>                                                                 </div>
                                                 <div class="post-detail">
                                                     
                                                     <header class="entry-header">
@@ -90,13 +76,8 @@
                                                             </div>
                                                         </div>
                                                     </header>
-                                                    <footer class="entry-footer">
-                                                        <a class="btn btn-dark-gray"  href="<?php echo base_url('User/book_request_from_user/'.$tbl['book_id']);?>" >Request</a>
-                                                        <!-- <p id="demo" style="color:#000;"></p> onclick="getElementById('demo').innerHTML='Book'" -->
-                                                    </footer>
                                                     
                                                 </div>
-                                                
                                                 <div class="clear"></div>
                                             </div>
                                             <?php endforeach; ?>   
@@ -123,7 +104,7 @@
                                             <div data-content>
                                                 <div data-accordion>
                                                     <h5 class="widget-sub-title" data-control>Categories</h5>
-                                                    <?php foreach ($book_cat_item as $tbl): ?>
+                                                    <?php foreach ($book_cat as $tbl): ?>
                                                     <div class="widget_categories" data-content>
                                                         <ul>
                                                             <li><a href="<?php echo base_url('User/book_cat_display/'.$tbl['cat_id']); ?>"><?php echo $tbl['cat_name']; ?></a></li>
@@ -143,9 +124,10 @@
 
                                                     <div class="clearfix"></div>
                                                 </div>
+
                                                 <div data-accordion>
                                                     <h5 class="widget-sub-title" data-control>Edition Year</h5>
-                                                    <?php foreach ($book_item as $tbl): ?>
+                                                    <?php foreach ($book_cat_item as $tbl): ?>
                                                     <div class="widget_categories" data-content>
                                                         <ul>
                                                             <li><a href="#"><?php echo $tbl['book_edition_year']; ?></span></a></li>
@@ -154,7 +136,7 @@
                                                     <?php endforeach; ?>   
                                                     <div class="clearfix"></div>
                                                 </div>
-                                                <!-- <div data-accordion>
+                                                <div data-accordion>
                                                     <h5 class="widget-sub-title" data-control>Other Searches</h5>
                                                     <div class="widget_categories" data-content>
                                                         <ul>
@@ -234,18 +216,17 @@
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
-                                        </div>-->
+                                        </div>
                                         <div class="widget widget_recent_releases">
-                                            <!-- <h4 class="widget-title">New Releases</h4>
+                                            <h4 class="widget-title">New Releases</h4>
                                             <ul>
                                                 <li><a href="#">Books</a></li>
                                                 
-                                            </ul> -->
-                                            <div class="clearfix"></div> 
+                                            </ul>
+                                            <div class="clearfix"></div>
                                         </div>
                                         
                                     </aside>
                                 </div> 
                             </div>
                         </div> 
-                        

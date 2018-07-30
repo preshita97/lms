@@ -107,6 +107,38 @@ public function about_us()
 
 }
 
+
+public function userhistory()
+{
+
+  $data['book_item'] = $this->User_model->book_req_display();
+
+  $this->load->view('student/header1.php',$data);
+  $this->load->view("student/userhistory.php",$data);
+  $this->load->view('student/footer.php',$data);
+
+}
+
+
+
+public function book_cat_display()
+{
+
+  $id = $this->uri->segment(3);
+
+  $data['book_cat_item'] = $this->User_model->book_cat_display_by_id1($id);
+  $data['book_cat'] = $this->User_model->book_cat_display();
+  $data['cat_item'] = $this->User_model->cat_display();
+  $data['book_item'] = $this->User_model->book_author_display();
+  $data['author_item'] = $this->User_model->author_display();
+  
+  $this->load->view('student/header.php',$data);
+  $this->load->view("student/book_cat_display.php",$data);
+  $this->load->view('student/footer.php',$data);
+
+}
+
+
 public function changepass()
 {
   $this->load->helper('form');
@@ -119,6 +151,24 @@ public function changepass()
   $this->load->view('student/changepass.php');
   $this->load->view('student/footer.php');
   
+}
+
+public function header1()
+{
+  $id = $this->session->userdata('u_id');
+
+$data['title'] = '';
+$data['book_item'] = $this->User_model->book_display();
+$data['cat_item'] = $this->User_model->cat_display();
+$data['author_item'] = $this->User_model->author_display();
+$data['book_author_item'] = $this->User_model->book_author_display();
+$data['book_cat_item'] = $this->User_model->book_cat_display();
+
+$data['user_header_item'] = $this->Admin_model->get_user_by_id_dashboard($id);
+
+// $this->load->view('User/home', $data);
+
+
 }
 
 public function change_password_user()
@@ -178,12 +228,49 @@ public function viewprofile()
 }
 
 
+public function book_request_from_user()
+{
+  $id = $this->uri->segment(3);
+  
+  date_default_timezone_set("Asia/Kolkata");
+  $req_dt=date("Y-m-d");
+
+  $user=array(
+
+    'fk_u_email_id'=>$this->session->userdata('u_email_id'),
+    'fk_book_id'=>$id,
+    'req_date'=>$req_dt,
+    'req_book_status'=>0,
+    'start_date'=>"",
+    'end_date'=>""
+
+  );  
+
+  $notification=array(
+    'fk_u_email_id'=>$this->session->userdata('u_email_id'),
+    'notification_time'=> date("h:i:sa"),
+    'message_title'=>'requested book',
+    'message_subject'=>'book has been requested'
+  );
+  
+   $this->User_model->set_request_user($user);
+   $this->User_model->set_new_notification_user($notification);
+   
+   //echo " <script> alert ('Book'); </script>";
+
+   redirect(base_url().'User/bookdisplay1');
+}
 
 public function bookdisplay()
 {
         //echo " <script> alert ('alsjdklasjdklasj'); </script>";
-        $data['book_item'] = $this->User_model->book_display();
+        //$data['book_author_item'] = $this->User_model->book_author_display();
+        $id = $this->uri->segment(3);
+
+        $data['book_cat_item'] = $this->User_model->book_cat_display($id);
+        $data['book_item'] = $this->User_model->book_author_display();
         $data['cat_item'] = $this->User_model->cat_display(); 
+        $data['author_item'] = $this->User_model->author_display();
         //   if (empty($data['request_item']))
         // {
         //     show_404();
@@ -194,6 +281,30 @@ public function bookdisplay()
         $this->load->view('student/header.php',$data);
         //$this->load->view('student/sidebar.php');
         $this->load->view("student/bookdisplay.php",$data);
+        $this->load->view('student/footer.php',$data);
+      
+}
+
+public function bookdisplay1()
+{
+        //echo " <script> alert ('alsjdklasjdklasj'); </script>";
+        //$data['book_author_item'] = $this->User_model->book_author_display();
+        $id = $this->uri->segment(3);
+
+        $data['book_cat_item'] = $this->User_model->book_cat_display($id);
+        $data['book_item'] = $this->User_model->book_author_display();
+        $data['cat_item'] = $this->User_model->cat_display(); 
+        $data['author_item'] = $this->User_model->author_display();
+        //   if (empty($data['request_item']))
+        // {
+        //     show_404();
+        // }
+ 
+        // //$data[''] = $data['news_item']['title'];
+ 
+        $this->load->view('student/header1.php',$data);
+        //$this->load->view('student/sidebar.php');
+        $this->load->view("student/bookdisplay1.php",$data);
         $this->load->view('student/footer.php',$data);
       
 }
@@ -370,21 +481,11 @@ public function book_search()
 {
 
   $user_login=array(
-
-    
     'book_title'=>$this->input->post('book_title'),
-    'book_author'=>$this->input->post('book_author_name'),
-    'fk_cat_id'=>$this->input->post('fk_cat_id')
-    
-  
-      );
+   );
 
-      // echo "title name       ".$user_login['book_title'];
-      
-      // echo "author name       ".$user_login['book_author'];
-      // echo "author name       ".$user_login['fk_cat_id'];
 
-      $data['search_item'] = $this->User_model->book_search($user_login['book_title'],$user_login['book_author'],$user_login['fk_cat_id']);
+      $data['search_item'] = $this->User_model->book_search($user_login['book_title']);
 
       $data['book_item'] = $this->User_model->book_display();
       $data['author_item'] = $this->User_model->author_display();
@@ -393,9 +494,6 @@ public function book_search()
       $this->load->view('student/header.php',$data);
       $this->load->view('student/book_search.php',$data);
       $this->load->view('student/footer.php',$data);
-      //print_r($data['search_item']);
-
-
 }
 
               public function edit_profile()
@@ -457,6 +555,16 @@ public function book_search()
             
 public function login_check()
 {
+  // $id = $this->uri->segment(3);
+  // $data['cat_item'] = $this->User_model->cat_display();
+  // $data['author_item'] = $this->User_model->author_display();
+  
+  //       $data['book_item'] = $this->User_model->book_author_display();
+  //       $data['book_cat_item'] = $this->User_model->book_cat_display($id);
+        $data['book_item'] = $this->User_model->book_author_display();
+        $data['cat_item'] = $this->User_model->cat_display(); 
+        $data['author_item'] = $this->User_model->author_display();
+        
 
   $user_login=array(
 
@@ -467,7 +575,7 @@ public function login_check()
       
       $data1['book_item'] = $this->User_model->book_display();
       $data1['cat_item'] = $this->User_model->cat_display();
-      
+      $data1['author_item'] = $this->User_model->author_display();
       
       
       $data=$this->User_model->home($user_login['u_email_id'],$user_login['u_password']);
@@ -489,7 +597,7 @@ public function login_check()
         else
           {
              $this->load->view('student/header1.php',$data1);
-             $this->load->view("student/bookdisplay.php",$data1);
+             $this->load->view("student/bookdisplay1.php",$data1);
              $this->load->view('student/footer.php',$data1);
           }
   
@@ -523,6 +631,8 @@ public function userdisplay(){
   $data['cat_item'] = $this->User_model->cat_display();
   $data['author_item'] = $this->User_model->author_display();
   $data['book_author_item'] = $this->User_model->book_author_display();
+  $data['book_cat_item'] = $this->User_model->book_cat_display();
+
   $this->load->view('student/header.php',$data);
   $this->load->view('student/content.php',$data);
   $this->load->view('student/footer.php',$data);
@@ -545,7 +655,7 @@ public function user_logout(){
   $this->session->unset_userdata('error_msg');
 
 
-  //$this->session->sess_destroy();
+  $this->session->sess_destroy();
   redirect(base_url().'User/userdisplay', 'refresh');
 }
 

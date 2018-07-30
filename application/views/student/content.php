@@ -2,15 +2,15 @@
             <div class="container">
                 <div class="row">
                     <div class="center-content">
-                        <h2 class="section-title">Check Out The New Releases</h2>
+                        <h2 class="section-title" style="color:black;">Check Out The New Releases</h2>
                         <span class="underline center"></span>
-                        <p class="lead">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                        
                     </div>
                     
                     <div class="filter-buttons">
                         <div class="filter btn" data-filter="all">All Releases</div>
-                    <?php foreach ($cat_item as $tbl): ?>
-                        <div class="filter btn" data-filter=".adults"><a href="#"><?php echo $tbl['cat_name']; ?></a></div>
+                    <?php foreach ($book_cat_item as $tbl): ?>
+                        <div class="filter btn" data-filter=".adults"  ><a href="<?php echo base_url('User/book_cat_display/'.$tbl['cat_id']); ?>"><?php echo $tbl['cat_name']; ?></a></div>
                         
                     <?php endforeach; ?>
                     </div>
@@ -36,7 +36,7 @@
                                                 
                                             </div>
                                             
-                                            <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
+                                            <!-- <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a> -->
                                             <ol>
                                                 <!-- <li>
                                                     <a href="#" data-toggle="blog-tags" data-placement="top" title="Add To Cart">
@@ -49,9 +49,27 @@
                                                     </a>
                                                 </li> -->
                                                 <li>
-                                                    <a href="#" data-toggle="blog-tags" data-placement="top" title="Add To List">
+                                                <?php
+                                                    if($this->session->userdata('u_id')=="")
+                                                    {
+
+                                                        
+
+                                                ?>
+                                                     <button href="" onclick="demo()" data-toggle="blog-tags" data-placement="top" title="Request">
+                                                        <i class="fa fa-heart"></i>
+                                                    </button>
+
+ 
+                                                 <?php   }
+                                                    else{
+                                                        // $id=$this->session->userdata('u_id');
+                                                        // echo "<script type='text/javascript'> alert('".$id."'); </script>";
+                                                ?>
+                                                    <a href="<?php echo base_url('User/book_request_from_user/'.$tbl['book_id']);?>" data-toggle="blog-tags" data-placement="top" title="Request">
                                                         <i class="fa fa-heart"></i>
                                                     </a>
+                                                    <?php } ?>
                                                 </li>
                                                 <!-- <li>
                                                     <a href="#" data-toggle="blog-tags" data-placement="top" title="Share This">
@@ -77,3 +95,9 @@
                 </div>
             </div>
         </section>
+        <script type="text/javascript">
+        function demo()
+        {
+            alert("You must have to login first for Requesting book");
+        }
+        </script>
