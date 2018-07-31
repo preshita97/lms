@@ -662,7 +662,21 @@ public function user_logout(){
 }
 
 
+public function add_enquiry()
+              {
+                
 
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                // $this->form_validation->set_rules('Book-Title', 'Book-Author','Book-Edition','Book Edition Year', 'required');
+                //echo " <script> alert ('Successfully Deleted'); </script>";
+
+                      $this->User_model->set_enquiry();
+
+                      // $this->load->view('admin/header'); 
+                      redirect(base_url().'User/contact_us','refresh');
+                
+              }
 
 
 }

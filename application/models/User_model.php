@@ -70,6 +70,24 @@ function get_images(){
 
 }
 
+public function set_enquiry()
+    {
+        date_default_timezone_set("Asia/Kolkata");
+        $date1=date("Y-m-d");
+        //'fk_u_email_id'=> $this->session->userdata('u_email_id'),
+        $data = array(
+            'fk_u_email_id'=> $this->input->post('Email-id'),
+            'req_book_title' => $this->input->post('Book-Title'),
+            'req_book_author'=> $this->input->post('Book-Author'),
+            'req_book_edition'=> $this->input->post('Book-Edition'),
+            'req_book_edition_year'=> $this->input->post('Book-Edition-Year'),
+            'req_date'=>$date1
+        );
+        
+        return $this->db->insert('inquiry_tbl', $data);
+    }
+
+
 public function book_search($title){
 
 $this->db->select('book_tbl.*,book_cat_tbl.*,author_tbl.*');
