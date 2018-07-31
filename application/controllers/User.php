@@ -252,15 +252,98 @@ public function book_request_from_user()
     'fk_u_email_id'=>$this->session->userdata('u_email_id'),
     'notification_time'=> date("h:i:sa"),
     'message_title'=>'requested book',
-    'message_subject'=>'book has been requested'
+    'message_subject'=>'book has been requested',
+    'notification_status'=>0
   );
   
+  $data['book_details']=$this->User_model->get_book_by_id($id);
+
+  //print_r($data['book_details']['book_title']);
+  $title=$data['book_details']['book_title'];
    $this->User_model->set_request_user($user);
    $this->User_model->set_new_notification_user($notification);
    
+   include "PHPMailer/class.phpmailer.php";
+
+   $password=rand(0,999999);
+//$message = $captcha_code;
+
+// creating the phpmailer object
+$mail = new PHPMailer(true);
+
+// telling the class to use SMTP
+$mail->IsSMTP();
+
+// enables SMTP debug information (for testing) set 0 turn off debugging mode, 1 to show debug result
+$mail->SMTPDebug = 0;
+
+// enable SMTP authentication
+$mail->SMTPAuth = true;
+
+// sets the prefix to the server
+$mail->SMTPSecure = 'ssl';
+
+// sets GMAIL as the SMTP server
+$mail->Host = 'smtp.gmail.com';
+
+// set the SMTP port for the GMAIL server
+$mail->Port = 465;
+
+// your gmail address
+$mail->Username = 'librarymanagementsip@gmail.com';
+
+// your password must be enclosed in single quotes
+$mail->Password = 'lms@1234';
+
+// add a subject line
+$mail->Subject = 'Notification for Requested Book';
+
+// Sender email address and name
+$mail->SetFrom('librarymanagementsip@gmail.com', 'lms');
+
+$email1=$this->session->userdata('u_email_id');
+// reciever address, person you want to send
+$mail->AddAddress($email1);
+
+// if your send to multiple person add this line again
+//$mail->AddAddress('tosend@domain.com');
+
+// if you want to send a carbon copy
+//$mail->AddCC('tosend@domain.com');
+
+
+// if you want to send a blind carbon copy
+//$mail->AddBCC('tosend@domain.com');
+
+// add message body
+
+$mail->MsgHTML('Your book name  '.'"'.$title.'"'.' has been requested to Admin on this '.$req_dt);
+
+
+// add attachment if any
+//$mail->AddAttachment('time.png');
+
+try {
+// send mail
+
+
+$mail->Send();
+$msg = "Mail send successfully";
+
+// $this->User_model->update_forgot_pass_from_user($user_login['u_email_id'],$password);
+
+
+ redirect(base_url().'User/bookdisplay1');
+        
+
+} catch (phpmailerException $e) {
+$msg = $e->getMessage();
+} catch (Exception $e) {
+$msg = $e->getMessage();
+}
    //echo " <script> alert ('Book'); </script>";
 
-   redirect(base_url().'User/bookdisplay1');
+   
 }
 
 public function bookdisplay()

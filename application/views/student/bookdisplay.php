@@ -91,7 +91,7 @@
                                                         </div>
                                                     </header>
                                                     <footer class="entry-footer">
-                                                        <a class="btn btn-dark-gray"  href="<?php echo base_url('User/book_request_from_user/'.$tbl['book_id']);?>" >Request</a>
+                                                        <!-- <a class="btn btn-dark-gray"  href="<?php echo base_url('User/book_request_from_user/'.$tbl['book_id']);?>" >Request</a> -->
                                                         <!-- <p id="demo" style="color:#000;"></p> onclick="getElementById('demo').innerHTML='Book'" -->
                                                     </footer>
                                                     

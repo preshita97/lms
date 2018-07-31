@@ -315,6 +315,14 @@ public function book_display()
     {
         $this->db->insert('notification_tbl', $user);  
     }
+
+    public function get_book_by_id($id)
+        {
+            $query = $this->db->get_where('book_tbl', array('book_id' => $id));
+            return $query->row_array();
+        }
+
+
 }
 
 
