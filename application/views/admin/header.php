@@ -302,12 +302,16 @@
                                             <div class="u-img"><img src="<?php echo base_url(); ?>uploads/<?php echo $user_header_item['u_img']; ?>" alt="user"></div>
                                             <div class="u-text">
                                                 <h4><?php echo $user_header_item['u_name']; ?></h4>
-                                                <p class="text-muted"><?php echo $user_header_item['u_email_id']; ?></p><a href="<?php echo base_url('Admin/view_profile/');?>" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                <!-- <p class="text-muted"><?php echo $user_header_item['u_email_id']; ?></p><a href="<?php echo base_url('Admin/view_profile/');?>" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div> -->
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <!-- <li><a href="#"><i class="ti-user"></i> My Profile</a></li> -->
                                     <li role="separator" class="divider"></li>
+                                    <!-- <li><a href="<?php echo base_url(); ?>User/user_logout"><i class="fa fa-power-off"></i> Logout</a></li> -->
+                                    <li><a href="<?php echo base_url('Admin/view_profile/');?>">View Profile</a></li>
+                                    <li><a href="<?php echo base_url('Admin/view_profile/');?>">Edit Profile</a></li>
+                                    <!-- <li><a href="<?php echo base_url(); ?>User/user_logout"><i class="fa fa-power-off"></i> Logout</a></li> -->
                                     <li><a href="<?php echo base_url(); ?>User/user_logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
@@ -364,7 +368,7 @@
                         </li>
                         
                         
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Tables</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">User</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url('Admin/users_table'); ?>">User Table</a></li>
                                 <li><a href="<?php echo base_url('Admin/request_table'); ?>">Request Table</a></li>
@@ -380,7 +384,7 @@
                                 <li><a href="<?php echo base_url('Admin/book_cat_add');?>">Add New Category</a></li>
                                 <!-- <li><a href="<?php echo base_url('Admin/Request_add');?>">Add New Request</a></li> -->
                                 <li><a href="<?php echo base_url('Admin/book_add');?>">Add New Book</a></li>
-                                <li><a href="<?php echo base_url('Admin/notification_add');?>">Add New Notification</a></li>
+                                <!-- <li><a href="<?php echo base_url('Admin/notification_add');?>">Add New Notification</a></li> -->
                                 <li><a href="<?php echo base_url('Admin/add_author');?>">Add New Author</a></li>
                                 
                             </ul>
@@ -388,8 +392,8 @@
 
                          <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Management</span></a>
                             <ul aria-expanded="false" class="collapse">
-                            <li><a href="<?php echo base_url('Admin/view_profile/');?>">View Profile</a></li>
-                            <li><a href="<?php echo base_url('Admin/view_profile/');?>">Edit Profile</a></li>
+                            <!-- <li><a href="<?php echo base_url('Admin/view_profile/');?>">View Profile</a></li>
+                            <li><a href="<?php echo base_url('Admin/view_profile/');?>">Edit Profile</a></li> -->
                                 <li><a href="<?php echo base_url('Admin/change_password/'.$this->session->userdata('u_id'));?>">Change Password</a></li>
                                 <li><a href="<?php echo base_url('Admin/approve_requests_table/');?>">Approve Requests</a></li>
                             </ul>
